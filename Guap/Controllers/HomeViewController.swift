@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
         
         configureBarButtons()
         configureLayout()
+        configureGestures()
     }
     
     func configureBarButtons() {
@@ -28,6 +29,35 @@ class HomeViewController: UIViewController {
         let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: nil, action: nil)
         
         navigationItem.rightBarButtonItem = settingsButton
+    }
+    
+}
+
+// MARK: - Gesture handlers
+
+extension HomeViewController {
+    
+    func configureGestures() {
+        configureConvertGesture()
+        configureResetGesture()
+    }
+    
+    func configureConvertGesture() {
+        let convertTap = UITapGestureRecognizer(target: self, action: #selector(convertButtonPressed))
+        converterToolbar.convertButton.addGestureRecognizer(convertTap)
+    }
+    
+    func configureResetGesture() {
+        let resetTap = UITapGestureRecognizer(target: self, action: #selector(resetButtonPressed))
+        converterToolbar.resetButton.addGestureRecognizer(resetTap)
+    }
+    
+    @objc func convertButtonPressed(_ sender: UITapGestureRecognizer) {
+        print("Pressed convert button")
+    }
+    
+    @objc func resetButtonPressed(_ sender: UITapGestureRecognizer) {
+        print("Pressed reset button")
     }
     
 }

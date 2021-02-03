@@ -32,11 +32,11 @@ class ConverterToolbar: UIView {
         return view
     }()
     
-    let swapButton: UIButton = {
+    let convertButton: UIButton = {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Swap", for: .normal)
+        button.setTitle("Convert", for: .normal)
 
         return button
     }()
@@ -58,7 +58,8 @@ extension ConverterToolbar {
     
     func configureLayout() {
         addSubview(buttonStack)
-        buttonStack.addArrangedSubview(swapButton)
+        
+        buttonStack.addArrangedSubview(convertButton)
         buttonStack.addArrangedSubview(resetButton)
         buttonStack.fillOther(view: self)
     }

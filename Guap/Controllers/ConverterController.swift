@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConverterController: UIViewController {
+class ConverterController: UIViewController, UITextFieldDelegate {
     
     var allPanels = [ConverterPanelUIModel]()
     var converterInput: ConverterPanelUIModel?
@@ -39,9 +39,13 @@ class ConverterController: UIViewController {
         
         inputPanel.bgColor = inputBackground
         inputButton.title = inputCurrency
+        inputField.delegate = self
+        inputField.tag = 0
         
         outputPanel.bgColor = outputBackground
         outputButton.title = outputCurrency
+        outputField.delegate = self
+        outputField.tag = 1
     }
     
     required init?(coder: NSCoder) {
@@ -50,14 +54,48 @@ class ConverterController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureLayout()
+        getPairedConversionData()
+    }
+    
+}
+
+// MARK: - Data fetching
+
+extension ConverterController {
+    
+    func getPairedConversionData() -> ERPairConversionModel? {
+        var data: ERPairConversionModel?
         
         ERDataManager.shared.getPairConversion(input: "EUR", output: "DOP") { (response, error) in
             if let error = error {
                 print("Error: \(error)")
             }
             
-            print("ERDataManager Response:", response)
+            print("ERDataManager Response:", response ?? "")
+            data = response
+        }
+        
+        return data
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate methods
+
+extension ConverterController {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("Began editing...")
+        
+        switch textField.tag {
+            case 0:
+                print("Input field typing...")
+            case 1:
+                print("Output field typing...")
+            default:
+                print("Error checking input field tag")
         }
     }
     
