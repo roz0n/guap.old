@@ -23,8 +23,8 @@ class ERDataManager {
         return baseEndpoint + apiKey! + "/"
     }
     
-    func getPairConversion(input inCurrency: String, output outCurrency: String, completed: @escaping (ERPairConversionModel?, String?) -> Void) {
-        let endpoint = getEndpoint() + "pair/\(inCurrency)/\(outCurrency)"
+    func getPairConversion(base baseCurrency: String, target targetCurrency: String, completed: @escaping (ERPairConversionModel?, String?) -> Void) {
+        let endpoint = getEndpoint() + "pair/\(baseCurrency)/\(targetCurrency)"
         
         guard let url = URL(string: endpoint) else {
             completed(nil, "URL parsing error")
@@ -37,7 +37,7 @@ class ERDataManager {
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(nil, "Error fetching pair conversion: \(inCurrency) to \(outCurrency)")
+                completed(nil, "Error fetching pair conversion: \(baseCurrency) to \(targetCurrency)")
                 return
             }
             

@@ -16,21 +16,17 @@ class ConverterController: UIViewController, UITextFieldDelegate {
     var delegate: ConverterControllerDelegate?
     
     var allPanels = [ConverterPanelUIModel]()
-    var converterInput: ConverterPanelUIModel?
-    var converterOutput: ConverterPanelUIModel?
+    var converterBase: ConverterPanelUIModel?
+    var converterTarget: ConverterPanelUIModel?
     
-    let inputPanel = ConverterPanel()
-    let inputButton = ConverterPanelButton()
-    let inputField = ConverterPanelTextField()
+    let baseValuePanel = ConverterPanel()
+    let baseValueButton = ConverterPanelButton()
+    let baseValueField = ConverterPanelTextField()
+    var baseValue: Int?
     
-    let outputPanel = ConverterPanel()
-    let outputButton = ConverterPanelButton()
-    let outputField = ConverterPanelTextField()
-    
-    var fieldValues: [String: Int?] = [
-        "input": nil,
-        "output": nil
-    ]
+    let targetValuePanel = ConverterPanel()
+    let targetValueButton = ConverterPanelButton()
+    let targetValueField = ConverterPanelTextField()
     
     private let panelStack: UIStackView = {
         let view = UIStackView()
@@ -44,21 +40,20 @@ class ConverterController: UIViewController, UITextFieldDelegate {
         return view
     }()
     
-    init(inputBackground: UIColor, outputBackground: UIColor, inputCurrency: String, outputCurrency: String) {
+    init(baseBackground: UIColor, baseCurrency: String, targetBackground: UIColor, targetCurrency: String) {
         super.init(nibName: nil, bundle: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        inputPanel.bgColor = inputBackground
-        inputButton.title = inputCurrency
-        inputField.delegate = self
-        inputField.tag = 0
+        baseValuePanel.bgColor = baseBackground
+        baseValueButton.title = baseCurrency
+        baseValueField.delegate = self
+        baseValueField.tag = 0
         
-        outputPanel.bgColor = outputBackground
-        outputButton.title = outputCurrency
-        outputField.isEnabled = false
-        outputField.layer.backgroundColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.2)
-        outputField.delegate = self
-        outputField.tag = 1
+        targetValuePanel.bgColor = targetBackground
+        targetValueButton.title = baseCurrency
+        targetValueField.isEnabled = false
+        targetValueField.layer.backgroundColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.2)
+        targetValueField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -81,21 +76,25 @@ class ConverterController: UIViewController, UITextFieldDelegate {
 extension ConverterController {
     
     func getPairedConversionData() {
-        guard let base = fieldValues["input"] else { return }
+        guard let base = baseValue else { return }
+        
+        baseValueField.isEnabled.toggle()
         
         DispatchQueue.global().async {
-            ERDataManager.shared.getPairConversion(input: "EUR", output: "DOP") { [weak self] (response, error) in
+            ERDataManager.shared.getPairConversion(base: "EUR", target: "DOP") { [weak self] (response, error) in
                 if error != nil {
                     print("Error: \(String(describing: error))")
                     return
                 }
-
+                
                 if let response = response {
-                    let conversionResult = self?.calculatePair(base: Double(base!), rate: response.conversionRate)
+                    let conversionResult = self?.calculatePair(base: Double(base), rate: response.conversionRate)
                     self?.delegate?.didGetPairConversion(self, responseData: response, result: conversionResult)
                 }
             }
         }
+        
+        baseValueField.isEnabled.toggle()
     }
     
 }
@@ -106,17 +105,8 @@ extension ConverterController {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if reason == .committed {
-            if let text = textField.text {
-                switch textField.tag {
-                    case 0:
-                        print("Input field text:", text)
-                        self.fieldValues["input"] = Int(text)
-                    case 1:
-                        print("Output field text:", text)
-                        self.fieldValues["output"] = Int(text)
-                    default:
-                        print("Error checking input field text tag and thus could not fetch field value")
-                }
+            if let text = textField.text, textField.tag == 0 {
+                baseValue = Int(text)
             }
         }
     }
@@ -161,12 +151,12 @@ extension ConverterController {
     }
     
     private func preparePanels() {
-        converterInput = ConverterPanelUIModel(panel: inputPanel, button: inputButton, field: inputField)
-        converterOutput = ConverterPanelUIModel(panel: outputPanel, button: outputButton, field: outputField)
+        converterBase = ConverterPanelUIModel(panel: baseValuePanel, button: baseValueButton, field: baseValueField)
+        converterTarget = ConverterPanelUIModel(panel: targetValuePanel, button: targetValueButton, field: targetValueField)
     }
     
     private func configurePanels() {
-        allPanels = [converterInput!, converterOutput!]
+        allPanels = [converterBase!, converterTarget!]
         
         guard !allPanels.isEmpty else { return }
         

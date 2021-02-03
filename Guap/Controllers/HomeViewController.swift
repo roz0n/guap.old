@@ -10,7 +10,7 @@ import Foundation
 
 class HomeViewController: UIViewController, ConverterControllerDelegate {
     
-    let converter = ConverterController(inputBackground: .systemTeal, outputBackground: .systemPurple, inputCurrency: "EUR", outputCurrency: "DOP")
+    let converter = ConverterController(baseBackground: .systemTeal, baseCurrency: "EUR", targetBackground: .systemPurple, targetCurrency: "DOP")
     let converterToolbar = ConverterToolbar()
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ extension HomeViewController {
     func didGetPairConversion(_ sender: ConverterController?, responseData: ERPairConversionModel, result: Double?) {
         DispatchQueue.main.async { [weak self] in
             if let result = result {
-                self?.converter.outputField.text = String(result)
+                self?.converter.targetValueField.text = String(result)
             }
         }
     }
@@ -59,20 +59,20 @@ extension HomeViewController {
     }
     
     func configureConvertGesture() {
-        let convertTap = UITapGestureRecognizer(target: self, action: #selector(convertButtonPressed))
+        let convertTap = UITapGestureRecognizer(target: self, action: #selector(convertButtonTapped))
         converterToolbar.convertButton.addGestureRecognizer(convertTap)
     }
     
     func configureResetGesture() {
-        let resetTap = UITapGestureRecognizer(target: self, action: #selector(resetButtonPressed))
+        let resetTap = UITapGestureRecognizer(target: self, action: #selector(resetButtonTapped))
         converterToolbar.resetButton.addGestureRecognizer(resetTap)
     }
     
-    @objc func convertButtonPressed(_ sender: UITapGestureRecognizer) {
+    @objc func convertButtonTapped(_ sender: UITapGestureRecognizer) {
         converter.getPairedConversionData()
     }
     
-    @objc func resetButtonPressed(_ sender: UITapGestureRecognizer) {
+    @objc func resetButtonTapped(_ sender: UITapGestureRecognizer) {
         print("Pressed reset button")
     }
     
