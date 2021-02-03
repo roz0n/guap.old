@@ -40,7 +40,7 @@ class ConverterController: UIViewController, UITextFieldDelegate {
         return view
     }()
     
-    init(baseBackground: UIColor, baseCurrency: String, targetBackground: UIColor, targetCurrency: String) {
+    init(baseBg baseBackground: UIColor, baseCurr baseCurrency: String, targetBg targetBackground: UIColor, targetCurr targetCurrency: String) {
         super.init(nibName: nil, bundle: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -50,7 +50,7 @@ class ConverterController: UIViewController, UITextFieldDelegate {
         baseValueField.tag = 0
         
         targetValuePanel.bgColor = targetBackground
-        targetValueButton.title = baseCurrency
+        targetValueButton.title = targetCurrency
         targetValueField.isEnabled = false
         targetValueField.layer.backgroundColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.2)
         targetValueField.delegate = self
@@ -87,7 +87,7 @@ extension ConverterController {
         baseValueField.isEnabled.toggle()
         
         DispatchQueue.global().async {
-            ERDataManager.shared.getPairConversion(base: "EUR", target: "DOP") { [weak self] (response, error) in
+            ERDataManager.shared.getPairConversion(base: C.defaults.BaseCurrency, target: C.defaults.TargetCurrency) { [weak self] (response, error) in
                 if error != nil {
                     print("Error: \(String(describing: error))")
                     return

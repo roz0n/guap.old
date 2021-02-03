@@ -36,8 +36,8 @@ class ConverterToolbar: UIView {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Convert", for: .normal)
-
+        button.setTitle(C.buttons.Convert, for: .normal)
+        
         return button
     }()
     
@@ -45,7 +45,7 @@ class ConverterToolbar: UIView {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Reset", for: .normal)
+        button.setTitle(C.buttons.Reset, for: .normal)
         
         return button
     }()

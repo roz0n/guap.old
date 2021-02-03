@@ -10,13 +10,13 @@ import Foundation
 
 class HomeViewController: UIViewController, ConverterControllerDelegate {
     
-    let converter = ConverterController(baseBackground: .systemTeal, baseCurrency: "EUR", targetBackground: .systemPurple, targetCurrency: "DOP")
+    let converter = ConverterController(baseBg: .systemTeal, baseCurr: C.defaults.BaseCurrency, targetBg: .systemPurple, targetCurr: C.defaults.TargetCurrency)
     let converterToolbar = ConverterToolbar()
     
     override func viewDidLoad() {
         super.viewDidLoad()        
         
-        title = "Guap"
+        title = C.AppName
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
         
@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     }
     
     func configureBarButtons() {
-        let settingsIcon = UIImage(systemName: "gearshape.2.fill")
+        let settingsIcon = UIImage(systemName: C.icons.HomeSettings)
         let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: nil, action: nil)
         
         navigationItem.rightBarButtonItem = settingsButton
