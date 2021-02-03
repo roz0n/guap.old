@@ -11,9 +11,7 @@ class ERDataManager {
     
     static let shared = ERDataManager()
     
-    private init() {}
-    
-    func getEndpoint() -> String {
+    private func getEndpoint() -> String {
         let baseEndpoint = "https://v6.exchangerate-api.com/v6/"
         var apiKey: String?
         
