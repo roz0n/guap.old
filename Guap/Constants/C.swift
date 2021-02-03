@@ -20,5 +20,6 @@ struct C {
     
     struct icons {
         static let HomeSettings = "gearshape.2.fill"
+        static let HomeHistory = "clock.fill"
     }
 }

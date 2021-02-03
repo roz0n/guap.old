@@ -19,8 +19,8 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
         title = C.AppName
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
-        
         converter.delegate = self
+        
         configureBarButtons()
         configureLayout()
         configureGestures()
@@ -28,9 +28,12 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     
     func configureBarButtons() {
         let settingsIcon = UIImage(systemName: C.icons.HomeSettings)
-        let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: nil, action: nil)
+        let historyIcon = UIImage(systemName: C.icons.HomeHistory)
         
-        navigationItem.rightBarButtonItem = settingsButton
+        let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: nil, action: nil)
+        let historyButton = UIBarButtonItem(image: historyIcon, style: .plain, target: nil, action: nil)
+        
+        navigationItem.rightBarButtonItems = [settingsButton, historyButton]
     }
     
 }
