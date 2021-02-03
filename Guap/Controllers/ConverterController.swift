@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ConverterControllerDelegate {
-    func didGetPairConversion(_ sender: ConverterController?, data: ERPairConversionModel)
+    func didGetPairConversion(_ sender: ConverterController?, responseData: ERPairConversionModel, result: Double?)
 }
 
 class ConverterController: UIViewController, UITextFieldDelegate {
@@ -26,6 +26,11 @@ class ConverterController: UIViewController, UITextFieldDelegate {
     let outputPanel = ConverterPanel()
     let outputButton = ConverterPanelButton()
     let outputField = ConverterPanelTextField()
+    
+    var fieldValues: [String: Int?] = [
+        "input": nil,
+        "output": nil
+    ]
     
     private let panelStack: UIStackView = {
         let view = UIStackView()
@@ -50,6 +55,8 @@ class ConverterController: UIViewController, UITextFieldDelegate {
         
         outputPanel.bgColor = outputBackground
         outputButton.title = outputCurrency
+        outputField.isEnabled = false
+        outputField.layer.backgroundColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.2)
         outputField.delegate = self
         outputField.tag = 1
     }
@@ -63,6 +70,10 @@ class ConverterController: UIViewController, UITextFieldDelegate {
         configureLayout()
     }
     
+    func calculatePair(base: Double, rate: Double) -> Double {
+        return (base * rate).rounded()
+    }
+    
 }
 
 // MARK: - Data fetching methods
@@ -70,15 +81,18 @@ class ConverterController: UIViewController, UITextFieldDelegate {
 extension ConverterController {
     
     func getPairedConversionData() {
+        guard let base = fieldValues["input"] else { return }
+        
         DispatchQueue.global().async {
             ERDataManager.shared.getPairConversion(input: "EUR", output: "DOP") { [weak self] (response, error) in
                 if error != nil {
                     print("Error: \(String(describing: error))")
                     return
                 }
-                
+
                 if let response = response {
-                    self?.delegate?.didGetPairConversion(self, data: response)
+                    let conversionResult = self?.calculatePair(base: Double(base!), rate: response.conversionRate)
+                    self?.delegate?.didGetPairConversion(self, responseData: response, result: conversionResult)
                 }
             }
         }
@@ -90,14 +104,20 @@ extension ConverterController {
 
 extension ConverterController {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        switch textField.tag {
-            case 0:
-                print("Input field typing...")
-            case 1:
-                print("Output field typing...")
-            default:
-                print("Error checking input field tag")
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        if reason == .committed {
+            if let text = textField.text {
+                switch textField.tag {
+                    case 0:
+                        print("Input field text:", text)
+                        self.fieldValues["input"] = Int(text)
+                    case 1:
+                        print("Output field text:", text)
+                        self.fieldValues["output"] = Int(text)
+                    default:
+                        print("Error checking input field text tag and thus could not fetch field value")
+                }
+            }
         }
     }
     

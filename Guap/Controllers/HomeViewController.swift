@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class HomeViewController: UIViewController, ConverterControllerDelegate {
     
@@ -38,9 +39,12 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
 
 extension HomeViewController {
     
-    func didGetPairConversion(_ sender: ConverterController?, data: ERPairConversionModel) {
-        print("Got pair conversion data:")
-        print(data)
+    func didGetPairConversion(_ sender: ConverterController?, responseData: ERPairConversionModel, result: Double?) {
+        DispatchQueue.main.async { [weak self] in
+            if let result = result {
+                self?.converter.outputField.text = String(result)
+            }
+        }
     }
     
 }
