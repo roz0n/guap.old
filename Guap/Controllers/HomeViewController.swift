@@ -73,7 +73,7 @@ extension HomeViewController {
     }
     
     @objc func resetButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("Pressed reset button")
+        converter.resetValues()
     }
     
 }

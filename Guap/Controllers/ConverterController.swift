@@ -69,6 +69,12 @@ class ConverterController: UIViewController, UITextFieldDelegate {
         return (base * rate).rounded()
     }
     
+    func resetValues() {
+        baseValue = nil
+        baseValueField.text = ""
+        targetValueField.text = ""
+    }
+    
 }
 
 // MARK: - Data fetching methods
