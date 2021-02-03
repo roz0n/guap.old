@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, ConverterControllerDelegate {
     
     let converter = ConverterController(inputBackground: .systemTeal, outputBackground: .systemPurple, inputCurrency: "EUR", outputCurrency: "DOP")
     let converterToolbar = ConverterToolbar()
@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
         
+        converter.delegate = self
         configureBarButtons()
         configureLayout()
         configureGestures()
@@ -29,6 +30,17 @@ class HomeViewController: UIViewController {
         let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: nil, action: nil)
         
         navigationItem.rightBarButtonItem = settingsButton
+    }
+    
+}
+
+// MARK: - ConverterControllerDelegate methods
+
+extension HomeViewController {
+    
+    func didGetPairConversion(_ sender: ConverterController?, data: ERPairConversionModel) {
+        print("Got pair conversion data:")
+        print(data)
     }
     
 }
@@ -53,7 +65,7 @@ extension HomeViewController {
     }
     
     @objc func convertButtonPressed(_ sender: UITapGestureRecognizer) {
-        print("Pressed convert button")
+        converter.getPairedConversionData()
     }
     
     @objc func resetButtonPressed(_ sender: UITapGestureRecognizer) {

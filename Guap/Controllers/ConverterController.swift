@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol ConverterControllerDelegate {
+    func didGetPairConversion(_ sender: ConverterController?, data: ERPairConversionModel)
+}
+
 class ConverterController: UIViewController, UITextFieldDelegate {
+    
+    var delegate: ConverterControllerDelegate?
     
     var allPanels = [ConverterPanelUIModel]()
     var converterInput: ConverterPanelUIModel?
@@ -54,41 +60,37 @@ class ConverterController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureLayout()
-        getPairedConversionData()
     }
     
 }
 
-// MARK: - Data fetching
+// MARK: - Data fetching methods
 
 extension ConverterController {
     
-    func getPairedConversionData() -> ERPairConversionModel? {
-        var data: ERPairConversionModel?
-        
-        ERDataManager.shared.getPairConversion(input: "EUR", output: "DOP") { (response, error) in
-            if let error = error {
-                print("Error: \(error)")
+    func getPairedConversionData() {
+        DispatchQueue.global().async {
+            ERDataManager.shared.getPairConversion(input: "EUR", output: "DOP") { [weak self] (response, error) in
+                if error != nil {
+                    print("Error: \(String(describing: error))")
+                    return
+                }
+                
+                if let response = response {
+                    self?.delegate?.didGetPairConversion(self, data: response)
+                }
             }
-            
-            print("ERDataManager Response:", response ?? "")
-            data = response
         }
-        
-        return data
     }
     
 }
 
-// MARK: - UITextFieldDelegate methods
+// MARK: - Text field methods
 
 extension ConverterController {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("Began editing...")
-        
         switch textField.tag {
             case 0:
                 print("Input field typing...")
@@ -101,7 +103,7 @@ extension ConverterController {
     
 }
 
-// MARK: - Gestures
+// MARK: - Gesture handlers
 
 extension ConverterController {
     
