@@ -14,7 +14,6 @@ protocol ConverterControllerDelegate {
 class ConverterController: UIViewController, UITextFieldDelegate {
     
     var delegate: ConverterControllerDelegate?
-    
     var allPanels = [ConverterPanelUIModel]()
     var converterBase: ConverterPanelUIModel?
     var converterTarget: ConverterPanelUIModel?

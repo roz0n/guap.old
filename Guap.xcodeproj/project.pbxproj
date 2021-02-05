@@ -13,15 +13,19 @@
 		2384326725C6AD1D0042B640 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2384326625C6AD1D0042B640 /* HomeViewController.swift */; };
 		2384326C25C6AD200042B640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2384326B25C6AD200042B640 /* Assets.xcassets */; };
 		2384326F25C6AD200042B640 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2384326D25C6AD200042B640 /* LaunchScreen.storyboard */; };
+		2386278225CCEFCC009CD6B5 /* CustomKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386278125CCEFCC009CD6B5 /* CustomKeyboardViewController.swift */; };
+		2386278525CCF450009CD6B5 /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386278425CCF450009CD6B5 /* CGFloat+Ext.swift */; };
+		238627BC25CCFE9D009CD6B5 /* CustomKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B325CCFE9D009CD6B5 /* CustomKeyboardButton.swift */; };
+		238627BD25CCFE9D009CD6B5 /* ConverterToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B525CCFE9D009CD6B5 /* ConverterToolbar.swift */; };
+		238627BE25CCFE9D009CD6B5 /* ConverterPanelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B725CCFE9D009CD6B5 /* ConverterPanelButton.swift */; };
+		238627BF25CCFE9D009CD6B5 /* ConverterPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B825CCFE9D009CD6B5 /* ConverterPanel.swift */; };
+		238627C025CCFE9D009CD6B5 /* ConverterPanelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B925CCFE9D009CD6B5 /* ConverterPanelTextField.swift */; };
+		238627C125CCFE9D009CD6B5 /* ConverterStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627BB25CCFE9D009CD6B5 /* ConverterStatusBar.swift */; };
 		23B084CA25CA2A3500CD0BCC /* ERDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B084C925CA2A3500CD0BCC /* ERDataManager.swift */; };
 		23B084CE25CA429700CD0BCC /* ERPairConversionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B084CD25CA429700CD0BCC /* ERPairConversionModel.swift */; };
 		23B084D225CA46B000CD0BCC /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23B084D125CA46B000CD0BCC /* Keys.plist */; };
-		23F2238325C75B7600880258 /* ConverterPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2238225C75B7600880258 /* ConverterPanel.swift */; };
-		23F2238A25C7607E00880258 /* ConverterPanelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2238925C7607E00880258 /* ConverterPanelButton.swift */; };
-		23F2238F25C7622600880258 /* ConverterPanelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2238E25C7622600880258 /* ConverterPanelTextField.swift */; };
 		23F2239D25C7647B00880258 /* ConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2239C25C7647B00880258 /* ConverterController.swift */; };
 		23F223A225C77BA700880258 /* ConverterPanelUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F223A125C77BA700880258 /* ConverterPanelUIModel.swift */; };
-		23F223A625C784CB00880258 /* ConverterToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F223A525C784CB00880258 /* ConverterToolbar.swift */; };
 		23F223AA25C78AB900880258 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F223A925C78AB900880258 /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,15 +38,19 @@
 		2384326B25C6AD200042B640 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2384326E25C6AD200042B640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2384327025C6AD200042B640 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2386278125CCEFCC009CD6B5 /* CustomKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardViewController.swift; sourceTree = "<group>"; };
+		2386278425CCF450009CD6B5 /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
+		238627B325CCFE9D009CD6B5 /* CustomKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButton.swift; sourceTree = "<group>"; };
+		238627B525CCFE9D009CD6B5 /* ConverterToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterToolbar.swift; sourceTree = "<group>"; };
+		238627B725CCFE9D009CD6B5 /* ConverterPanelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterPanelButton.swift; sourceTree = "<group>"; };
+		238627B825CCFE9D009CD6B5 /* ConverterPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterPanel.swift; sourceTree = "<group>"; };
+		238627B925CCFE9D009CD6B5 /* ConverterPanelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterPanelTextField.swift; sourceTree = "<group>"; };
+		238627BB25CCFE9D009CD6B5 /* ConverterStatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterStatusBar.swift; sourceTree = "<group>"; };
 		23B084C925CA2A3500CD0BCC /* ERDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERDataManager.swift; sourceTree = "<group>"; };
 		23B084CD25CA429700CD0BCC /* ERPairConversionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERPairConversionModel.swift; sourceTree = "<group>"; };
 		23B084D125CA46B000CD0BCC /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
-		23F2238225C75B7600880258 /* ConverterPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanel.swift; sourceTree = "<group>"; };
-		23F2238925C7607E00880258 /* ConverterPanelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelButton.swift; sourceTree = "<group>"; };
-		23F2238E25C7622600880258 /* ConverterPanelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelTextField.swift; sourceTree = "<group>"; };
 		23F2239C25C7647B00880258 /* ConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterController.swift; sourceTree = "<group>"; };
 		23F223A125C77BA700880258 /* ConverterPanelUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelUIModel.swift; sourceTree = "<group>"; };
-		23F223A525C784CB00880258 /* ConverterToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToolbar.swift; sourceTree = "<group>"; };
 		23F223A925C78AB900880258 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +97,8 @@
 				23F223A825C78AA400880258 /* Extensions */,
 				23F2237E25C75A6F00880258 /* Managers */,
 				23F2237D25C75A6100880258 /* Models */,
-				23F2237C25C75A5C00880258 /* Views */,
+				2384326D25C6AD200042B640 /* LaunchScreen.storyboard */,
+				238627B125CCFE9D009CD6B5 /* Views */,
 				23F2237B25C75A5000880258 /* Controllers */,
 				2384326B25C6AD200042B640 /* Assets.xcassets */,
 				2384327025C6AD200042B640 /* Info.plist */,
@@ -98,23 +107,59 @@
 			path = Guap;
 			sourceTree = "<group>";
 		};
+		238627B125CCFE9D009CD6B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				238627B225CCFE9D009CD6B5 /* CustomKeyboard */,
+				238627B425CCFE9D009CD6B5 /* ConverterToolbar */,
+				238627B625CCFE9D009CD6B5 /* ConverterPanel */,
+				238627BA25CCFE9D009CD6B5 /* ConverterStatusBar */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		238627B225CCFE9D009CD6B5 /* CustomKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				238627B325CCFE9D009CD6B5 /* CustomKeyboardButton.swift */,
+			);
+			path = CustomKeyboard;
+			sourceTree = "<group>";
+		};
+		238627B425CCFE9D009CD6B5 /* ConverterToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				238627B525CCFE9D009CD6B5 /* ConverterToolbar.swift */,
+			);
+			path = ConverterToolbar;
+			sourceTree = "<group>";
+		};
+		238627B625CCFE9D009CD6B5 /* ConverterPanel */ = {
+			isa = PBXGroup;
+			children = (
+				238627B725CCFE9D009CD6B5 /* ConverterPanelButton.swift */,
+				238627B825CCFE9D009CD6B5 /* ConverterPanel.swift */,
+				238627B925CCFE9D009CD6B5 /* ConverterPanelTextField.swift */,
+			);
+			path = ConverterPanel;
+			sourceTree = "<group>";
+		};
+		238627BA25CCFE9D009CD6B5 /* ConverterStatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				238627BB25CCFE9D009CD6B5 /* ConverterStatusBar.swift */,
+			);
+			path = ConverterStatusBar;
+			sourceTree = "<group>";
+		};
 		23F2237B25C75A5000880258 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				2384326625C6AD1D0042B640 /* HomeViewController.swift */,
 				23F2239C25C7647B00880258 /* ConverterController.swift */,
+				2386278125CCEFCC009CD6B5 /* CustomKeyboardViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		23F2237C25C75A5C00880258 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2384326D25C6AD200042B640 /* LaunchScreen.storyboard */,
-				23F223A425C784B900880258 /* ConverterToolbar */,
-				23F2239225C7625A00880258 /* ConverterPanel */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		23F2237D25C75A6100880258 /* Models */ = {
@@ -134,28 +179,11 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		23F2239225C7625A00880258 /* ConverterPanel */ = {
-			isa = PBXGroup;
-			children = (
-				23F2238225C75B7600880258 /* ConverterPanel.swift */,
-				23F2238E25C7622600880258 /* ConverterPanelTextField.swift */,
-				23F2238925C7607E00880258 /* ConverterPanelButton.swift */,
-			);
-			path = ConverterPanel;
-			sourceTree = "<group>";
-		};
-		23F223A425C784B900880258 /* ConverterToolbar */ = {
-			isa = PBXGroup;
-			children = (
-				23F223A525C784CB00880258 /* ConverterToolbar.swift */,
-			);
-			path = ConverterToolbar;
-			sourceTree = "<group>";
-		};
 		23F223A825C78AA400880258 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				23F223A925C78AB900880258 /* UIView+Ext.swift */,
+				2386278425CCF450009CD6B5 /* CGFloat+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,14 +269,18 @@
 			files = (
 				237E6FB625CA8CD700988FA1 /* C.swift in Sources */,
 				23B084CE25CA429700CD0BCC /* ERPairConversionModel.swift in Sources */,
-				23F2238F25C7622600880258 /* ConverterPanelTextField.swift in Sources */,
 				2384326725C6AD1D0042B640 /* HomeViewController.swift in Sources */,
 				23F223AA25C78AB900880258 /* UIView+Ext.swift in Sources */,
-				23F223A625C784CB00880258 /* ConverterToolbar.swift in Sources */,
 				23B084CA25CA2A3500CD0BCC /* ERDataManager.swift in Sources */,
+				238627BC25CCFE9D009CD6B5 /* CustomKeyboardButton.swift in Sources */,
+				238627BF25CCFE9D009CD6B5 /* ConverterPanel.swift in Sources */,
+				238627BD25CCFE9D009CD6B5 /* ConverterToolbar.swift in Sources */,
+				238627BE25CCFE9D009CD6B5 /* ConverterPanelButton.swift in Sources */,
+				238627C125CCFE9D009CD6B5 /* ConverterStatusBar.swift in Sources */,
+				238627C025CCFE9D009CD6B5 /* ConverterPanelTextField.swift in Sources */,
+				2386278525CCF450009CD6B5 /* CGFloat+Ext.swift in Sources */,
 				2384326325C6AD1D0042B640 /* AppDelegate.swift in Sources */,
-				23F2238325C75B7600880258 /* ConverterPanel.swift in Sources */,
-				23F2238A25C7607E00880258 /* ConverterPanelButton.swift in Sources */,
+				2386278225CCEFCC009CD6B5 /* CustomKeyboardViewController.swift in Sources */,
 				23F223A225C77BA700880258 /* ConverterPanelUIModel.swift in Sources */,
 				2384326525C6AD1D0042B640 /* SceneDelegate.swift in Sources */,
 				23F2239D25C7647B00880258 /* ConverterController.swift in Sources */,

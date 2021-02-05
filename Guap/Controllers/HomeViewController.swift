@@ -10,14 +10,17 @@ import Foundation
 
 class HomeViewController: UIViewController, ConverterControllerDelegate {
     
+    // TODO: Move status bar to ConverterController
+    let statusBar = ConverterStatusBar()
+    
     let converter = ConverterController(baseBg: .systemTeal, baseCurr: C.defaults.BaseCurrency, targetBg: .systemPurple, targetCurr: C.defaults.TargetCurrency)
     let converterToolbar = ConverterToolbar()
+    let keyboard = CustomKeyboardViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()        
         
         title = C.AppName
-        navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
         converter.delegate = self
         
@@ -33,7 +36,8 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
         let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: nil, action: nil)
         let historyButton = UIBarButtonItem(image: historyIcon, style: .plain, target: nil, action: nil)
         
-        navigationItem.rightBarButtonItems = [settingsButton, historyButton]
+        navigationItem.rightBarButtonItem = settingsButton
+        navigationItem.leftBarButtonItem = historyButton
     }
     
 }
@@ -86,19 +90,33 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func configureLayout() {
+        // TODO: As stated above, statusBar needs to be moved to ConverterController
+        view.addSubview(statusBar)
+        
         view.addSubview(converter.view)
         view.addSubview(converterToolbar)
+        view.addSubview(keyboard.view)
         
         NSLayoutConstraint.activate([
-            converter.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            converter.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            converter.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            converter.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+            statusBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            statusBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            statusBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            statusBar.heightAnchor.constraint(equalToConstant: 48),
+            
+            converter.view.topAnchor.constraint(equalTo: statusBar.bottomAnchor),
+            converter.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            converter.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            converter.view.heightAnchor.constraint(equalToConstant: 80 * 2),
             
             converterToolbar.topAnchor.constraint(equalTo: converter.view.bottomAnchor),
-            converterToolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             converterToolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             converterToolbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            converterToolbar.heightAnchor.constraint(equalToConstant: 72),
+            
+            keyboard.view.topAnchor.constraint(equalTo: converterToolbar.bottomAnchor),
+            keyboard.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            keyboard.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            keyboard.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
