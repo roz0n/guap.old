@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     // TODO: Move status bar to ConverterController
     let statusBar = ConverterStatusBar()
     
-    let converter = ConverterController(baseBg: .systemTeal, baseCurr: C.defaults.BaseCurrency, targetBg: .systemPurple, targetCurr: C.defaults.TargetCurrency)
+    let converter = ConverterViewController(baseBg: .systemTeal, baseCurr: C.defaults.BaseCurrency, targetBg: .systemPurple, targetCurr: C.defaults.TargetCurrency)
     let converterToolbar = ConverterToolbar()
     let keyboard = CustomKeyboardViewController()
     
@@ -46,7 +46,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
 
 extension HomeViewController {
     
-    func didGetPairConversion(_ sender: ConverterController?, responseData: ERPairConversionModel, result: Double?) {
+    func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?) {
         DispatchQueue.main.async { [weak self] in
             if let result = result {
                 self?.converter.targetValueField.text = String(result)

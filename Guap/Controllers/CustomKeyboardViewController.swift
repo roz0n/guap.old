@@ -18,6 +18,7 @@ class CustomKeyboardViewController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillEqually
+        stack.spacing = C.spacers.keyboard.leading
         
         return stack
     }()

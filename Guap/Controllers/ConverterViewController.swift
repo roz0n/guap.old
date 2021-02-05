@@ -1,5 +1,5 @@
 //
-//  ConverterController.swift
+//  ConverterViewController.swift
 //  Guap
 //
 //  Created by Arnaldo Rozon on 1/31/21.
@@ -8,10 +8,10 @@
 import UIKit
 
 protocol ConverterControllerDelegate {
-    func didGetPairConversion(_ sender: ConverterController?, responseData: ERPairConversionModel, result: Double?)
+    func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?)
 }
 
-class ConverterController: UIViewController, UITextFieldDelegate {
+class ConverterViewController: UIViewController, UITextFieldDelegate {
     
     var delegate: ConverterControllerDelegate?
     var allPanels = [ConverterPanelUIModel]()
@@ -78,7 +78,7 @@ class ConverterController: UIViewController, UITextFieldDelegate {
 
 // MARK: - Data fetching methods
 
-extension ConverterController {
+extension ConverterViewController {
     
     func getPairedConversionData() {
         guard let base = baseValue else { return }
@@ -106,7 +106,7 @@ extension ConverterController {
 
 // MARK: - Text field methods
 
-extension ConverterController {
+extension ConverterViewController {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if reason == .committed {
@@ -120,7 +120,7 @@ extension ConverterController {
 
 // MARK: - Gesture handlers
 
-extension ConverterController {
+extension ConverterViewController {
     
     func setGestures() {
         setKeyboardDismissGesture()
@@ -146,7 +146,7 @@ extension ConverterController {
  Finally, it applies basic constraints to the panelStack view itself. Each method is called sequentially by the `configureLayout` method in `viewDidLoad` in an effort to keep their usage contained to the extension.
  */
 
-extension ConverterController {
+extension ConverterViewController {
     
     private func configureLayout() {
         self.setGestures()
