@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomKeyboardButton: UIView {
+class CustomKeyboardButton: UIButton {
     
     var buttonValue: Int
 
@@ -23,11 +23,10 @@ class CustomKeyboardButton: UIView {
     
     init(label: Int) {
         self.buttonValue = label
+        
         super.init(frame: .zero)
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemGray3
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
+
         configureLabel()
     }
     

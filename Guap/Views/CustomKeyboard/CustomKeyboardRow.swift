@@ -38,11 +38,28 @@ extension CustomKeyboardRow {
     private func configureButtons() {
         for index in 1...3 {
             let button = CustomKeyboardButton(label: index)
+            
+            addKeyboardGesture(to: button)
             buttons.append(button)
             
             addArrangedSubview(buttons[index - 1])
             print("Adding button \(index) for row \(id)")
         }
+    }
+    
+}
+
+// MARK: - Gesture handlers
+
+extension CustomKeyboardRow {
+    
+    func addKeyboardGesture(to button: UIButton) {
+        let keyboardButtonTap = UITapGestureRecognizer(target: self, action: #selector(keyboardButtonTapped))
+        button.addGestureRecognizer(keyboardButtonTap)
+    }
+    
+    @objc func keyboardButtonTapped(_ sender: UITapGestureRecognizer) {
+        print("Tapped a keyboard button")
     }
     
 }
