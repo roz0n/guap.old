@@ -12,6 +12,16 @@ class CustomKeyboardViewController: UIViewController {
     var allRows = [Int: CustomKeyboardRow]()
     var allButtons = [Int: [CustomKeyboardButton]]()
     
+    let rowStack: UIStackView = {
+        let stack = UIStackView()
+        
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        
+        return stack
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +38,7 @@ extension CustomKeyboardViewController {
     
     private func configureRows() {
         createKeyboardRows()
-        configureKeyboardRows()
+        configureRowStack()
     }
     
     private func createKeyboardRows() {
@@ -36,27 +46,18 @@ extension CustomKeyboardViewController {
             let row = CustomKeyboardRow(keyboardRowIndex: index)
             
             allRows[index] = row
-            view.addSubview(allRows[index]!)
+            rowStack.addArrangedSubview(allRows[index]!)
         }
     }
     
-    private func configureKeyboardRows() {
-        for (_, row) in allRows {
-            if row.id == 0 {
-                // This is the first row, topAnchors must align to the `safeAreaLayoutGuide`
-                row.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-            } else {
-                // These are the other rows. Their constraints should be relative to the previous row.
-                row.topAnchor.constraint(equalTo: allRows[row.id - 1]!.bottomAnchor).isActive = true
-            }
-            
-            // These contraints are shared by all rows
-            NSLayoutConstraint.activate([
-                row.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-                row.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
-                row.heightAnchor.constraint(equalToConstant: 105)
-            ])
-        }
+    private func configureRowStack() {
+        view.addSubview(rowStack)
+        NSLayoutConstraint.activate([
+            rowStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
+            rowStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            rowStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            rowStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12)
+        ])
     }
     
 }
