@@ -21,6 +21,7 @@
 		238627BF25CCFE9D009CD6B5 /* ConverterPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B825CCFE9D009CD6B5 /* ConverterPanel.swift */; };
 		238627C025CCFE9D009CD6B5 /* ConverterPanelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B925CCFE9D009CD6B5 /* ConverterPanelTextField.swift */; };
 		238627C125CCFE9D009CD6B5 /* ConverterStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627BB25CCFE9D009CD6B5 /* ConverterStatusBar.swift */; };
+		238627C425CCFEDF009CD6B5 /* CustomKeyboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627C325CCFEDF009CD6B5 /* CustomKeyboardRow.swift */; };
 		23B084CA25CA2A3500CD0BCC /* ERDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B084C925CA2A3500CD0BCC /* ERDataManager.swift */; };
 		23B084CE25CA429700CD0BCC /* ERPairConversionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B084CD25CA429700CD0BCC /* ERPairConversionModel.swift */; };
 		23B084D225CA46B000CD0BCC /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23B084D125CA46B000CD0BCC /* Keys.plist */; };
@@ -46,6 +47,7 @@
 		238627B825CCFE9D009CD6B5 /* ConverterPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterPanel.swift; sourceTree = "<group>"; };
 		238627B925CCFE9D009CD6B5 /* ConverterPanelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterPanelTextField.swift; sourceTree = "<group>"; };
 		238627BB25CCFE9D009CD6B5 /* ConverterStatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterStatusBar.swift; sourceTree = "<group>"; };
+		238627C325CCFEDF009CD6B5 /* CustomKeyboardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardRow.swift; sourceTree = "<group>"; };
 		23B084C925CA2A3500CD0BCC /* ERDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERDataManager.swift; sourceTree = "<group>"; };
 		23B084CD25CA429700CD0BCC /* ERPairConversionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERPairConversionModel.swift; sourceTree = "<group>"; };
 		23B084D125CA46B000CD0BCC /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				238627B325CCFE9D009CD6B5 /* CustomKeyboardButton.swift */,
+				238627C325CCFEDF009CD6B5 /* CustomKeyboardRow.swift */,
 			);
 			path = CustomKeyboard;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			files = (
 				237E6FB625CA8CD700988FA1 /* C.swift in Sources */,
 				23B084CE25CA429700CD0BCC /* ERPairConversionModel.swift in Sources */,
+				238627C425CCFEDF009CD6B5 /* CustomKeyboardRow.swift in Sources */,
 				2384326725C6AD1D0042B640 /* HomeViewController.swift in Sources */,
 				23F223AA25C78AB900880258 /* UIView+Ext.swift in Sources */,
 				23B084CA25CA2A3500CD0BCC /* ERDataManager.swift in Sources */,

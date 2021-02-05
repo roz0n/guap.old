@@ -9,42 +9,52 @@ import UIKit
 
 class CustomKeyboardViewController: UIViewController {
     
-    let testButton: CustomKeyboardButton = {
-        let tb = CustomKeyboardButton()
-        return tb
-    }()
-    
-    let keyboardRow: UIStackView = {
-        let sv = UIStackView()
-        
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.backgroundColor = .systemYellow
-        sv.axis = .horizontal
-        sv.spacing = 0.25
-        
-        return sv
-    }()
+    var allRows = [Int:CustomKeyboardRow]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(testButton)
         view.backgroundColor = .systemOrange
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        print("Hola desde CKVC")
-        configureLayout()
+        configureRows()
     }
-    
 }
 
-// MARK: - Layout
+// MARK: - Keyboard row creation and layout
 
 extension CustomKeyboardViewController {
     
-    private func configureLayout() {
-        print("Called configure layout")
-        
+    private func configureRows() {
+        createRows()
+        configureRowsLayout()
+    }
+    
+    private func createRows() {
+        for index in 1...4 {
+            let row = CustomKeyboardRow()
+            allRows[index] = row
+            view.addSubview(allRows[index]!)
+        }
+    }
+    
+    private func configureRowsLayout() {
+        for (key, row) in allRows {
+            if key == 1 {
+                // This is the first row, topAnchors must align to the `safeAreaLayoutGuide`
+                row.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            } else {
+                // These are the other rows. Their constraints should be relative to the previous row.
+                row.topAnchor.constraint(equalTo: allRows[key - 1]!.bottomAnchor).isActive = true
+            }
+            
+            // These contraints are shared by all rows
+            NSLayoutConstraint.activate([
+                row.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                row.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                row.heightAnchor.constraint(equalToConstant: 105)
+            ])
+        }
     }
     
 }
