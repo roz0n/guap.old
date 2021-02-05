@@ -14,8 +14,6 @@ class ConverterStatusBar: UIView {
         
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemIndigo
-        
-        print("Hola desde converter status bar")
     }
     
     required init?(coder: NSCoder) {

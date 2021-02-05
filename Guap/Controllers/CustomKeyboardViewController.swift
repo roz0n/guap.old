@@ -29,7 +29,6 @@ extension CustomKeyboardViewController {
     private func configureRows() {
         createKeyboardRows()
         configureKeyboardRows()
-//        configureKeyboardButtons()
     }
     
     private func createKeyboardRows() {
@@ -59,20 +58,5 @@ extension CustomKeyboardViewController {
             ])
         }
     }
-    
-//    private func configureKeyboardButtons() {
-//        for (key, row) in allRows {
-//            // Add three buttons per row
-//            for index in 1...3 {
-////                if (allButtons[index] == nil) { allButtons[index] = [CustomKeyboardButton]() }
-////
-////                let button = CustomKeyboardButton()
-////                allButtons[index]!.append(button)
-////
-////                row.addArrangedSubview(allButtons[index]![index])
-//                print("Adding button \(index) for row \(key)")
-//            }
-//        }
-//    }
     
 }

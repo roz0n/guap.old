@@ -20,7 +20,6 @@ class CustomKeyboardRow: UIStackView {
         backgroundColor = .systemYellow
         axis = .horizontal
         distribution = .fillEqually
-        spacing = 16
         
         configureButtons()
     }
@@ -43,7 +42,6 @@ extension CustomKeyboardRow {
             buttons.append(button)
             
             addArrangedSubview(buttons[index - 1])
-            print("Adding button \(index) for row \(id)")
         }
     }
     
