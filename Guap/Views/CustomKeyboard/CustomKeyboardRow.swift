@@ -9,25 +9,40 @@ import UIKit
 
 class CustomKeyboardRow: UIStackView {
     
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
+    var id: Int
+    var buttons = [CustomKeyboardButton]()
     
-    override init(frame: CGRect) {
+    init(keyboardRowIndex id: Int) {
+        self.id = id
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemYellow
         axis = .horizontal
-        spacing = 0.25
+        distribution = .fillEqually
+        spacing = 16
+        
+        configureButtons()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+// MARK: - Configure keyboard buttons
+
+extension CustomKeyboardRow {
+    
+    private func configureButtons() {
+        for index in 1...3 {
+            let button = CustomKeyboardButton(label: index)
+            buttons.append(button)
+            
+            addArrangedSubview(buttons[index - 1])
+            print("Adding button \(index) for row \(id)")
+        }
     }
     
 }

@@ -9,7 +9,8 @@ import UIKit
 
 class CustomKeyboardViewController: UIViewController {
     
-    var allRows = [Int:CustomKeyboardRow]()
+    var allRows = [Int: CustomKeyboardRow]()
+    var allButtons = [Int: [CustomKeyboardButton]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,35 +27,52 @@ class CustomKeyboardViewController: UIViewController {
 extension CustomKeyboardViewController {
     
     private func configureRows() {
-        createRows()
-        configureRowsLayout()
+        createKeyboardRows()
+        configureKeyboardRows()
+//        configureKeyboardButtons()
     }
     
-    private func createRows() {
-        for index in 1...4 {
-            let row = CustomKeyboardRow()
+    private func createKeyboardRows() {
+        for index in 0...3 {
+            let row = CustomKeyboardRow(keyboardRowIndex: index)
+            
             allRows[index] = row
             view.addSubview(allRows[index]!)
         }
     }
     
-    private func configureRowsLayout() {
-        for (key, row) in allRows {
-            if key == 1 {
+    private func configureKeyboardRows() {
+        for (_, row) in allRows {
+            if row.id == 0 {
                 // This is the first row, topAnchors must align to the `safeAreaLayoutGuide`
                 row.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
             } else {
                 // These are the other rows. Their constraints should be relative to the previous row.
-                row.topAnchor.constraint(equalTo: allRows[key - 1]!.bottomAnchor).isActive = true
+                row.topAnchor.constraint(equalTo: allRows[row.id - 1]!.bottomAnchor).isActive = true
             }
             
             // These contraints are shared by all rows
             NSLayoutConstraint.activate([
-                row.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                row.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                row.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
+                row.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
                 row.heightAnchor.constraint(equalToConstant: 105)
             ])
         }
     }
+    
+//    private func configureKeyboardButtons() {
+//        for (key, row) in allRows {
+//            // Add three buttons per row
+//            for index in 1...3 {
+////                if (allButtons[index] == nil) { allButtons[index] = [CustomKeyboardButton]() }
+////
+////                let button = CustomKeyboardButton()
+////                allButtons[index]!.append(button)
+////
+////                row.addArrangedSubview(allButtons[index]![index])
+//                print("Adding button \(index) for row \(key)")
+//            }
+//        }
+//    }
     
 }
