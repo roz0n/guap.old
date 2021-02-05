@@ -52,11 +52,12 @@ extension CustomKeyboardViewController {
     
     private func configureRowStack() {
         view.addSubview(rowStack)
+        
         NSLayoutConstraint.activate([
-            rowStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
-            rowStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            rowStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            rowStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12)
+            rowStack.topAnchor.constraint(equalTo: view.topAnchor, constant: C.spacers.keyboard.top),
+            rowStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: C.spacers.keyboard.leading),
+            rowStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: C.spacers.keyboard.trailing),
+            rowStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: C.spacers.keyboard.bottom)
         ])
     }
     

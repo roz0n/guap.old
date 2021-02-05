@@ -27,7 +27,7 @@ class ConverterToolbar: UIView {
         view.backgroundColor = .systemPink
         view.axis = .horizontal
         view.distribution = .fillEqually
-        view.spacing = 0.5
+        view.spacing = C.spacers.panels.stack
         
         return view
     }()

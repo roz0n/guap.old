@@ -22,8 +22,8 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
         
         title = C.AppName
         view.backgroundColor = .white
-        converter.delegate = self
         
+        converter.delegate = self
         configureBarButtons()
         configureLayout()
         configureGestures()
@@ -101,17 +101,17 @@ extension HomeViewController {
             statusBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             statusBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             statusBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            statusBar.heightAnchor.constraint(equalToConstant: 48),
+            statusBar.heightAnchor.constraint(equalToConstant: C.heights.converter.statusBar),
             
             converter.view.topAnchor.constraint(equalTo: statusBar.bottomAnchor),
             converter.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             converter.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            converter.view.heightAnchor.constraint(equalToConstant: 80 * 2),
+            converter.view.heightAnchor.constraint(equalToConstant: C.heights.converter.container),
             
             converterToolbar.topAnchor.constraint(equalTo: converter.view.bottomAnchor),
             converterToolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             converterToolbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            converterToolbar.heightAnchor.constraint(equalToConstant: 72),
+            converterToolbar.heightAnchor.constraint(equalToConstant: C.heights.converter.toolbar),
             
             keyboard.view.topAnchor.constraint(equalTo: converterToolbar.bottomAnchor),
             keyboard.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

@@ -20,6 +20,7 @@ class CustomKeyboardRow: UIStackView {
         backgroundColor = .systemYellow
         axis = .horizontal
         distribution = .fillEqually
+        spacing = C.spacers.keyboard.leading
         
         configureButtons()
     }

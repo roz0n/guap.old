@@ -34,7 +34,7 @@ class ConverterController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = .systemGray4
         view.axis = .vertical
         view.distribution = .fillEqually
-        view.spacing = 0.25
+        view.spacing = C.spacers.panels.stack
         
         return view
     }()
@@ -173,9 +173,9 @@ extension ConverterController {
                 panel.addSubview(field)
                 
                 NSLayoutConstraint.activate([
-                    button.topAnchor.constraint(equalTo: panel.topAnchor, constant: 10),
-                    button.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -10),
-                    field.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 10),
+                    button.topAnchor.constraint(equalTo: panel.topAnchor, constant: C.spacers.panels.buttons.top),
+                    button.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: C.spacers.panels.buttons.trailing),
+                    field.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: C.spacers.panels.fields.leading),
                     field.centerXAnchor.constraint(equalTo: panel.centerXAnchor),
                     field.centerYAnchor.constraint(equalTo: panel.centerYAnchor)
                 ])

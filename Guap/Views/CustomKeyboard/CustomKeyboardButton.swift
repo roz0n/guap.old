@@ -24,8 +24,10 @@ class CustomKeyboardButton: UIButton {
     init(keyValue: String) {
         self.keyValue = keyValue
         super.init(frame: .zero)
+        
         self.translatesAutoresizingMaskIntoConstraints = false
-
+        self.backgroundColor = .systemGreen
+        
         configureLabel()
     }
     
