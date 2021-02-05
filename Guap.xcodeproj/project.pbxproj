@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */; };
 		237E6FB625CA8CD700988FA1 /* C.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FB525CA8CD700988FA1 /* C.swift */; };
 		2384326325C6AD1D0042B640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2384326225C6AD1D0042B640 /* AppDelegate.swift */; };
 		2384326525C6AD1D0042B640 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2384326425C6AD1D0042B640 /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButtonValues.swift; sourceTree = "<group>"; };
 		237E6FB525CA8CD700988FA1 /* C.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C.swift; sourceTree = "<group>"; };
 		2384325F25C6AD1D0042B640 /* Guap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2384326225C6AD1D0042B640 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				23F223A125C77BA700880258 /* ConverterPanelUIModel.swift */,
 				23B084CD25CA429700CD0BCC /* ERPairConversionModel.swift */,
+				2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				237E6FB625CA8CD700988FA1 /* C.swift in Sources */,
 				23B084CE25CA429700CD0BCC /* ERPairConversionModel.swift in Sources */,
 				238627C425CCFEDF009CD6B5 /* CustomKeyboardRow.swift in Sources */,
+				2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */,
 				2384326725C6AD1D0042B640 /* HomeViewController.swift in Sources */,
 				23F223AA25C78AB900880258 /* UIView+Ext.swift in Sources */,
 				23B084CA25CA2A3500CD0BCC /* ERDataManager.swift in Sources */,

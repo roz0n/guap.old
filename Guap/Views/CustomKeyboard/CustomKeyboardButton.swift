@@ -9,7 +9,7 @@ import UIKit
 
 class CustomKeyboardButton: UIButton {
     
-    var buttonValue: Int
+    var keyValue: String
 
     var label: UILabel = {
         let label = UILabel()
@@ -21,9 +21,8 @@ class CustomKeyboardButton: UIButton {
     }()
     
     
-    init(label: Int) {
-        self.buttonValue = label
-        
+    init(keyValue: String) {
+        self.keyValue = keyValue
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -40,7 +39,8 @@ extension CustomKeyboardButton {
     
     func configureLabel() {
         addSubview(label)
-        label.text = String(buttonValue)
+        
+        label.text = keyValue
         label.fillOther(view: self)
     }
     

@@ -37,7 +37,7 @@ extension CustomKeyboardRow {
     
     private func configureButtons() {
         for index in 1...3 {
-            let button = CustomKeyboardButton(label: index)
+            let button = CustomKeyboardButton(keyValue: KeyboardButtonValues.rows[id]![index - 1])
             
             addKeyboardGesture(to: button)
             buttons.append(button)
@@ -59,7 +59,8 @@ extension CustomKeyboardRow {
     }
     
     @objc func keyboardButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("Tapped a keyboard button")
+        let button = sender.view as? CustomKeyboardButton
+        print("Tapped custom keyboard button: \(button?.keyValue)")
     }
     
 }
