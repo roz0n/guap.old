@@ -60,13 +60,14 @@ extension ConverterStatusPill {
         if let textLabel = textLabel {
             textLabel.translatesAutoresizingMaskIntoConstraints = false
             textLabel.sizeToFit()
-            textLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
             textLabel.textAlignment = .center
             
             if attributedLabelText != nil {
                 textLabel.attributedText = attributedLabelText
+                textLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
             } else if labelText != nil {
                 textLabel.text = labelText?.uppercased()
+                textLabel.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
             }
             
             if self.bgColor != K.colors.black {
