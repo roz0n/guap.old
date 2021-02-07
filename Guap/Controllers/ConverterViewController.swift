@@ -138,9 +138,9 @@ extension ConverterViewController {
     }
     
     func setCurrencySelectionGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(openCurrencySelectionScreen))
-        
         for panel in allPanels {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(openCurrencySelectionScreen))
+
             if let button = panel.button {
                 button.addGestureRecognizer(tap)
             }
