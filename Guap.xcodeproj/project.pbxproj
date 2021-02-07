@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */; };
-		237E6FB625CA8CD700988FA1 /* C.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FB525CA8CD700988FA1 /* C.swift */; };
+		237E6FB625CA8CD700988FA1 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FB525CA8CD700988FA1 /* K.swift */; };
 		2384326325C6AD1D0042B640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2384326225C6AD1D0042B640 /* AppDelegate.swift */; };
 		2384326525C6AD1D0042B640 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2384326425C6AD1D0042B640 /* SceneDelegate.swift */; };
 		2384326725C6AD1D0042B640 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2384326625C6AD1D0042B640 /* HomeViewController.swift */; };
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButtonValues.swift; sourceTree = "<group>"; };
-		237E6FB525CA8CD700988FA1 /* C.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C.swift; sourceTree = "<group>"; };
+		237E6FB525CA8CD700988FA1 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		2384325F25C6AD1D0042B640 /* Guap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2384326225C6AD1D0042B640 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2384326425C6AD1D0042B640 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		237E6FB425CA8CB500988FA1 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				237E6FB525CA8CD700988FA1 /* C.swift */,
+				237E6FB525CA8CD700988FA1 /* K.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -273,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				237E6FB625CA8CD700988FA1 /* C.swift in Sources */,
+				237E6FB625CA8CD700988FA1 /* K.swift in Sources */,
 				23B084CE25CA429700CD0BCC /* ERPairConversionModel.swift in Sources */,
 				238627C425CCFEDF009CD6B5 /* CustomKeyboardRow.swift in Sources */,
 				2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */,

@@ -1,13 +1,15 @@
 //
-//  C.swift
+//  K.swift
 //  Guap
 //
 //  Created by Arnaldo Rozon on 2/3/21.
 //
 
-import CoreGraphics
+import UIKit
 
-struct C {
+// MARK: - Text and icon constants
+
+struct K {
     
     static let AppName = "Guap"
     
@@ -25,6 +27,30 @@ struct C {
         static let HomeSettings = "gearshape.2.fill"
         static let HomeHistory = "clock.fill"
     }
+    
+}
+
+// MARK: - Color constants
+
+extension K {
+    
+    struct colors {
+        static let white = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        static let black = UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 1).cgColor
+        
+        static let red = UIColor(red: 1, green: 0.129, blue: 0.129, alpha: 1).cgColor
+        static let blue = UIColor(red: 0.054, green: 0.432, blue: 1, alpha: 1).cgColor
+        static let green = UIColor(red: 0.095, green: 0.738, blue: 0.366, alpha: 1).cgColor
+        
+        static let headerGray = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1).cgColor
+        static let borderGray = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
+    }
+    
+}
+
+// MARK: - Layout constants
+
+extension K {
     
     struct spacers {
         struct keyboard {

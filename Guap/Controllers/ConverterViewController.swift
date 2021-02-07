@@ -34,7 +34,7 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = .systemGray4
         view.axis = .vertical
         view.distribution = .fillEqually
-        view.spacing = C.spacers.panels.stack
+        view.spacing = K.spacers.panels.stack
         
         return view
     }()
@@ -86,7 +86,7 @@ extension ConverterViewController {
         baseValueField.isEnabled.toggle()
         
         DispatchQueue.global().async {
-            ERDataManager.shared.getPairConversion(base: C.defaults.BaseCurrency, target: C.defaults.TargetCurrency) { [weak self] (response, error) in
+            ERDataManager.shared.getPairConversion(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency) { [weak self] (response, error) in
                 if error != nil {
                     print("Error: \(String(describing: error))")
                     return
@@ -123,16 +123,25 @@ extension ConverterViewController {
 extension ConverterViewController {
     
     func setGestures() {
-        setKeyboardDismissGesture()
+//        setKeyboardDismissGesture()
+        setCurrencySelectionGesture()
     }
     
-    func setKeyboardDismissGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+//    func setKeyboardDismissGesture() {
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+//        view.addGestureRecognizer(tap)
+//    }
+    
+    func setCurrencySelectionGesture() {
+        let tap = UIGestureRecognizer(target: self, action: #selector(openCurrencySelectionScreen))
+        
+        for panel in allPanels {
+            panel.button?.addGestureRecognizer(tap)
+        }
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+    @objc func openCurrencySelectionScreen(_ sender: UITapGestureRecognizer) {
+        print("Tapped currency selection button")
     }
     
 }
@@ -173,9 +182,9 @@ extension ConverterViewController {
                 panel.addSubview(field)
                 
                 NSLayoutConstraint.activate([
-                    button.topAnchor.constraint(equalTo: panel.topAnchor, constant: C.spacers.panels.buttons.top),
-                    button.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: C.spacers.panels.buttons.trailing),
-                    field.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: C.spacers.panels.fields.leading),
+                    button.topAnchor.constraint(equalTo: panel.topAnchor, constant: K.spacers.panels.buttons.top),
+                    button.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: K.spacers.panels.buttons.trailing),
+                    field.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: K.spacers.panels.fields.leading),
                     field.centerXAnchor.constraint(equalTo: panel.centerXAnchor),
                     field.centerYAnchor.constraint(equalTo: panel.centerYAnchor)
                 ])

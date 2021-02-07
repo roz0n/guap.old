@@ -18,7 +18,7 @@ class CustomKeyboardViewController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = C.spacers.keyboard.leading
+        stack.spacing = K.spacers.keyboard.leading
         
         return stack
     }()
@@ -31,6 +31,7 @@ class CustomKeyboardViewController: UIViewController {
         
         configureRows()
     }
+    
 }
 
 // MARK: - Keyboard row creation and layout
@@ -55,10 +56,10 @@ extension CustomKeyboardViewController {
         view.addSubview(rowStack)
         
         NSLayoutConstraint.activate([
-            rowStack.topAnchor.constraint(equalTo: view.topAnchor, constant: C.spacers.keyboard.top),
-            rowStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: C.spacers.keyboard.leading),
-            rowStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: C.spacers.keyboard.trailing),
-            rowStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: C.spacers.keyboard.bottom)
+            rowStack.topAnchor.constraint(equalTo: view.topAnchor, constant: K.spacers.keyboard.top),
+            rowStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: K.spacers.keyboard.leading),
+            rowStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: K.spacers.keyboard.trailing),
+            rowStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: K.spacers.keyboard.bottom)
         ])
     }
     

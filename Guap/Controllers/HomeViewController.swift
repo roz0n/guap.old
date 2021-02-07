@@ -13,14 +13,14 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     // TODO: Move status bar to ConverterController
     let statusBar = ConverterStatusBar()
     
-    let converter = ConverterViewController(baseBg: .systemTeal, baseCurr: C.defaults.BaseCurrency, targetBg: .systemPurple, targetCurr: C.defaults.TargetCurrency)
+    let converter = ConverterViewController(baseBg: .systemTeal, baseCurr: K.defaults.BaseCurrency, targetBg: .systemPurple, targetCurr: K.defaults.TargetCurrency)
     let converterToolbar = ConverterToolbar()
     let keyboard = CustomKeyboardViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()        
         
-        title = C.AppName
+        title = K.AppName
         view.backgroundColor = .white
         
         converter.delegate = self
@@ -30,8 +30,8 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     }
     
     func configureBarButtons() {
-        let settingsIcon = UIImage(systemName: C.icons.HomeSettings)
-        let historyIcon = UIImage(systemName: C.icons.HomeHistory)
+        let settingsIcon = UIImage(systemName: K.icons.HomeSettings)
+        let historyIcon = UIImage(systemName: K.icons.HomeHistory)
         
         let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: nil, action: nil)
         let historyButton = UIBarButtonItem(image: historyIcon, style: .plain, target: nil, action: nil)
@@ -101,17 +101,17 @@ extension HomeViewController {
             statusBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             statusBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             statusBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            statusBar.heightAnchor.constraint(equalToConstant: C.heights.converter.statusBar),
+            statusBar.heightAnchor.constraint(equalToConstant: K.heights.converter.statusBar),
             
             converter.view.topAnchor.constraint(equalTo: statusBar.bottomAnchor),
             converter.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             converter.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            converter.view.heightAnchor.constraint(equalToConstant: C.heights.converter.container),
+            converter.view.heightAnchor.constraint(equalToConstant: K.heights.converter.container),
             
             converterToolbar.topAnchor.constraint(equalTo: converter.view.bottomAnchor),
             converterToolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             converterToolbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            converterToolbar.heightAnchor.constraint(equalToConstant: C.heights.converter.toolbar),
+            converterToolbar.heightAnchor.constraint(equalToConstant: K.heights.converter.toolbar),
             
             keyboard.view.topAnchor.constraint(equalTo: converterToolbar.bottomAnchor),
             keyboard.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

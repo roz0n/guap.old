@@ -27,7 +27,7 @@ class ConverterToolbar: UIView {
         view.backgroundColor = .systemPink
         view.axis = .horizontal
         view.distribution = .fillEqually
-        view.spacing = C.spacers.panels.stack
+        view.spacing = K.spacers.panels.stack
         
         return view
     }()
@@ -36,7 +36,7 @@ class ConverterToolbar: UIView {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(C.buttons.Convert, for: .normal)
+        button.setTitle(K.buttons.Convert, for: .normal)
         
         return button
     }()
@@ -45,7 +45,7 @@ class ConverterToolbar: UIView {
         let button = UIButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(C.buttons.Reset, for: .normal)
+        button.setTitle(K.buttons.Reset, for: .normal)
         
         return button
     }()
