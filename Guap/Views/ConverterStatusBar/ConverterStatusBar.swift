@@ -20,6 +20,7 @@ class ConverterStatusBar: UIView {
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 14, leading: 20, bottom: 14, trailing: 20)
         stack.axis = .horizontal
+        stack.spacing = 10
         
         return stack
     }()
@@ -41,17 +42,49 @@ class ConverterStatusBar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createPills() {
-        currencyPill = ConverterStatusPill(labelText: "EUR to DOP", labelTextColor: K.colors.white, bgColor: K.colors.black)
-        currencyPill?.widthAnchor.constraint(greaterThanOrEqualToConstant: 85).isActive = true
+}
+
+// MARK: - Pill creation methods
+
+extension ConverterStatusBar {
+    
+    // TODO: Constants
+    
+    private func createPills() {
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 13, weight: .heavy)
+        
+        createCurrencyPill(with: symbolConfiguration)
+        createDatePill()
+        createRatePill(with: symbolConfiguration)
+    }
+    
+    private func createCurrencyPill(with configuration: UIImage.SymbolConfiguration?) {
+        let textAttachment = NSTextAttachment()
+        let textImage = UIImage(systemName: "arrow.forward", withConfiguration: configuration)?.withTintColor(K.colors.white, renderingMode: .alwaysTemplate)
+        textAttachment.image = textImage
+        
+        let labelText = NSMutableAttributedString(string: "EUR ")
+        labelText.append(NSAttributedString(attachment: textAttachment))
+        labelText.append(NSAttributedString(string: " DOP"))
+        
+        currencyPill = ConverterStatusPill(labelText: nil, labelTextColor: K.colors.white, bgColor: K.colors.black, attributedLabelText: labelText)
         currencyPill?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        
-        datePill = ConverterStatusPill(labelText: "Thu 2 Feb 2021", labelTextColor: K.colors.black, bgColor: K.colors.white)
-        datePill?.widthAnchor.constraint(lessThanOrEqualToConstant: 160).isActive = true
+    }
+    
+    private func createDatePill() {
+        datePill = ConverterStatusPill(labelText: "Thu 2 Feb 2021", labelTextColor: K.colors.black, bgColor: K.colors.white, attributedLabelText: nil)
         datePill?.setContentHuggingPriority(.defaultLow, for: .horizontal)
+    }
+    
+    private func createRatePill(with configuration: UIImage.SymbolConfiguration?) {
+        let textAttachment = NSTextAttachment()
+        let textImage = UIImage(systemName: "arrow.up.right", withConfiguration: configuration)?.withTintColor(K.colors.white, renderingMode: .alwaysTemplate)
+        textAttachment.image = textImage
         
-        ratePill = ConverterStatusPill(labelText: "65.5623", labelTextColor: K.colors.white, bgColor: K.colors.green)
-        ratePill?.widthAnchor.constraint(greaterThanOrEqualToConstant: 85).isActive = true
+        let labelText = NSMutableAttributedString(attachment: textAttachment)
+        labelText.append(NSAttributedString(string: " 65.5623"))
+        
+        ratePill = ConverterStatusPill(labelText: nil, labelTextColor: K.colors.white, bgColor: K.colors.green, attributedLabelText: labelText)
         ratePill?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
@@ -61,7 +94,7 @@ class ConverterStatusBar: UIView {
 
 extension ConverterStatusBar {
     
-    func configureLayout() {
+    private func configureLayout() {
         addSubview(stack)
         
         if let cp = currencyPill, let dp = datePill, let rp = ratePill {
