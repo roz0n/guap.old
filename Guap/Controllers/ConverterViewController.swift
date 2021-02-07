@@ -20,6 +20,8 @@ protocol ConverterControllerDelegate {
 class ConverterViewController: UIViewController {
     
     var delegate: ConverterControllerDelegate?
+    let statusBar = ConverterStatusBar()
+    
     var allPanels = [ConverterPanelUIModel]()
     var converterBase: ConverterPanelUIModel?
     var converterTarget: ConverterPanelUIModel?
@@ -122,7 +124,7 @@ extension ConverterViewController {
     func setCurrencySelectionGesture() {
         for panel in allPanels {
             let tap = UITapGestureRecognizer(target: self, action: #selector(openCurrencySelectionScreen))
-
+            
             if let button = panel.button {
                 button.addGestureRecognizer(tap)
             }
@@ -157,12 +159,12 @@ extension ConverterViewController {
 extension ConverterViewController {
     
     private func configureLayout() {
-        self.preparePanels()
-        self.configurePanels()
-        self.configureStackView()
+        createPanels()
+        configurePanels()
+        configureSubviews()
     }
     
-    private func preparePanels() {
+    private func createPanels() {
         converterBase = ConverterPanelUIModel(panel: baseValuePanel, button: baseValueButton, field: baseValueField)
         converterTarget = ConverterPanelUIModel(panel: targetValuePanel, button: targetValueButton, field: targetValueField)
     }
@@ -182,9 +184,21 @@ extension ConverterViewController {
         }
     }
     
-    private func configureStackView() {
+    private func configureSubviews() {
+        view.addSubview(statusBar)
         view.addSubview(panelStack)
-        panelStack.fillOther(view: self.view)
+        
+        NSLayoutConstraint.activate([
+            statusBar.topAnchor.constraint(equalTo: view.topAnchor),
+            statusBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            statusBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            statusBar.heightAnchor.constraint(equalToConstant: K.heights.converter.statusBar),
+            
+            panelStack.topAnchor.constraint(equalTo: statusBar.bottomAnchor),
+            panelStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            panelStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            panelStack.heightAnchor.constraint(equalToConstant: K.heights.converter.container)
+        ])
     }
     
 }
