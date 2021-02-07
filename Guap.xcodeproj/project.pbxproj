@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		233BDF2125CF88E40061E140 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */; };
 		2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */; };
 		237E6FB625CA8CD700988FA1 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FB525CA8CD700988FA1 /* K.swift */; };
 		2384326325C6AD1D0042B640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2384326225C6AD1D0042B640 /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
 		2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButtonValues.swift; sourceTree = "<group>"; };
 		237E6FB525CA8CD700988FA1 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		2384325F25C6AD1D0042B640 /* Guap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 				2384326625C6AD1D0042B640 /* HomeViewController.swift */,
 				23F2239C25C7647B00880258 /* ConverterViewController.swift */,
 				2386278125CCEFCC009CD6B5 /* CustomKeyboardViewController.swift */,
+				233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				238627C125CCFE9D009CD6B5 /* ConverterStatusBar.swift in Sources */,
 				238627C025CCFE9D009CD6B5 /* ConverterPanelTextField.swift in Sources */,
 				2386278525CCF450009CD6B5 /* CGFloat+Ext.swift in Sources */,
+				233BDF2125CF88E40061E140 /* CurrencySelectorViewController.swift in Sources */,
 				2384326325C6AD1D0042B640 /* AppDelegate.swift in Sources */,
 				2386278225CCEFCC009CD6B5 /* CustomKeyboardViewController.swift in Sources */,
 				23F223A225C77BA700880258 /* ConverterPanelUIModel.swift in Sources */,

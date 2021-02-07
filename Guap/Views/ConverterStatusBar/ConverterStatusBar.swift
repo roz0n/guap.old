@@ -13,7 +13,10 @@ class ConverterStatusBar: UIView {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemIndigo
+        backgroundColor = K.colors.white
+        
+        // TODO: Why isn't this working?
+        addBorder(borders: [.Bottom], color: K.colors.red, width: 10)
     }
     
     required init?(coder: NSCoder) {

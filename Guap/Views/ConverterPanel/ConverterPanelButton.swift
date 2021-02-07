@@ -15,13 +15,16 @@ class ConverterPanelButton: UIButton {
         }
     }
     
+    var type: CurrencyType?
+    
     convenience init() {
-        self.init(label: nil)
+        self.init(label: nil, role: nil)
     }
     
-    init(label title: String?) {
+    init(label title: String?, role: CurrencyType?) {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .systemRed
     }
     
     required init?(coder: NSCoder) {

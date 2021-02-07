@@ -7,6 +7,12 @@
 
 import UIKit
 
+// TODO: This could be named better
+enum CurrencyType: String {
+    case base = "base"
+    case target = "target"
+}
+
 protocol ConverterControllerDelegate {
     func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?)
 }
@@ -45,11 +51,14 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
         
         baseValuePanel.bgColor = baseBackground
         baseValueButton.title = baseCurrency
-        baseValueField.delegate = self
+        baseValueButton.type = .base
+        baseValueField.isEnabled = false
         baseValueField.tag = 0
+        baseValueField.delegate = self
         
         targetValuePanel.bgColor = targetBackground
         targetValueButton.title = targetCurrency
+        targetValueButton.type = .target
         targetValueField.isEnabled = false
         targetValueField.layer.backgroundColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.2)
         targetValueField.delegate = self
@@ -61,7 +70,9 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureLayout()
+        configureGestures()
     }
     
     func calculatePair(base: Double, rate: Double) -> Double {
@@ -122,26 +133,30 @@ extension ConverterViewController {
 
 extension ConverterViewController {
     
-    func setGestures() {
-//        setKeyboardDismissGesture()
+    func configureGestures() {
         setCurrencySelectionGesture()
     }
     
-//    func setKeyboardDismissGesture() {
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-//        view.addGestureRecognizer(tap)
-//    }
-    
     func setCurrencySelectionGesture() {
-        let tap = UIGestureRecognizer(target: self, action: #selector(openCurrencySelectionScreen))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(openCurrencySelectionScreen))
         
         for panel in allPanels {
-            panel.button?.addGestureRecognizer(tap)
+            if let button = panel.button {
+                button.addGestureRecognizer(tap)
+            }
         }
     }
     
     @objc func openCurrencySelectionScreen(_ sender: UITapGestureRecognizer) {
-        print("Tapped currency selection button")
+        let button = sender.view as? ConverterPanelButton
+        let type = button?.type
+        
+        if let type = type {
+            let vc = UINavigationController(rootViewController: CurrencySelectorViewController(type: type))
+            
+            vc.modalPresentationStyle = .pageSheet
+            present(vc, animated: true, completion: nil)
+        }
     }
     
 }
@@ -158,7 +173,6 @@ extension ConverterViewController {
 extension ConverterViewController {
     
     private func configureLayout() {
-        self.setGestures()
         self.preparePanels()
         self.configurePanels()
         self.configureStackView()
@@ -179,14 +193,15 @@ extension ConverterViewController {
             
             if let panel = converterPanel.panel, let button = converterPanel.button, let field = converterPanel.field {
                 panel.addSubview(button)
-                panel.addSubview(field)
+//                panel.addSubview(field)
                 
                 NSLayoutConstraint.activate([
                     button.topAnchor.constraint(equalTo: panel.topAnchor, constant: K.spacers.panels.buttons.top),
                     button.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: K.spacers.panels.buttons.trailing),
-                    field.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: K.spacers.panels.fields.leading),
-                    field.centerXAnchor.constraint(equalTo: panel.centerXAnchor),
-                    field.centerYAnchor.constraint(equalTo: panel.centerYAnchor)
+                    
+                    //                    field.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: K.spacers.panels.fields.leading),
+                    //                    field.centerXAnchor.constraint(equalTo: panel.centerXAnchor),
+                    //                    field.centerYAnchor.constraint(equalTo: panel.centerYAnchor)
                 ])
             }
         }
