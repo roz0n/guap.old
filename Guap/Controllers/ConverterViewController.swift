@@ -19,7 +19,7 @@ protocol ConverterControllerDelegate {
 
 class ConverterViewController: UIViewController {
     
-    var delegate: ConverterControllerDelegate?
+    var delegate: ConverterControllerDelegate? 
     let statusBar = ConverterStatusBar()
     
     var allPanels = [ConverterPanelUIModel]()
@@ -87,7 +87,7 @@ class ConverterViewController: UIViewController {
     
 }
 
-// MARK: - Data fetching methods
+// MARK: - Data fetching
 
 extension ConverterViewController {
     
@@ -141,8 +141,8 @@ extension ConverterViewController {
     }
     
     func configureResetGesture() {
-        let resetTap = UITapGestureRecognizer(target: self, action: #selector(resetButtonTapped))
-        toolbar.resetButton.addGestureRecognizer(resetTap)
+        let resetTap = UITapGestureRecognizer(target: self, action: #selector(swapButtonTapped))
+        toolbar.swapButton.addGestureRecognizer(resetTap)
     }
     
     @objc func openCurrencySelectionScreen(_ sender: UITapGestureRecognizer) {
@@ -158,16 +158,18 @@ extension ConverterViewController {
     }
     
     @objc func convertButtonTapped(_ sender: UITapGestureRecognizer) {
-        self.getPairedConversionData()
+//        self.getPairedConversionData()
+        print("Tapped convert")
     }
     
-    @objc func resetButtonTapped(_ sender: UITapGestureRecognizer) {
-        self.resetValues()
+    @objc func swapButtonTapped(_ sender: UITapGestureRecognizer) {
+//        self.resetValues()
+        print("Tapped reset")
     }
     
 }
 
-// MARK: - Layout methods
+// MARK: - Layout
 
 extension ConverterViewController {
     

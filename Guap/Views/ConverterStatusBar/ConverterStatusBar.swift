@@ -42,7 +42,7 @@ class ConverterStatusBar: UIView {
     
 }
 
-// MARK: - Pill creation methods
+// MARK: - Pill creation
 
 extension ConverterStatusBar {
     
@@ -88,7 +88,7 @@ extension ConverterStatusBar {
     
 }
 
-// MARK: - Layout methods
+// MARK: - Layout
 
 extension ConverterStatusBar {
     

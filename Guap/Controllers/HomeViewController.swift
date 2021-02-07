@@ -16,8 +16,8 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = K.colors.white
-        
         converter.delegate = self
+        
         configureLogo()
         configureBarButtons()
         configureLayout()
@@ -46,7 +46,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     
 }
 
-// MARK: - ConverterControllerDelegate methods
+// MARK: - ConverterControllerDelegate
 
 extension HomeViewController {
     

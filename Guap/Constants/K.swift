@@ -41,6 +41,7 @@ extension K {
         static let red = UIColor(red: 1, green: 0.129, blue: 0.129, alpha: 1)
         static let blue = UIColor(red: 0.054, green: 0.432, blue: 1, alpha: 1)
         static let green = UIColor(red: 0.095, green: 0.738, blue: 0.366, alpha: 1)
+        static let yellow = UIColor(red: 1, green: 0.898, blue: 0, alpha: 1)
         
         static let headerGray = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1)
         static let borderGray = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1)
@@ -53,13 +54,6 @@ extension K {
 extension K {
     
     struct spacers {
-        struct keyboard {
-            static let top = CGFloat(12)
-            static let bottom = CGFloat(-12)
-            static let leading = CGFloat(10)
-            static let trailing = CGFloat(-10)
-        }
-        
         struct panels {
             static let stack = CGFloat(0.25)
             
@@ -71,6 +65,18 @@ extension K {
             struct fields {
                 static let leading = CGFloat(10)
             }
+        }
+        
+        struct toolbar {
+            static let stack = CGFloat(18)
+            static let padding = CGFloat(18)
+        }
+        
+        struct keyboard {
+            static let top = CGFloat(12)
+            static let bottom = CGFloat(-12)
+            static let leading = CGFloat(10)
+            static let trailing = CGFloat(-10)
         }
     }
     

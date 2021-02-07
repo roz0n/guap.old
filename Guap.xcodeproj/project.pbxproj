@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230A7CFD25CFC5C700509A0D /* ConverterToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A7CFC25CFC5C700509A0D /* ConverterToolbarButton.swift */; };
 		233BDF2125CF88E40061E140 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */; };
 		233BDF2425CF99C30061E140 /* ConverterStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */; };
 		2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		230A7CFC25CFC5C700509A0D /* ConverterToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToolbarButton.swift; sourceTree = "<group>"; };
 		233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
 		233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterStatusPill.swift; sourceTree = "<group>"; };
 		2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButtonValues.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				238627B525CCFE9D009CD6B5 /* ConverterToolbar.swift */,
+				230A7CFC25CFC5C700509A0D /* ConverterToolbarButton.swift */,
 			);
 			path = ConverterToolbar;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				238627C125CCFE9D009CD6B5 /* ConverterStatusBar.swift in Sources */,
 				238627C025CCFE9D009CD6B5 /* ConverterPanelTextField.swift in Sources */,
 				2386278525CCF450009CD6B5 /* CGFloat+Ext.swift in Sources */,
+				230A7CFD25CFC5C700509A0D /* ConverterToolbarButton.swift in Sources */,
 				233BDF2125CF88E40061E140 /* CurrencySelectorViewController.swift in Sources */,
 				2384326325C6AD1D0042B640 /* AppDelegate.swift in Sources */,
 				2386278225CCEFCC009CD6B5 /* CustomKeyboardViewController.swift in Sources */,
