@@ -49,7 +49,7 @@ extension ConverterStatusBar {
     // TODO: Constants
     
     private func createPills() {
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 13, weight: .heavy)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 13, weight: .bold)
         
         createCurrencyPill(with: symbolConfiguration)
         createDatePill()
@@ -76,7 +76,7 @@ extension ConverterStatusBar {
     
     private func createRatePill(with configuration: UIImage.SymbolConfiguration?) {
         let textAttachment = NSTextAttachment()
-        let textImage = UIImage(systemName: "arrow.up.right", withConfiguration: configuration)?.withTintColor(K.colors.white, renderingMode: .alwaysTemplate)
+        let textImage = UIImage(systemName: "arrow.up.right", withConfiguration: configuration)?.withTintColor(K.colors.black, renderingMode: .alwaysTemplate)
         textAttachment.image = textImage
         
         let labelText = NSMutableAttributedString(attachment: textAttachment)

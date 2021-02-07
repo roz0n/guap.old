@@ -40,7 +40,12 @@ class ConverterStatusPill: UILabel {
             text = labelText?.uppercased()
         }
         
-        textColor = labelTextColor
+        if self.bgColor != K.colors.black {
+            textColor = K.colors.black
+        } else {
+            textColor = labelTextColor
+        }
+        
         textAlignment = .center
         font = UIFont.systemFont(ofSize: 14, weight: .bold)
         
