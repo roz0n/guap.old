@@ -71,6 +71,7 @@ extension HomeViewController {
             converter.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             converter.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             converter.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            converter.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             
             //            keyboard.view.topAnchor.constraint(equalTo: converterToolbar.bottomAnchor),
             //            keyboard.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

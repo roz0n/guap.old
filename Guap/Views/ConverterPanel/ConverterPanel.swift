@@ -34,12 +34,14 @@ class ConverterPanel: UIView {
     init(color bgColor: UIColor?, currency: String?) {
         super.init(frame: .zero)
         
-        self.translatesAutoresizingMaskIntoConstraints = false
         self.bgColor = bgColor
         self.currency = currency
+        self.addBorder(borders: [.Bottom], color: K.colors.borderGray, width: 1)
         
-        self.addSubview(stack)
-        self.stack.fillOther(view: self)
+        translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stack)
+        
+        stack.fillOther(view: self)
     }
     
     required init?(coder: NSCoder) {

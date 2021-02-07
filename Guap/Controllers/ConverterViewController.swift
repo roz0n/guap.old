@@ -44,7 +44,6 @@ class ConverterViewController: UIViewController {
         view.backgroundColor = .systemGray4
         view.axis = .vertical
         view.distribution = .fillEqually
-        view.spacing = K.spacers.panels.stack
         
         return view
     }()
@@ -122,7 +121,8 @@ extension ConverterViewController {
     func configureGestures() {
         configureCurrencySelectionGesture()
         configureConvertGesture()
-        configureResetGesture()
+        configureSwapGesture()
+        configureShareGesture()
     }
     
     func configureCurrencySelectionGesture() {
@@ -140,9 +140,14 @@ extension ConverterViewController {
         toolbar.convertButton.addGestureRecognizer(convertTap)
     }
     
-    func configureResetGesture() {
-        let resetTap = UITapGestureRecognizer(target: self, action: #selector(swapButtonTapped))
-        toolbar.swapButton.addGestureRecognizer(resetTap)
+    func configureSwapGesture() {
+        let swapTap = UITapGestureRecognizer(target: self, action: #selector(swapButtonTapped))
+        toolbar.swapButton.addGestureRecognizer(swapTap)
+    }
+    
+    func configureShareGesture() {
+        let shareTap = UITapGestureRecognizer(target: self, action: #selector(shareButtonTapped))
+        toolbar.shareButton.addGestureRecognizer(shareTap)
     }
     
     @objc func openCurrencySelectionScreen(_ sender: UITapGestureRecognizer) {
@@ -158,13 +163,18 @@ extension ConverterViewController {
     }
     
     @objc func convertButtonTapped(_ sender: UITapGestureRecognizer) {
-//        self.getPairedConversionData()
+        //        self.getPairedConversionData()
         print("Tapped convert")
     }
     
     @objc func swapButtonTapped(_ sender: UITapGestureRecognizer) {
-//        self.resetValues()
-        print("Tapped reset")
+        //        self.resetValues()
+        print("Tapped swap")
+    }
+    
+    @objc func shareButtonTapped(_ sender: UITapGestureRecognizer) {
+        //        self.resetValues()
+        print("Tapped share")
     }
     
 }

@@ -22,9 +22,9 @@ class ConverterToolbar: UIView {
         return stack
     }()
     
-    var convertButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: "arrow.triangle.2.circlepath", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.yellow)
-    var swapButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: "arrow.left.arrow.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.red)
-    var shareButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.blue)
+    let convertButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: "arrow.triangle.2.circlepath", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.yellow)
+    let swapButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: "arrow.left.arrow.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.red)
+    let shareButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.blue)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

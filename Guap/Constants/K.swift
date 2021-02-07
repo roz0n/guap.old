@@ -54,9 +54,7 @@ extension K {
 extension K {
     
     struct spacers {
-        struct panels {
-            static let stack = CGFloat(0.25)
-            
+        struct panels {            
             struct buttons {
                 static let top = CGFloat(10)
                 static let trailing = CGFloat(-10)
