@@ -26,12 +26,8 @@ class ConverterPanelButton: UIButton {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .systemRed
-        
         // TODO: Constants
-        NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: 72),
-            self.widthAnchor.constraint(equalToConstant: 80),
-        ])
+        self.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
     required init?(coder: NSCoder) {

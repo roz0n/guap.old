@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		233BDF2125CF88E40061E140 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */; };
+		233BDF2425CF99C30061E140 /* ConverterStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */; };
 		2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */; };
 		237E6FB625CA8CD700988FA1 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FB525CA8CD700988FA1 /* K.swift */; };
 		2384326325C6AD1D0042B640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2384326225C6AD1D0042B640 /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
+		233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterStatusPill.swift; sourceTree = "<group>"; };
 		2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButtonValues.swift; sourceTree = "<group>"; };
 		237E6FB525CA8CD700988FA1 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		2384325F25C6AD1D0042B640 /* Guap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				238627BB25CCFE9D009CD6B5 /* ConverterStatusBar.swift */,
+				233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */,
 			);
 			path = ConverterStatusBar;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				2386278225CCEFCC009CD6B5 /* CustomKeyboardViewController.swift in Sources */,
 				23F223A225C77BA700880258 /* ConverterPanelUIModel.swift in Sources */,
 				2384326525C6AD1D0042B640 /* SceneDelegate.swift in Sources */,
+				233BDF2425CF99C30061E140 /* ConverterStatusPill.swift in Sources */,
 				23F2239D25C7647B00880258 /* ConverterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
