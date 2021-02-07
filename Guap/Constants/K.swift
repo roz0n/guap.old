@@ -30,7 +30,7 @@ struct K {
     
 }
 
-// MARK: - Color constants
+// MARK: - Colors and styling constants
 
 extension K {
     
@@ -45,6 +45,10 @@ extension K {
         
         static let headerGray = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1)
         static let borderGray = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1)
+    }
+    
+    struct styles {
+        static let cornerRadius = CGFloat(5)
     }
     
 }

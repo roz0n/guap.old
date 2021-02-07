@@ -21,7 +21,6 @@ class ConverterPanel: UIView {
         
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.backgroundColor = .systemYellow
         stack.distribution = .fillProportionally
         
         return stack

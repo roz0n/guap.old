@@ -28,6 +28,7 @@ extension UIView {
     func addBorder(borders: [ViewBorders], color: UIColor, width: CGFloat) {
         // Pro-tip: for some strange reason this needs to be called from the main-thread or the layer won't show up!
         
+        // TODO: weak self here?
         DispatchQueue.main.async {
             borders.forEach { (border) in
                 let borderView = CALayer()
@@ -39,7 +40,7 @@ extension UIView {
                     case .Left:
                         borderView.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
                     case .Right:
-                        borderView.frame = CGRect(x:self.frame.size.width - width, y: 0, width: width, height: self.frame.size.height)
+                        borderView.frame = CGRect(x: self.frame.size.width - width, y: 0, width: width, height: self.frame.size.height)
                     case .Top:
                         borderView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: width)
                     case .Bottom:

@@ -14,6 +14,14 @@ class ConverterStatusPill: UILabel {
     var bgColor: UIColor
     var attributedLabelText: NSAttributedString?
     
+    var textContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    var textLabel: UILabel?
+    
     convenience init() {
         self.init(labelText: nil, labelTextColor: K.colors.black, bgColor: K.colors.white, attributedLabelText: nil)
     }
@@ -26,38 +34,64 @@ class ConverterStatusPill: UILabel {
         
         super.init(frame: .zero)
         
-        // TODO: Constants
+        sizeToFit()
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = bgColor
-        layer.cornerRadius = 4
+        layer.cornerRadius = K.styles.cornerRadius
         layer.masksToBounds = true
-        lineBreakMode = .byClipping
         
-        
-        if self.attributedLabelText != nil {
-            attributedText = self.attributedLabelText
-        } else if labelText != nil {
-            text = labelText?.uppercased()
-        }
-        
-        if self.bgColor != K.colors.black {
-            textColor = K.colors.black
-        } else {
-            textColor = labelTextColor
-        }
-        
-        textAlignment = .center
-        font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        
+        configureLabel()
+        configureLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        super.drawText(in: rect.inset(by: insets))
+}
+
+// MARK: - Layout and configurations
+
+extension ConverterStatusPill {
+    
+    func configureLabel() {
+        textLabel = UILabel()
+        
+        if let textLabel = textLabel {
+            textLabel.translatesAutoresizingMaskIntoConstraints = false
+            textLabel.sizeToFit()
+            textLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+            textLabel.textAlignment = .center
+            
+            if attributedLabelText != nil {
+                textLabel.attributedText = attributedLabelText
+            } else if labelText != nil {
+                textLabel.text = labelText?.uppercased()
+            }
+            
+            if self.bgColor != K.colors.black {
+                textLabel.textColor = K.colors.black
+            } else {
+                textLabel.textColor = labelTextColor
+            }
+        }
+        
+    }
+    
+    func configureLayout() {
+        if let textLabel = textLabel {
+            textContainer.addSubview(textLabel)
+            textLabel.fillOther(view: textContainer)
+        }
+        
+        addSubview(textContainer)
+        
+        NSLayoutConstraint.activate([
+            textContainer.topAnchor.constraint(equalTo: self.topAnchor),
+            textContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            textContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            textContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5)
+        ])
     }
     
 }

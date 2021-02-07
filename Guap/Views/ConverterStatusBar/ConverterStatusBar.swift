@@ -70,7 +70,7 @@ extension ConverterStatusBar {
     }
     
     private func createDatePill() {
-        datePill = ConverterStatusPill(labelText: "Thu. 2 Feb 2021", labelTextColor: K.colors.black, bgColor: K.colors.white, attributedLabelText: nil)
+        datePill = ConverterStatusPill(labelText: "Thu. 2 Feb 2021", labelTextColor: K.colors.white, bgColor: K.colors.white, attributedLabelText: nil)
         datePill?.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     

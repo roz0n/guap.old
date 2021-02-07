@@ -9,8 +9,8 @@ import UIKit
 
 // TODO: This could be named better
 enum CurrencyType: String {
-    case base = "base"
-    case target = "target"
+    case Base = "base"
+    case Target = "target"
 }
 
 protocol ConverterControllerDelegate {
@@ -54,12 +54,12 @@ class ConverterViewController: UIViewController {
         
         baseValuePanel.bgColor = baseBackground
         baseValueButton.title = baseCurrency
-        baseValueButton.type = .base
+        baseValueButton.type = .Base
         baseValueField.isEnabled = false
         
         targetValuePanel.bgColor = targetBackground
         targetValueButton.title = targetCurrency
-        targetValueButton.type = .target
+        targetValueButton.type = .Target
         targetValueField.isEnabled = false
     }
     

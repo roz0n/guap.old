@@ -45,9 +45,9 @@ class ConverterToolbar: UIView {
 extension ConverterToolbar {
     
     func configureButtons() {
-        convertButton.layer.cornerRadius = 5
-        swapButton.layer.cornerRadius = 5
-        shareButton.layer.cornerRadius = 5
+        convertButton.layer.cornerRadius = K.styles.cornerRadius
+        swapButton.layer.cornerRadius = K.styles.cornerRadius
+        shareButton.layer.cornerRadius = K.styles.cornerRadius
     }
     
     func configureLayout() {
