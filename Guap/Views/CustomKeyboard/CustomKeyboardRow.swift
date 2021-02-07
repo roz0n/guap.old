@@ -59,7 +59,7 @@ extension CustomKeyboardRow {
     
     @objc func keyboardButtonTapped(_ sender: UITapGestureRecognizer) {
         let button = sender.view as? CustomKeyboardButton
-        print("Tapped custom keyboard button: \(button?.keyValue)")
+        print("Tapped custom keyboard button: \(String(describing: button?.keyValue))")
     }
     
 }

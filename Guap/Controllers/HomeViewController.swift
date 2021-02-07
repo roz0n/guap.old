@@ -18,15 +18,23 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     let keyboard = CustomKeyboardViewController()
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         
-        title = K.AppName
-        view.backgroundColor = .white
-        
+        view.backgroundColor = K.colors.white
         converter.delegate = self
+        
+        configureLogo()
         configureBarButtons()
         configureLayout()
         configureGestures()
+    }
+    
+    func configureLogo() {
+        let logo = UIImage(named: "Logotype.png")
+        let imageView = UIImageView(image: logo)
+        
+        title = K.AppName
+        navigationItem.titleView = imageView
     }
     
     func configureBarButtons() {
