@@ -30,9 +30,7 @@ class ConverterStatusBar: UIView {
         
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = K.colors.white
-        
-        // TODO: Why isn't this working?
-        addBorder(borders: [.Bottom], color: K.colors.red, width: 10)
+        addBorder(borders: [.Bottom], color: K.colors.borderGray, width: 0.5)
         
         createPills()
         configureLayout()
@@ -72,7 +70,7 @@ extension ConverterStatusBar {
     }
     
     private func createDatePill() {
-        datePill = ConverterStatusPill(labelText: "Thu 2 Feb 2021", labelTextColor: K.colors.black, bgColor: K.colors.white, attributedLabelText: nil)
+        datePill = ConverterStatusPill(labelText: "Thu. 2 Feb 2021", labelTextColor: K.colors.black, bgColor: K.colors.white, attributedLabelText: nil)
         datePill?.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
