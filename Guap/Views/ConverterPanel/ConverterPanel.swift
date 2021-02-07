@@ -15,6 +15,17 @@ class ConverterPanel: UIView {
             self.backgroundColor = bgColor
         }
     }
+    
+    let stack: UIStackView = {
+        let stack = UIStackView()
+        
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.backgroundColor = .systemYellow
+        stack.distribution = .fillProportionally
+        
+        return stack
+    }()
         
     convenience init() {
         self.init(color: nil, currency: nil)
@@ -26,6 +37,9 @@ class ConverterPanel: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.bgColor = bgColor
         self.currency = currency
+        
+        self.addSubview(stack)
+        self.stack.fillOther(view: self)
     }
     
     required init?(coder: NSCoder) {

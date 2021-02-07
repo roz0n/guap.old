@@ -17,7 +17,7 @@ protocol ConverterControllerDelegate {
     func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?)
 }
 
-class ConverterViewController: UIViewController, UITextFieldDelegate {
+class ConverterViewController: UIViewController {
     
     var delegate: ConverterControllerDelegate?
     var allPanels = [ConverterPanelUIModel]()
@@ -53,15 +53,11 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
         baseValueButton.title = baseCurrency
         baseValueButton.type = .base
         baseValueField.isEnabled = false
-        baseValueField.tag = 0
-        baseValueField.delegate = self
         
         targetValuePanel.bgColor = targetBackground
         targetValueButton.title = targetCurrency
         targetValueButton.type = .target
         targetValueField.isEnabled = false
-        targetValueField.layer.backgroundColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.2)
-        targetValueField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -115,20 +111,6 @@ extension ConverterViewController {
     
 }
 
-// MARK: - Text field methods
-
-extension ConverterViewController {
-    
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        if reason == .committed {
-            if let text = textField.text, textField.tag == 0 {
-                baseValue = Int(text)
-            }
-        }
-    }
-    
-}
-
 // MARK: - Gesture handlers
 
 extension ConverterViewController {
@@ -170,6 +152,8 @@ extension ConverterViewController {
  Finally, it applies basic constraints to the panelStack view itself. Each method is called sequentially by the `configureLayout` method in `viewDidLoad` in an effort to keep their usage contained to the extension.
  */
 
+
+// TODO: Getting the feeling that the panels code should probably reside inside the panels view :\
 extension ConverterViewController {
     
     private func configureLayout() {
@@ -192,17 +176,8 @@ extension ConverterViewController {
             panelStack.addArrangedSubview(converterPanel.panel!)
             
             if let panel = converterPanel.panel, let button = converterPanel.button, let field = converterPanel.field {
-                panel.addSubview(button)
-//                panel.addSubview(field)
-                
-                NSLayoutConstraint.activate([
-                    button.topAnchor.constraint(equalTo: panel.topAnchor, constant: K.spacers.panels.buttons.top),
-                    button.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: K.spacers.panels.buttons.trailing),
-                    
-                    //                    field.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: K.spacers.panels.fields.leading),
-                    //                    field.centerXAnchor.constraint(equalTo: panel.centerXAnchor),
-                    //                    field.centerYAnchor.constraint(equalTo: panel.centerYAnchor)
-                ])
+                panel.stack.addArrangedSubview(field)
+                panel.stack.addArrangedSubview(button)
             }
         }
     }
