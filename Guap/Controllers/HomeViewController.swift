@@ -10,30 +10,23 @@ import Foundation
 
 class HomeViewController: UIViewController, ConverterControllerDelegate {
     
-//    // TODO: Move status bar to ConverterController
-//    let statusBar = ConverterStatusBar()
-    
     let converter = ConverterViewController(baseBg: .systemTeal, baseCurr: K.defaults.BaseCurrency, targetBg: .systemPurple, targetCurr: K.defaults.TargetCurrency)
-    let converterToolbar = ConverterToolbar()
     let keyboard = CustomKeyboardViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = K.colors.white
-        converter.delegate = self
         
+        converter.delegate = self
         configureLogo()
         configureBarButtons()
         configureLayout()
-        configureGestures()
     }
     
     func configureLogo() {
         let logo = UIImage(named: "Logotype.png")
         let imageView = UIImageView(image: logo)
         
-        title = K.AppName
         navigationItem.titleView = imageView
     }
     
@@ -67,68 +60,22 @@ extension HomeViewController {
     
 }
 
-// MARK: - Gesture handlers
-
-extension HomeViewController {
-    
-    func configureGestures() {
-        configureConvertGesture()
-        configureResetGesture()
-    }
-    
-    func configureConvertGesture() {
-        let convertTap = UITapGestureRecognizer(target: self, action: #selector(convertButtonTapped))
-        converterToolbar.convertButton.addGestureRecognizer(convertTap)
-    }
-    
-    func configureResetGesture() {
-        let resetTap = UITapGestureRecognizer(target: self, action: #selector(resetButtonTapped))
-        converterToolbar.resetButton.addGestureRecognizer(resetTap)
-    }
-    
-    @objc func convertButtonTapped(_ sender: UITapGestureRecognizer) {
-        converter.getPairedConversionData()
-    }
-    
-    @objc func resetButtonTapped(_ sender: UITapGestureRecognizer) {
-        converter.resetValues()
-    }
-    
-}
-
 // MARK: - Layout
 
 extension HomeViewController {
     
     private func configureLayout() {
-        // TODO: As stated above, statusBar needs to be moved to ConverterController
-        // Same with converter toolBar, this VC only needs to handle laying out the converter and keyboard
-//        view.addSubview(statusBar)
-        
         view.addSubview(converter.view)
-//        view.addSubview(converterToolbar)
-//        view.addSubview(keyboard.view)
         
         NSLayoutConstraint.activate([
-//            statusBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            statusBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            statusBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            statusBar.heightAnchor.constraint(equalToConstant: K.heights.converter.statusBar),
-            
             converter.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             converter.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             converter.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            converter.view.heightAnchor.constraint(equalToConstant: K.heights.converter.container),
             
-//            converterToolbar.topAnchor.constraint(equalTo: converter.view.bottomAnchor),
-//            converterToolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            converterToolbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            converterToolbar.heightAnchor.constraint(equalToConstant: K.heights.converter.toolbar),
-//
-//            keyboard.view.topAnchor.constraint(equalTo: converterToolbar.bottomAnchor),
-//            keyboard.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            keyboard.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            keyboard.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            //            keyboard.view.topAnchor.constraint(equalTo: converterToolbar.bottomAnchor),
+            //            keyboard.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            //            keyboard.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            //            keyboard.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     

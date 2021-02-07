@@ -35,6 +35,8 @@ class ConverterViewController: UIViewController {
     let targetValueButton = ConverterPanelButton()
     let targetValueField = ConverterPanelTextField()
     
+    let toolbar = ConverterToolbar()
+    
     private let panelStack: UIStackView = {
         let view = UIStackView()
         
@@ -118,10 +120,12 @@ extension ConverterViewController {
 extension ConverterViewController {
     
     func configureGestures() {
-        setCurrencySelectionGesture()
+        configureCurrencySelectionGesture()
+        configureConvertGesture()
+        configureResetGesture()
     }
     
-    func setCurrencySelectionGesture() {
+    func configureCurrencySelectionGesture() {
         for panel in allPanels {
             let tap = UITapGestureRecognizer(target: self, action: #selector(openCurrencySelectionScreen))
             
@@ -129,6 +133,16 @@ extension ConverterViewController {
                 button.addGestureRecognizer(tap)
             }
         }
+    }
+    
+    func configureConvertGesture() {
+        let convertTap = UITapGestureRecognizer(target: self, action: #selector(convertButtonTapped))
+        toolbar.convertButton.addGestureRecognizer(convertTap)
+    }
+    
+    func configureResetGesture() {
+        let resetTap = UITapGestureRecognizer(target: self, action: #selector(resetButtonTapped))
+        toolbar.resetButton.addGestureRecognizer(resetTap)
     }
     
     @objc func openCurrencySelectionScreen(_ sender: UITapGestureRecognizer) {
@@ -143,19 +157,18 @@ extension ConverterViewController {
         }
     }
     
+    @objc func convertButtonTapped(_ sender: UITapGestureRecognizer) {
+        self.getPairedConversionData()
+    }
+    
+    @objc func resetButtonTapped(_ sender: UITapGestureRecognizer) {
+        self.resetValues()
+    }
+    
 }
 
-// MARK: - Layout
+// MARK: - Layout methods
 
-/**
- This extension handles adding each "panel" (or row) containing the various UI elements that compose the greater currency converter UI component.
- First, it creates a data structure that contains the aforementioned UI elements and adds them to homogeneous array. Later, this makes adding constraints trivial and far less repetitive.
- Second, it adds each panel to the UIStackView defied at the top of the class. Third, it lays out each panel's UI elements dynamically within a loop.
- Finally, it applies basic constraints to the panelStack view itself. Each method is called sequentially by the `configureLayout` method in `viewDidLoad` in an effort to keep their usage contained to the extension.
- */
-
-
-// TODO: Getting the feeling that the panels code should probably reside inside the panels view :\
 extension ConverterViewController {
     
     private func configureLayout() {
@@ -187,6 +200,7 @@ extension ConverterViewController {
     private func configureSubviews() {
         view.addSubview(statusBar)
         view.addSubview(panelStack)
+        view.addSubview(toolbar)
         
         NSLayoutConstraint.activate([
             statusBar.topAnchor.constraint(equalTo: view.topAnchor),
@@ -195,9 +209,14 @@ extension ConverterViewController {
             statusBar.heightAnchor.constraint(equalToConstant: K.heights.converter.statusBar),
             
             panelStack.topAnchor.constraint(equalTo: statusBar.bottomAnchor),
-            panelStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            panelStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            panelStack.heightAnchor.constraint(equalToConstant: K.heights.converter.container)
+            panelStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            panelStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            panelStack.heightAnchor.constraint(equalToConstant: (K.heights.converter.panel * CGFloat(allPanels.count))),
+            
+            toolbar.topAnchor.constraint(equalTo: panelStack.bottomAnchor),
+            toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            toolbar.heightAnchor.constraint(equalToConstant: K.heights.converter.toolbar),
         ])
     }
     

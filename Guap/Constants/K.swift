@@ -77,7 +77,7 @@ extension K {
     struct heights {
         struct converter {
             static let statusBar = CGFloat(50)
-            static let container = CGFloat(72 * 2)
+            static let panel = CGFloat(72)
             static let toolbar = CGFloat(72)
         }
     }
