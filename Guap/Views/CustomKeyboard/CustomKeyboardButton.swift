@@ -12,10 +12,10 @@ class CustomKeyboardButton: UIButton {
     var keyValue: String
     
     let labelContainer: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: K.sizes.keyboard.button, height: K.sizes.keyboard.button))
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 3
+        view.layer.borderWidth = K.styles.buttonBorderWidth
         view.layer.borderColor = K.colors.borderGray.cgColor
         view.makeCircular()
         
@@ -51,7 +51,25 @@ class CustomKeyboardButton: UIButton {
 extension CustomKeyboardButton {
     
     private func configureLabel() {
-        label.text = keyValue
+        switch keyValue {
+            case "de":
+                let configuration = UIImage.SymbolConfiguration(pointSize: 8, weight: .light)
+                let attachment = NSTextAttachment()
+                let textImage = UIImage(systemName: "circle.fill", withConfiguration: configuration)
+
+                attachment.image = textImage
+                label.attributedText = NSAttributedString(attachment: attachment)
+            case "dl":
+                let configuration = UIImage.SymbolConfiguration(pointSize: 24, weight: .semibold)
+                let attachment = NSTextAttachment()
+                let textImage = UIImage(systemName: "delete.left.fill", withConfiguration: configuration)
+                
+                attachment.image = textImage
+                label.attributedText = NSAttributedString(attachment: attachment)
+            default:
+                label.text = keyValue
+        }
+        
         label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         label.tintColor = K.colors.black
         label.fillOther(view: labelContainer)
@@ -63,8 +81,8 @@ extension CustomKeyboardButton {
         configureLabel()
         
         NSLayoutConstraint.activate([
-            labelContainer.widthAnchor.constraint(equalToConstant: 90),
-            labelContainer.heightAnchor.constraint(equalToConstant: 90),
+            labelContainer.widthAnchor.constraint(equalToConstant: K.sizes.keyboard.button),
+            labelContainer.heightAnchor.constraint(equalToConstant: K.sizes.keyboard.button),
             labelContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             labelContainer.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])

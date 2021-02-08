@@ -8,7 +8,6 @@
 import UIKit
 
 // TODO: This will need a refactor
-
 class ConverterPanelButton: UIView {
     
     var type: CurrencyType?
@@ -20,12 +19,12 @@ class ConverterPanelButton: UIView {
     }
     
     let buttonContainer: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: K.sizes.panel.button, height: K.sizes.panel.button))
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = K.colors.headerGray
+        view.backgroundColor = K.colors.backgroundGray
+        view.layer.borderWidth = K.styles.buttonBorderWidth
         view.layer.borderColor = K.colors.borderGray.cgColor
-        view.layer.borderWidth = 3
         view.makeCircular()
         
         return view
@@ -45,15 +44,14 @@ class ConverterPanelButton: UIView {
     }
     
     init(for currency: String?, of country: String?, role: CurrencyType?) {
-        self.type = role
-        self.currencyCode = currency
-        self.countryCode = country
-        
+        type = role
+        currencyCode = currency
+        countryCode = country
+
         super.init(frame: .zero)
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = K.colors.white
-        self.widthAnchor.constraint(equalToConstant: K.widths.panel.icon).isActive = true
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = K.colors.white
+        widthAnchor.constraint(equalToConstant: K.widths.panel.icon).isActive = true
         
         if let countryCode = countryCode {
             setFlag(flag: getFlag(for: countryCode))

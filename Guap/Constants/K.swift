@@ -48,12 +48,13 @@ extension K {
         
         static let headerGray = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1)
         static let borderGray = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1)
-        
+        static let backgroundGray = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 0.4)
         static let textGray = UIColor(red: 0.587, green: 0.587, blue: 0.587, alpha: 1)
     }
     
     struct styles {
         static let cornerRadius = CGFloat(5)
+        static let buttonBorderWidth = CGFloat(3)
     }
     
 }
@@ -100,4 +101,13 @@ extension K {
         }
     }
     
+    struct sizes {
+        struct keyboard {
+            static let button = CGFloat(90)
+        }
+        
+        struct panel {
+            static let button = CGFloat(45)
+        }
+    }
 }
