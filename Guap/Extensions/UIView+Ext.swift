@@ -16,6 +16,11 @@ enum ViewBorders: String {
 
 extension UIView {
     
+    func makeCircle() {
+        self.layer.cornerRadius = self.frame.width / 2;
+        self.layer.masksToBounds = true
+    }
+    
     func fillOther(view: UIView) {
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -26,28 +31,27 @@ extension UIView {
     }
     
     func addBorder(borders: [ViewBorders], color: UIColor, width: CGFloat) {
-        // Pro-tip: for some strange reason this needs to be called from the main-thread or the layer won't show up!
-        
-        // TODO: weak self here?
         DispatchQueue.main.async {
-            borders.forEach { (border) in
-                let borderView = CALayer()
-                
-                borderView.backgroundColor = color.cgColor
-                borderView.name = border.rawValue
-                
-                switch border {
-                    case .Left:
-                        borderView.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
-                    case .Right:
-                        borderView.frame = CGRect(x: self.frame.size.width - width, y: 0, width: width, height: self.frame.size.height)
-                    case .Top:
-                        borderView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: width)
-                    case .Bottom:
-                        borderView.frame = CGRect(x: 0, y: self.frame.size.height - width , width: self.frame.size.width, height: width)
+            borders.forEach { [weak self] (border) in
+                if let view = self {
+                    let borderView = CALayer()
+                    
+                    borderView.backgroundColor = color.cgColor
+                    borderView.name = border.rawValue
+                    
+                    switch border {
+                        case .Left:
+                            borderView.frame = CGRect(x: 0, y: 0, width: width, height: view.frame.size.height)
+                        case .Right:
+                            borderView.frame = CGRect(x: view.frame.size.width - width, y: 0, width: width, height: view.frame.size.height)
+                        case .Top:
+                            borderView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: width)
+                        case .Bottom:
+                            borderView.frame = CGRect(x: 0, y: view.frame.size.height - width , width: view.frame.size.width, height: width)
+                    }
+                    
+                    view.layer.addSublayer(borderView)
                 }
-                
-                self.layer.addSublayer(borderView)
             }
         }
     }

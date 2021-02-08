@@ -53,12 +53,12 @@ class ConverterViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         baseValuePanel.bgColor = baseBackground
-        baseValueButton.title = baseCurrency
+        baseValueButton.currencyCode = baseCurrency
         baseValueButton.type = .Base
         baseValueField.isEnabled = false
         
         targetValuePanel.bgColor = targetBackground
-        targetValueButton.title = targetCurrency
+        targetValueButton.currencyCode = targetCurrency
         targetValueButton.type = .Target
         targetValueField.isEnabled = false
     }
@@ -114,7 +114,7 @@ extension ConverterViewController {
     
 }
 
-// MARK: - Gesture handlers
+// MARK: - Gestures
 
 extension ConverterViewController {
     

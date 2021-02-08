@@ -7,30 +7,56 @@
 
 import UIKit
 
-class ConverterPanelButton: UIButton {
+class ConverterPanelButton: UIView {
     
     var type: CurrencyType?
+    var currencyCode: String?
     
-    var title: String? {
-        didSet {
-            self.setTitle(title, for: .normal)
-        }
-    }
+    let buttonContainer: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = K.colors.headerGray
+        view.layer.borderColor = K.colors.borderGray.cgColor
+        view.layer.borderWidth = 3
+        view.makeCircle()
+        
+        return view
+    }()
+    
     convenience init() {
-        self.init(label: nil, role: nil)
+        self.init(for: nil, role: nil)
     }
     
-    init(label title: String?, role: CurrencyType?) {
+    init(for currency: String?, role: CurrencyType?) {
         super.init(frame: .zero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .systemRed
+        self.backgroundColor = K.colors.white
         self.widthAnchor.constraint(equalToConstant: K.widths.panel.icon).isActive = true
+        
+        configureLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+// MARK: - Layout
+
+extension ConverterPanelButton {
+    
+    func configureLayout() {
+        addSubview(buttonContainer)
+        
+        NSLayoutConstraint.activate([
+            buttonContainer.widthAnchor.constraint(equalToConstant: 45),
+            buttonContainer.heightAnchor.constraint(equalToConstant: 45),
+            buttonContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            buttonContainer.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+        ])
     }
     
 }
