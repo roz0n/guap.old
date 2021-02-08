@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: Constants
 class ConverterStatusBar: UIView {
     
     var currencyPill: ConverterStatusPill?
@@ -16,7 +17,6 @@ class ConverterStatusBar: UIView {
     let stack: UIStackView = {
         let stack = UIStackView()
         
-        // TODO: Constants
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 14, leading: 20, bottom: 14, trailing: 20)
@@ -28,11 +28,10 @@ class ConverterStatusBar: UIView {
     
     init() {
         super.init(frame: .zero)
-        
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = K.colors.white
-        addBorder(borders: [.Bottom], color: K.colors.borderGray, width: 0.5)
         
+        addBorder(borders: [.Bottom], color: K.colors.borderGray, width: 0.5)
         createPills()
         configureLayout()
     }
@@ -60,9 +59,9 @@ extension ConverterStatusBar {
     private func createCurrencyPill(with configuration: UIImage.SymbolConfiguration?) {
         let textAttachment = NSTextAttachment()
         let textImage = UIImage(systemName: "arrow.forward", withConfiguration: configuration)?.withTintColor(K.colors.white, renderingMode: .alwaysTemplate)
-        textAttachment.image = textImage
-        
         let labelText = NSMutableAttributedString(string: "EUR ")
+        
+        textAttachment.image = textImage
         labelText.append(NSAttributedString(attachment: textAttachment))
         labelText.append(NSAttributedString(string: " DOP"))
         
@@ -78,9 +77,9 @@ extension ConverterStatusBar {
     private func createRatePill(with configuration: UIImage.SymbolConfiguration?) {
         let textAttachment = NSTextAttachment()
         let textImage = UIImage(systemName: "arrow.up.right", withConfiguration: configuration)?.withTintColor(K.colors.black, renderingMode: .alwaysTemplate)
-        textAttachment.image = textImage
-        
         let labelText = NSMutableAttributedString(attachment: textAttachment)
+       
+        textAttachment.image = textImage
         labelText.append(NSAttributedString(string: " 65.5623"))
         
         ratePill = ConverterStatusPill(labelText: nil, labelTextColor: K.colors.white, bgColor: K.colors.green, attributedLabelText: labelText)
@@ -102,7 +101,6 @@ extension ConverterStatusBar {
             stack.addArrangedSubview(rp)
         }
         
-        // TODO: Constants
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: self.topAnchor),
             stack.bottomAnchor.constraint(equalTo: self.bottomAnchor),
