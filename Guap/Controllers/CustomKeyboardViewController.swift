@@ -27,6 +27,7 @@ class CustomKeyboardViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         configureRows()
+        //        configureButtons()
         configureGestures()
     }
     
@@ -58,6 +59,7 @@ extension CustomKeyboardViewController {
     
     private func configureRows() {
         createKeyboardRows()
+        createKeyboardButtons()
         configureRowStack()
     }
     
@@ -67,6 +69,17 @@ extension CustomKeyboardViewController {
             
             keyboardRows[index] = row
             rowStack.addArrangedSubview(keyboardRows[index]!)
+        }
+    }
+    
+    private func createKeyboardButtons() {
+        for (_, row) in keyboardRows {
+            for buttonIndex in 1...3 {
+                let button = CustomKeyboardButton(keyValue: KeyboardButtonValues.rows[row.id]![buttonIndex - 1])
+                
+                row.buttons.append(button)
+                row.addArrangedSubview(row.buttons[buttonIndex - 1])
+            }
         }
     }
     
