@@ -10,7 +10,7 @@ import Foundation
 
 class HomeViewController: UIViewController, ConverterControllerDelegate {
     
-    let converter = ConverterViewController(baseBg: .systemTeal, baseCurr: K.defaults.BaseCurrency, targetBg: .systemPurple, targetCurr: K.defaults.TargetCurrency)
+    let converter = ConverterViewController(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency)
     let keyboard = CustomKeyboardViewController()
     
     override func viewDidLoad() {

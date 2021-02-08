@@ -10,11 +10,6 @@ import UIKit
 class ConverterPanel: UIView {
     
     var currency: String?
-    var bgColor: UIColor? {
-        didSet {
-            self.backgroundColor = bgColor
-        }
-    }
     
     let stack: UIStackView = {
         let stack = UIStackView()
@@ -27,13 +22,12 @@ class ConverterPanel: UIView {
     }()
         
     convenience init() {
-        self.init(color: nil, currency: nil)
+        self.init(currency: nil)
     }
     
-    init(color bgColor: UIColor?, currency: String?) {
+    init(currency: String?) {
         super.init(frame: .zero)
         
-        self.bgColor = bgColor
         self.currency = currency
         self.addBorder(borders: [.Bottom], color: K.colors.borderGray, width: 1)
         

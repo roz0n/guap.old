@@ -96,7 +96,7 @@ extension ConverterPanelButton {
 
 extension ConverterPanelButton {
     
-    func configureLayout() {
+    private func configureLayout() {
         addSubview(buttonContainer)
         buttonContainer.addSubview(flagLabel)
         flagLabel.fillOther(view: buttonContainer)

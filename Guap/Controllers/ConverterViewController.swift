@@ -50,21 +50,21 @@ class ConverterViewController: UIViewController {
         return view
     }()
     
-    init(baseBg baseBackground: UIColor, baseCurr baseCurrency: String, targetBg targetBackground: UIColor, targetCurr targetCurrency: String) {
+    init(base baseCurrency: String, target targetCurrency: String) {
         super.init(nibName: nil, bundle: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        baseValuePanel.bgColor = baseBackground
         baseValueButton.currencyCode = baseCurrency
         baseValueButton.type = .Base
         baseValueButton.countryCode = "EU"
         baseValueField.isEnabled = false
         
-        targetValuePanel.bgColor = targetBackground
         targetValueButton.currencyCode = targetCurrency
         targetValueButton.type = .Target
         targetValueButton.countryCode = "DO"
         targetValueField.isEnabled = false
+        
+        createPanels()
     }
     
     required init?(coder: NSCoder) {
@@ -82,11 +82,11 @@ class ConverterViewController: UIViewController {
         return (base * rate).rounded()
     }
     
-    func resetValues() {
-        baseValue = nil
-        baseValueField.text = ""
-        targetValueField.text = ""
-    }
+//    func resetValues() {
+//        baseValue = nil
+//        baseValueField.text = ""
+//        targetValueField.text = ""
+//    }
     
 }
 
@@ -196,11 +196,13 @@ extension ConverterViewController {
     private func createPanels() {
         converterBase = ConverterPanelUIModel(panel: baseValuePanel, symbol: baseValueSymbol, button: baseValueButton, field: baseValueField)
         converterTarget = ConverterPanelUIModel(panel: targetValuePanel, symbol: targetValueSymbol, button: targetValueButton, field: targetValueField)
+        
+        if let cb = converterBase, let ct = converterTarget {
+            allPanels = [cb, ct]
+        }
     }
     
     private func configurePanels() {
-        allPanels = [converterBase!, converterTarget!]
-        
         guard !allPanels.isEmpty else { return }
         
         for converterPanel in allPanels {
