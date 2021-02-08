@@ -55,11 +55,13 @@ class ConverterViewController: UIViewController {
         baseValuePanel.bgColor = baseBackground
         baseValueButton.currencyCode = baseCurrency
         baseValueButton.type = .Base
+        baseValueButton.countryCode = "EU"
         baseValueField.isEnabled = false
         
         targetValuePanel.bgColor = targetBackground
         targetValueButton.currencyCode = targetCurrency
         targetValueButton.type = .Target
+        targetValueButton.countryCode = "DO"
         targetValueField.isEnabled = false
     }
     
