@@ -64,10 +64,10 @@ extension ConverterStatusPill {
             
             if attributedLabelText != nil {
                 textLabel.attributedText = attributedLabelText
-                textLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+                textLabel.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
             } else if labelText != nil {
                 textLabel.text = labelText?.uppercased()
-                textLabel.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
+                textLabel.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
             }
             
             if self.bgColor != K.colors.black {
@@ -90,8 +90,8 @@ extension ConverterStatusPill {
         NSLayoutConstraint.activate([
             textContainer.topAnchor.constraint(equalTo: self.topAnchor),
             textContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            textContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
-            textContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5)
+            textContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+            textContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
         ])
     }
     
