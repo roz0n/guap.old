@@ -222,6 +222,8 @@ extension ConverterViewController {
             toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             toolbar.heightAnchor.constraint(equalToConstant: K.heights.converter.toolbar),
+            
+            view.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor)
         ])
     }
     
