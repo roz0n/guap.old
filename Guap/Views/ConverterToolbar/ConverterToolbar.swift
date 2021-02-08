@@ -24,7 +24,7 @@ class ConverterToolbar: UIView {
     
     let convertButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: K.icons.ConvertCurrency, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.yellow)
     let swapButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: K.icons.SwapCurrency, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.red)
-    let shareButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: K.icons.ConvertCurrency, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.blue)
+    let shareButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: K.icons.ShareCurrency, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.blue)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

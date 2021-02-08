@@ -13,7 +13,7 @@ class ConverterPanelTextField: UITextField {
         super.init(frame: frame)
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = K.colors.blue
+        self.backgroundColor = K.colors.white
         self.keyboardType = .numberPad
     }
     
