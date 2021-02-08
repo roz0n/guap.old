@@ -70,7 +70,7 @@ extension CustomKeyboardButton {
                 label.text = keyValue
         }
         
-        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.tintColor = K.colors.black
         label.fillOther(view: labelContainer)
     }
