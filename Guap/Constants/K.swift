@@ -80,10 +80,8 @@ extension K {
         }
         
         struct keyboard {
-            static let top = CGFloat(12)
-            static let bottom = CGFloat(-12)
-            static let leading = CGFloat(10)
-            static let trailing = CGFloat(-10)
+            static let leading = CGFloat(18)
+            static let trailing = CGFloat(-18)
         }
     }
     

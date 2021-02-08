@@ -16,7 +16,7 @@ enum ViewBorders: String {
 
 extension UIView {
     
-    func makeCircle() {
+    func makeCircular() {
         self.layer.cornerRadius = self.frame.width / 2;
         self.layer.masksToBounds = true
     }

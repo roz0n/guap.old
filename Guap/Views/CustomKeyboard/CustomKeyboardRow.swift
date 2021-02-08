@@ -17,11 +17,10 @@ class CustomKeyboardRow: UIStackView {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemYellow
         axis = .horizontal
         distribution = .fillEqually
         spacing = K.spacers.keyboard.leading
-        
+
         configureButtons()
     }
     
@@ -41,7 +40,6 @@ extension CustomKeyboardRow {
             
             addKeyboardGesture(to: button)
             buttons.append(button)
-            
             addArrangedSubview(buttons[index - 1])
         }
     }

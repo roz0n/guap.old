@@ -30,7 +30,6 @@ class ConverterViewController: UIViewController {
     let baseSymbol = ConverterPanelSymbolIcon()
     let baseButton = ConverterPanelButton()
     let baseField = ConverterPanelField()
-    var baseValue: Int?
     
     let targetPanel = ConverterPanel()
     let targetSymbol = ConverterPanelSymbolIcon()
@@ -38,6 +37,9 @@ class ConverterViewController: UIViewController {
     let targetField = ConverterPanelField()
     
     let toolbar = ConverterToolbar()
+    
+    var baseValue: Int?
+    var targetValue: Int?
     
     private let panelStack: UIStackView = {
         let view = UIStackView()

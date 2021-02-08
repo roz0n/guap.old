@@ -25,8 +25,6 @@ class CustomKeyboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .systemOrange
         view.translatesAutoresizingMaskIntoConstraints = false
         
         configureRows()
@@ -56,10 +54,10 @@ extension CustomKeyboardViewController {
         view.addSubview(rowStack)
         
         NSLayoutConstraint.activate([
-            rowStack.topAnchor.constraint(equalTo: view.topAnchor, constant: K.spacers.keyboard.top),
+            rowStack.topAnchor.constraint(equalTo: view.topAnchor),
             rowStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: K.spacers.keyboard.leading),
             rowStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: K.spacers.keyboard.trailing),
-            rowStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: K.spacers.keyboard.bottom)
+            rowStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     

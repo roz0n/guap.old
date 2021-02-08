@@ -15,10 +15,9 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = K.colors.white
-        converter.delegate = self
         
+        converter.delegate = self
         configureLogo()
         configureBarButtons()
         configureLayout()
@@ -27,7 +26,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     func configureLogo() {
         let logo = UIImage(named: "Logotype.png")
         let imageView = UIImageView(image: logo)
-        
+
         navigationItem.titleView = imageView
     }
     
@@ -95,7 +94,6 @@ extension HomeViewController {
             converter.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             converter.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             converter.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            converter.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             keyboard.view.topAnchor.constraint(equalTo: converter.view.bottomAnchor),
             keyboard.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

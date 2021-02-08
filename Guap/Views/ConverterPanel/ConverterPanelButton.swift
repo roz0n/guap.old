@@ -26,7 +26,7 @@ class ConverterPanelButton: UIView {
         view.backgroundColor = K.colors.headerGray
         view.layer.borderColor = K.colors.borderGray.cgColor
         view.layer.borderWidth = 3
-        view.makeCircle()
+        view.makeCircular()
         
         return view
     }()
