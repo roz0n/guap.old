@@ -31,6 +31,7 @@
 		23B084D225CA46B000CD0BCC /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23B084D125CA46B000CD0BCC /* Keys.plist */; };
 		23C7A7A625D0F6DA000569B1 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A7A525D0F6DA000569B1 /* HistoryViewController.swift */; };
 		23C7A7A925D0F6E4000569B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A7A825D0F6E4000569B1 /* SettingsViewController.swift */; };
+		23C7A7AE25D10C86000569B1 /* ConverterPanelSymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A7AD25D10C86000569B1 /* ConverterPanelSymbolIcon.swift */; };
 		23F2239D25C7647B00880258 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2239C25C7647B00880258 /* ConverterViewController.swift */; };
 		23F223A225C77BA700880258 /* ConverterPanelUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F223A125C77BA700880258 /* ConverterPanelUIModel.swift */; };
 		23F223AA25C78AB900880258 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F223A925C78AB900880258 /* UIView+Ext.swift */; };
@@ -63,6 +64,7 @@
 		23B084D125CA46B000CD0BCC /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		23C7A7A525D0F6DA000569B1 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		23C7A7A825D0F6E4000569B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		23C7A7AD25D10C86000569B1 /* ConverterPanelSymbolIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelSymbolIcon.swift; sourceTree = "<group>"; };
 		23F2239C25C7647B00880258 /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		23F223A125C77BA700880258 /* ConverterPanelUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelUIModel.swift; sourceTree = "<group>"; };
 		23F223A925C78AB900880258 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				238627B725CCFE9D009CD6B5 /* ConverterPanelButton.swift */,
 				238627B825CCFE9D009CD6B5 /* ConverterPanel.swift */,
 				238627B925CCFE9D009CD6B5 /* ConverterPanelTextField.swift */,
+				23C7A7AD25D10C86000569B1 /* ConverterPanelSymbolIcon.swift */,
 			);
 			path = ConverterPanel;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				230A7CFD25CFC5C700509A0D /* ConverterToolbarButton.swift in Sources */,
 				233BDF2125CF88E40061E140 /* CurrencySelectorViewController.swift in Sources */,
 				2384326325C6AD1D0042B640 /* AppDelegate.swift in Sources */,
+				23C7A7AE25D10C86000569B1 /* ConverterPanelSymbolIcon.swift in Sources */,
 				2386278225CCEFCC009CD6B5 /* CustomKeyboardViewController.swift in Sources */,
 				23F223A225C77BA700880258 /* ConverterPanelUIModel.swift in Sources */,
 				2384326525C6AD1D0042B640 /* SceneDelegate.swift in Sources */,

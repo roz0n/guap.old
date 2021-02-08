@@ -27,11 +27,13 @@ class ConverterViewController: UIViewController {
     var converterTarget: ConverterPanelUIModel?
     
     let baseValuePanel = ConverterPanel()
+    let baseValueSymbol = ConverterPanelSymbolIcon()
     let baseValueButton = ConverterPanelButton()
     let baseValueField = ConverterPanelTextField()
     var baseValue: Int?
     
     let targetValuePanel = ConverterPanel()
+    let targetValueSymbol = ConverterPanelSymbolIcon()
     let targetValueButton = ConverterPanelButton()
     let targetValueField = ConverterPanelTextField()
     
@@ -192,8 +194,8 @@ extension ConverterViewController {
     }
     
     private func createPanels() {
-        converterBase = ConverterPanelUIModel(panel: baseValuePanel, button: baseValueButton, field: baseValueField)
-        converterTarget = ConverterPanelUIModel(panel: targetValuePanel, button: targetValueButton, field: targetValueField)
+        converterBase = ConverterPanelUIModel(panel: baseValuePanel, symbol: baseValueSymbol, button: baseValueButton, field: baseValueField)
+        converterTarget = ConverterPanelUIModel(panel: targetValuePanel, symbol: targetValueSymbol, button: targetValueButton, field: targetValueField)
     }
     
     private func configurePanels() {
@@ -204,7 +206,8 @@ extension ConverterViewController {
         for converterPanel in allPanels {
             panelStack.addArrangedSubview(converterPanel.panel!)
             
-            if let panel = converterPanel.panel, let button = converterPanel.button, let field = converterPanel.field {
+            if let panel = converterPanel.panel, let icon = converterPanel.symbol, let button = converterPanel.button, let field = converterPanel.field {
+                panel.stack.addArrangedSubview(icon)
                 panel.stack.addArrangedSubview(field)
                 panel.stack.addArrangedSubview(button)
             }

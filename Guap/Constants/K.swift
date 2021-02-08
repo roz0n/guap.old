@@ -48,6 +48,8 @@ extension K {
         
         static let headerGray = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1)
         static let borderGray = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1)
+        
+        static let textGray = UIColor(red: 0.587, green: 0.587, blue: 0.587, alpha: 1)
     }
     
     struct styles {
@@ -96,6 +98,7 @@ extension K {
     struct widths {
         struct panel {
             static let icon = CGFloat(80)
+            static let symbol = CGFloat(52)
         }
     }
     
