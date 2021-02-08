@@ -20,44 +20,10 @@ class CustomKeyboardRow: UIStackView {
         axis = .horizontal
         distribution = .fillEqually
         spacing = K.spacers.keyboard.leading
-
-        configureButtons()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-// MARK: - Configure keyboard buttons
-
-extension CustomKeyboardRow {
-    
-    private func configureButtons() {
-        for index in 1...3 {
-            let button = CustomKeyboardButton(keyValue: KeyboardButtonValues.rows[id]![index - 1])
-            
-            addKeyboardGesture(to: button)
-            buttons.append(button)
-            addArrangedSubview(buttons[index - 1])
-        }
-    }
-    
-}
-
-// MARK: - Gesture handlers
-
-extension CustomKeyboardRow {
-    
-    func addKeyboardGesture(to button: UIButton) {
-        let keyboardButtonTap = UITapGestureRecognizer(target: self, action: #selector(keyboardButtonTapped))
-        button.addGestureRecognizer(keyboardButtonTap)
-    }
-    
-    @objc func keyboardButtonTapped(_ sender: UITapGestureRecognizer) {
-        let button = sender.view as? CustomKeyboardButton
-        print("Tapped custom keyboard button: \(String(describing: button?.keyValue))")
     }
     
 }

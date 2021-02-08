@@ -9,8 +9,7 @@ import UIKit
 
 class CustomKeyboardViewController: UIViewController {
     
-    var allRows = [Int: CustomKeyboardRow]()
-    var allButtons = [Int: [CustomKeyboardButton]]()
+    var keyboardRows = [Int: CustomKeyboardRow]()
     
     let rowStack: UIStackView = {
         let stack = UIStackView()
@@ -28,6 +27,27 @@ class CustomKeyboardViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         configureRows()
+        configureGestures()
+    }
+    
+}
+
+// MARK: - Gestures
+
+extension CustomKeyboardViewController {
+    
+    private func configureGestures() {
+        for (_, row) in keyboardRows {
+            for button in row.buttons {
+                let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardButtonTapped))
+                button.addGestureRecognizer(tap)
+            }
+        }
+    }
+    
+    @objc func keyboardButtonTapped(_ sender: UITapGestureRecognizer) {
+        let button = sender.view as? CustomKeyboardButton
+        print("Tapped custom keyboard button: \(String(describing: button?.keyValue))")
     }
     
 }
@@ -45,8 +65,8 @@ extension CustomKeyboardViewController {
         for index in 0...3 {
             let row = CustomKeyboardRow(keyboardRowIndex: index)
             
-            allRows[index] = row
-            rowStack.addArrangedSubview(allRows[index]!)
+            keyboardRows[index] = row
+            rowStack.addArrangedSubview(keyboardRows[index]!)
         }
     }
     
