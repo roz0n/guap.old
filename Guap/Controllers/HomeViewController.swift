@@ -54,7 +54,8 @@ extension HomeViewController {
     func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?) {
         DispatchQueue.main.async { [weak self] in
             if let result = result {
-                self?.converter.targetValueField.text = String(result)
+//                self?.converter.targetField.text = String(result)
+                print("Pair conversion result: \(String(describing: result))")
             }
         }
     }

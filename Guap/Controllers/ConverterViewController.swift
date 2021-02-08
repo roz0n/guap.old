@@ -26,16 +26,16 @@ class ConverterViewController: UIViewController {
     var converterBase: ConverterPanelUIModel?
     var converterTarget: ConverterPanelUIModel?
     
-    let baseValuePanel = ConverterPanel()
-    let baseValueSymbol = ConverterPanelSymbolIcon()
-    let baseValueButton = ConverterPanelButton()
-    let baseValueField = ConverterPanelTextField()
+    let basePanel = ConverterPanel()
+    let baseSymbol = ConverterPanelSymbolIcon()
+    let baseButton = ConverterPanelButton()
+    let baseField = ConverterPanelField()
     var baseValue: Int?
     
-    let targetValuePanel = ConverterPanel()
-    let targetValueSymbol = ConverterPanelSymbolIcon()
-    let targetValueButton = ConverterPanelButton()
-    let targetValueField = ConverterPanelTextField()
+    let targetPanel = ConverterPanel()
+    let targetSymbol = ConverterPanelSymbolIcon()
+    let targetButton = ConverterPanelButton()
+    let targetField = ConverterPanelField()
     
     let toolbar = ConverterToolbar()
     
@@ -54,17 +54,13 @@ class ConverterViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        baseValueButton.currencyCode = baseCurrency
-        baseValueButton.type = .Base
-        baseValueButton.countryCode = "EU"
-        baseValueField.isEnabled = false
+        baseButton.currencyCode = baseCurrency
+        baseButton.type = .Base
+        baseButton.countryCode = "EU"
         
-        targetValueButton.currencyCode = targetCurrency
-        targetValueButton.type = .Target
-        targetValueButton.countryCode = "DO"
-        targetValueField.isEnabled = false
-        
-        createPanels()
+        targetButton.currencyCode = targetCurrency
+        targetButton.type = .Target
+        targetButton.countryCode = "DO"
     }
     
     required init?(coder: NSCoder) {
@@ -82,23 +78,15 @@ class ConverterViewController: UIViewController {
         return (base * rate).rounded()
     }
     
-//    func resetValues() {
-//        baseValue = nil
-//        baseValueField.text = ""
-//        targetValueField.text = ""
-//    }
-    
 }
 
-// MARK: - Data fetching
+// MARK: - Data
 
 extension ConverterViewController {
     
     func getPairedConversionData() {
         guard let base = baseValue else { return }
-        
-        baseValueField.isEnabled.toggle()
-        
+                
         DispatchQueue.global().async {
             ERDataManager.shared.getPairConversion(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency) { [weak self] (response, error) in
                 if error != nil {
@@ -112,8 +100,6 @@ extension ConverterViewController {
                 }
             }
         }
-        
-        baseValueField.isEnabled.toggle()
     }
     
 }
@@ -194,8 +180,8 @@ extension ConverterViewController {
     }
     
     private func createPanels() {
-        converterBase = ConverterPanelUIModel(panel: baseValuePanel, symbol: baseValueSymbol, button: baseValueButton, field: baseValueField)
-        converterTarget = ConverterPanelUIModel(panel: targetValuePanel, symbol: targetValueSymbol, button: targetValueButton, field: targetValueField)
+        converterBase = ConverterPanelUIModel(panel: basePanel, symbol: baseSymbol, button: baseButton, field: baseField)
+        converterTarget = ConverterPanelUIModel(panel: targetPanel, symbol: targetSymbol, button: targetButton, field: targetField)
         
         if let cb = converterBase, let ct = converterTarget {
             allPanels = [cb, ct]

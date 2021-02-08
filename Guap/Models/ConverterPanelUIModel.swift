@@ -11,5 +11,5 @@ struct ConverterPanelUIModel {
     var panel: ConverterPanel?
     var symbol: ConverterPanelSymbolIcon?
     var button: ConverterPanelButton?
-    var field: ConverterPanelTextField?
+    var field: ConverterPanelField?
 }

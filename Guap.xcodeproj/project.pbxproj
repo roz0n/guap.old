@@ -23,7 +23,7 @@
 		238627BD25CCFE9D009CD6B5 /* ConverterToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B525CCFE9D009CD6B5 /* ConverterToolbar.swift */; };
 		238627BE25CCFE9D009CD6B5 /* ConverterPanelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B725CCFE9D009CD6B5 /* ConverterPanelButton.swift */; };
 		238627BF25CCFE9D009CD6B5 /* ConverterPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B825CCFE9D009CD6B5 /* ConverterPanel.swift */; };
-		238627C025CCFE9D009CD6B5 /* ConverterPanelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B925CCFE9D009CD6B5 /* ConverterPanelTextField.swift */; };
+		238627C025CCFE9D009CD6B5 /* ConverterPanelField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627B925CCFE9D009CD6B5 /* ConverterPanelField.swift */; };
 		238627C125CCFE9D009CD6B5 /* ConverterStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627BB25CCFE9D009CD6B5 /* ConverterStatusBar.swift */; };
 		238627C425CCFEDF009CD6B5 /* CustomKeyboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238627C325CCFEDF009CD6B5 /* CustomKeyboardRow.swift */; };
 		23B084CA25CA2A3500CD0BCC /* ERDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B084C925CA2A3500CD0BCC /* ERDataManager.swift */; };
@@ -56,7 +56,7 @@
 		238627B525CCFE9D009CD6B5 /* ConverterToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterToolbar.swift; sourceTree = "<group>"; };
 		238627B725CCFE9D009CD6B5 /* ConverterPanelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterPanelButton.swift; sourceTree = "<group>"; };
 		238627B825CCFE9D009CD6B5 /* ConverterPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterPanel.swift; sourceTree = "<group>"; };
-		238627B925CCFE9D009CD6B5 /* ConverterPanelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterPanelTextField.swift; sourceTree = "<group>"; };
+		238627B925CCFE9D009CD6B5 /* ConverterPanelField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterPanelField.swift; sourceTree = "<group>"; };
 		238627BB25CCFE9D009CD6B5 /* ConverterStatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterStatusBar.swift; sourceTree = "<group>"; };
 		238627C325CCFEDF009CD6B5 /* CustomKeyboardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardRow.swift; sourceTree = "<group>"; };
 		23B084C925CA2A3500CD0BCC /* ERDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERDataManager.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 			children = (
 				238627B725CCFE9D009CD6B5 /* ConverterPanelButton.swift */,
 				238627B825CCFE9D009CD6B5 /* ConverterPanel.swift */,
-				238627B925CCFE9D009CD6B5 /* ConverterPanelTextField.swift */,
+				238627B925CCFE9D009CD6B5 /* ConverterPanelField.swift */,
 				23C7A7AD25D10C86000569B1 /* ConverterPanelSymbolIcon.swift */,
 			);
 			path = ConverterPanel;
@@ -304,7 +304,7 @@
 				238627BD25CCFE9D009CD6B5 /* ConverterToolbar.swift in Sources */,
 				238627BE25CCFE9D009CD6B5 /* ConverterPanelButton.swift in Sources */,
 				238627C125CCFE9D009CD6B5 /* ConverterStatusBar.swift in Sources */,
-				238627C025CCFE9D009CD6B5 /* ConverterPanelTextField.swift in Sources */,
+				238627C025CCFE9D009CD6B5 /* ConverterPanelField.swift in Sources */,
 				2386278525CCF450009CD6B5 /* CGFloat+Ext.swift in Sources */,
 				230A7CFD25CFC5C700509A0D /* ConverterToolbarButton.swift in Sources */,
 				233BDF2125CF88E40061E140 /* CurrencySelectorViewController.swift in Sources */,
