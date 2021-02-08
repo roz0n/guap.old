@@ -15,6 +15,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = K.colors.white
         converter.delegate = self
         
@@ -34,8 +35,8 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
         let settingsIcon = UIImage(systemName: K.icons.HomeSettings)
         let historyIcon = UIImage(systemName: K.icons.HomeHistory)
         
-        let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: nil, action: nil)
-        let historyButton = UIBarButtonItem(image: historyIcon, style: .plain, target: nil, action: nil)
+        let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: self, action: #selector(settingsButtonTapped))
+        let historyButton = UIBarButtonItem(image: historyIcon, style: .plain, target: self, action: #selector(historyButtonTapped))
         
         navigationItem.rightBarButtonItem = settingsButton
         navigationItem.rightBarButtonItem?.tintColor = K.colors.black
@@ -57,6 +58,27 @@ extension HomeViewController {
             }
         }
     }
+    
+}
+
+// MARK: - Gestures
+
+extension HomeViewController {
+    
+    @objc func settingsButtonTapped() {
+        let vc = SettingsViewController()
+        
+        vc.navigationItem.title = "Settings"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func historyButtonTapped() {
+        let vc = HistoryViewController()
+        
+        vc.navigationItem.title = "History"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }
 

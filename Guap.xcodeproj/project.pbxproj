@@ -29,6 +29,8 @@
 		23B084CA25CA2A3500CD0BCC /* ERDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B084C925CA2A3500CD0BCC /* ERDataManager.swift */; };
 		23B084CE25CA429700CD0BCC /* ERPairConversionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B084CD25CA429700CD0BCC /* ERPairConversionModel.swift */; };
 		23B084D225CA46B000CD0BCC /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23B084D125CA46B000CD0BCC /* Keys.plist */; };
+		23C7A7A625D0F6DA000569B1 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A7A525D0F6DA000569B1 /* HistoryViewController.swift */; };
+		23C7A7A925D0F6E4000569B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A7A825D0F6E4000569B1 /* SettingsViewController.swift */; };
 		23F2239D25C7647B00880258 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2239C25C7647B00880258 /* ConverterViewController.swift */; };
 		23F223A225C77BA700880258 /* ConverterPanelUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F223A125C77BA700880258 /* ConverterPanelUIModel.swift */; };
 		23F223AA25C78AB900880258 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F223A925C78AB900880258 /* UIView+Ext.swift */; };
@@ -59,6 +61,8 @@
 		23B084C925CA2A3500CD0BCC /* ERDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERDataManager.swift; sourceTree = "<group>"; };
 		23B084CD25CA429700CD0BCC /* ERPairConversionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERPairConversionModel.swift; sourceTree = "<group>"; };
 		23B084D125CA46B000CD0BCC /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		23C7A7A525D0F6DA000569B1 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		23C7A7A825D0F6E4000569B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		23F2239C25C7647B00880258 /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		23F223A125C77BA700880258 /* ConverterPanelUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterPanelUIModel.swift; sourceTree = "<group>"; };
 		23F223A925C78AB900880258 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 				23F2239C25C7647B00880258 /* ConverterViewController.swift */,
 				2386278125CCEFCC009CD6B5 /* CustomKeyboardViewController.swift */,
 				233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */,
+				23C7A7A525D0F6DA000569B1 /* HistoryViewController.swift */,
+				23C7A7A825D0F6E4000569B1 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				237E6FB625CA8CD700988FA1 /* K.swift in Sources */,
+				23C7A7A625D0F6DA000569B1 /* HistoryViewController.swift in Sources */,
 				23B084CE25CA429700CD0BCC /* ERPairConversionModel.swift in Sources */,
 				238627C425CCFEDF009CD6B5 /* CustomKeyboardRow.swift in Sources */,
 				2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */,
@@ -304,6 +311,7 @@
 				2384326525C6AD1D0042B640 /* SceneDelegate.swift in Sources */,
 				233BDF2425CF99C30061E140 /* ConverterStatusPill.swift in Sources */,
 				23F2239D25C7647B00880258 /* ConverterViewController.swift in Sources */,
+				23C7A7A925D0F6E4000569B1 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

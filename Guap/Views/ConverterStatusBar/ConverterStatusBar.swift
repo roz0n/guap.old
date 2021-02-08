@@ -16,6 +16,7 @@ class ConverterStatusBar: UIView {
     let stack: UIStackView = {
         let stack = UIStackView()
         
+        // TODO: Constants
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 14, leading: 20, bottom: 14, trailing: 20)

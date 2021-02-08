@@ -26,6 +26,9 @@ struct K {
     struct icons {
         static let HomeSettings = "gearshape.2.fill"
         static let HomeHistory = "clock.fill"
+        static let SwapCurrency = "arrow.left.arrow.right"
+        static let ShareCurrency = "square.and.arrow.up"
+        static let ConvertCurrency = "arrow.triangle.2.circlepath"
     }
     
 }
@@ -87,6 +90,12 @@ extension K {
             static let statusBar = CGFloat(50)
             static let panel = CGFloat(72)
             static let toolbar = CGFloat(72)
+        }
+    }
+    
+    struct widths {
+        struct panel {
+            static let icon = CGFloat(80)
         }
     }
     
