@@ -14,7 +14,10 @@ class ConverterPanelField: UIView {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.monospacedSystemFont(ofSize: 32, weight: .bold)
-        label.text = "2,600.00"
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.75
+        label.lineBreakMode = .byTruncatingMiddle
+        label.text = ""
         
         return label
     }()

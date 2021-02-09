@@ -68,6 +68,18 @@ extension HomeViewController {
     
     func keyboardButtonWasTapped(_ sender: CustomKeyboardViewController, button: CustomKeyboardButton) {
         print("Tapped custom keyboard button! \(String(describing: button.keyValue))")
+        
+        let value = button.keyValue
+        let fieldText = converter.baseField.amountLabel.text!
+        
+        switch value {
+            case "de":
+                converter.baseField.amountLabel.text! += "."
+            case "dl":
+                converter.baseField.amountLabel.text! = String(converter.baseField.amountLabel.text!.dropLast())
+            default:
+                converter.baseField.amountLabel.text! += String(value)
+        }
     }
     
 }
