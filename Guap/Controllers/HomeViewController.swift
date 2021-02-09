@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class HomeViewController: UIViewController, ConverterControllerDelegate {
+class HomeViewController: UIViewController, ConverterControllerDelegate, CustomKeyboardDelegate {
     
     let converter = ConverterViewController(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency)
     let keyboard = CustomKeyboardViewController()
@@ -18,6 +18,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
         view.backgroundColor = K.colors.white
         
         converter.delegate = self
+        keyboard.delegate = self
         configureLogo()
         configureBarButtons()
         configureLayout()
@@ -26,7 +27,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate {
     func configureLogo() {
         let logo = UIImage(named: "Logotype.png")
         let imageView = UIImageView(image: logo)
-
+        
         navigationItem.titleView = imageView
     }
     
@@ -53,10 +54,20 @@ extension HomeViewController {
     func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?) {
         DispatchQueue.main.async { [weak self] in
             if let result = result {
-//                self?.converter.targetField.text = String(result)
+                // self?.converter.targetField.text = String(result)
                 print("Pair conversion result: \(String(describing: result))")
             }
         }
+    }
+    
+}
+
+// MARK: - CustomKeyboardDelegate
+
+extension HomeViewController {
+    
+    func keyboardButtonWasTapped(_ sender: CustomKeyboardViewController, button: CustomKeyboardButton) {
+        print("Tapped custom keyboard button! \(String(describing: button.keyValue))")
     }
     
 }

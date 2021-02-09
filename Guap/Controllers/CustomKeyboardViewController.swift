@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol CustomKeyboardDelegate {
+    func keyboardButtonWasTapped(_ sender: CustomKeyboardViewController, button: CustomKeyboardButton)
+}
+
 class CustomKeyboardViewController: UIViewController {
     
+    var delegate: CustomKeyboardDelegate?
     var keyboardRows = [Int: CustomKeyboardRow]()
     
     let rowStack: UIStackView = {
@@ -27,8 +32,17 @@ class CustomKeyboardViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         configureRows()
-        //        configureButtons()
         configureGestures()
+    }
+    
+}
+
+// MARK: - CustomKeyboardDelegate
+
+extension CustomKeyboardViewController {
+    
+    func keyboardButtonWasTapped(_ sender: CustomKeyboardViewController, button: CustomKeyboardButton) {
+        self.delegate?.keyboardButtonWasTapped(self, button: button)
     }
     
 }
@@ -40,20 +54,23 @@ extension CustomKeyboardViewController {
     private func configureGestures() {
         for (_, row) in keyboardRows {
             for button in row.buttons {
-                let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardButtonTapped))
+                let tap = UITapGestureRecognizer(target: self, action: #selector(buttonTap))
                 button.addGestureRecognizer(tap)
             }
         }
     }
     
-    @objc func keyboardButtonTapped(_ sender: UITapGestureRecognizer) {
+    @objc func buttonTap(_ sender: UITapGestureRecognizer) {
         let button = sender.view as? CustomKeyboardButton
-        print("Tapped custom keyboard button: \(String(describing: button?.keyValue))")
+        
+        if let button = button {
+            keyboardButtonWasTapped(self, button: button)
+        }
     }
     
 }
 
-// MARK: - Keyboard row creation and layout
+// MARK: - Create Keyboard Rows and Configure Layout
 
 extension CustomKeyboardViewController {
     
