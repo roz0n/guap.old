@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate, CustomK
         
         converter.delegate = self
         keyboard.delegate = self
+        
         configureLogo()
         configureBarButtons()
         configureLayout()
@@ -54,8 +55,8 @@ extension HomeViewController {
     func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?) {
         DispatchQueue.main.async { [weak self] in
             if let result = result {
-                // self?.converter.targetField.text = String(result)
-                print("Pair conversion result: \(String(describing: result))")
+                self?.converter.targetValue = result
+                self?.converter.targetField.amountLabel.text = String(result)
             }
         }
     }
@@ -67,10 +68,7 @@ extension HomeViewController {
 extension HomeViewController {
     
     func keyboardButtonWasTapped(_ sender: CustomKeyboardViewController, button: CustomKeyboardButton) {
-        print("Tapped custom keyboard button! \(String(describing: button.keyValue))")
-        
         let value = button.keyValue
-        let fieldText = converter.baseField.amountLabel.text!
         
         switch value {
             case "de":
