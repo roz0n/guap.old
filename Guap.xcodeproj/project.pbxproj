@@ -10,6 +10,7 @@
 		230A7CFD25CFC5C700509A0D /* ConverterToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A7CFC25CFC5C700509A0D /* ConverterToolbarButton.swift */; };
 		233BDF2125CF88E40061E140 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */; };
 		233BDF2425CF99C30061E140 /* ConverterStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */; };
+		234454F525D21473004A77B9 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234454F425D21473004A77B9 /* UIDevice+Ext.swift */; };
 		2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */; };
 		237E6FB625CA8CD700988FA1 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FB525CA8CD700988FA1 /* K.swift */; };
 		2384326325C6AD1D0042B640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2384326225C6AD1D0042B640 /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 		230A7CFC25CFC5C700509A0D /* ConverterToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToolbarButton.swift; sourceTree = "<group>"; };
 		233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
 		233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterStatusPill.swift; sourceTree = "<group>"; };
+		234454F425D21473004A77B9 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButtonValues.swift; sourceTree = "<group>"; };
 		237E6FB525CA8CD700988FA1 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		2384325F25C6AD1D0042B640 /* Guap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +210,7 @@
 			children = (
 				23F223A925C78AB900880258 /* UIView+Ext.swift */,
 				2386278425CCF450009CD6B5 /* CGFloat+Ext.swift */,
+				234454F425D21473004A77B9 /* UIDevice+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				233BDF2425CF99C30061E140 /* ConverterStatusPill.swift in Sources */,
 				23F2239D25C7647B00880258 /* ConverterViewController.swift in Sources */,
 				23C7A7A925D0F6E4000569B1 /* SettingsViewController.swift in Sources */,
+				234454F525D21473004A77B9 /* UIDevice+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

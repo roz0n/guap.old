@@ -55,8 +55,10 @@ extension HomeViewController {
     func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?) {
         DispatchQueue.main.async { [weak self] in
             if let result = result {
+                // TODO: Don't update UI here, move this to ConverterVC
+                // It seems like ConverterVC doesn't even need a delegate...
                 self?.converter.targetValue = result
-                self?.converter.targetField.amountLabel.text = String(result)
+                self?.converter.targetField.amountLabel.text = self?.converter.formatCurrency(result)
             }
         }
     }
@@ -68,14 +70,24 @@ extension HomeViewController {
 extension HomeViewController {
     
     func keyboardButtonWasTapped(_ sender: CustomKeyboardViewController, button: CustomKeyboardButton) {
+        // TODO: There's a ton of behaviors here that we'll have to sort out.
+        
         let value = button.keyValue
         
         switch value {
             case "de":
                 converter.baseField.amountLabel.text! += "."
             case "dl":
+                if converter.targetField.amountLabel.text != nil {
+                    converter.targetField.amountLabel.text! =  ""
+                }
+                
                 converter.baseField.amountLabel.text! = String(converter.baseField.amountLabel.text!.dropLast())
             default:
+                if #available(iOS 10.0, *) {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                }
+                
                 converter.baseField.amountLabel.text! += String(value)
         }
     }

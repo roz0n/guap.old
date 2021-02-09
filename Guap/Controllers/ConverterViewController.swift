@@ -40,6 +40,11 @@ class ConverterViewController: UIViewController {
     
     var baseValue: Double?
     var targetValue: Double?
+    var conversionRate: Double? {
+        didSet {
+            statusBar.conversionRate = String(conversionRate!)
+        }
+    }
     
     private let panelStack: UIStackView = {
         let view = UIStackView()
@@ -86,9 +91,24 @@ class ConverterViewController: UIViewController {
         if let stringValue = baseFieldText {
             if let rawValue = Double(stringValue) {
                 baseValue = rawValue
-                baseField.amountLabel.text! = String(rawValue)
+                
+                if let currencyFormattedValue = formatCurrency(rawValue) {
+                    baseField.amountLabel.text! = currencyFormattedValue
+                } else {
+                    baseField.amountLabel.text! = String(rawValue)
+                }
             }
         }
+    }
+    
+    func formatCurrency(_ value: Double) -> String? {
+        let formatter = NumberFormatter()
+        // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
+        // https://stackoverflow.com/questions/41558832/how-to-format-a-double-into-currency-swift-3
+        // formatter.locale = Locale.current
+        formatter.numberStyle = .decimal
+        
+        return formatter.string(from: value as NSNumber)
     }
     
     func calculatePair(base: Double, rate: Double) -> Double {
@@ -114,6 +134,9 @@ extension ConverterViewController {
                 }
                 
                 if let response = response {
+                    // TODO: Should we be setting all the internal properties here?
+                    self?.conversionRate = response.conversionRate
+                    
                     let conversionResult = self?.calculatePair(base: Double(base), rate: response.conversionRate)
                     self?.delegate?.didGetPairConversion(self, responseData: response, result: conversionResult)
                 }
@@ -172,17 +195,18 @@ extension ConverterViewController {
     }
     
     @objc func convertButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("Tapped convert")
+        if #available(iOS 10.0, *) {
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+        }
+        
         getPairedConversionData()
     }
     
     @objc func swapButtonTapped(_ sender: UITapGestureRecognizer) {
-        //        self.resetValues()
         print("Tapped swap")
     }
     
     @objc func shareButtonTapped(_ sender: UITapGestureRecognizer) {
-        //        self.resetValues()
         print("Tapped share")
     }
     

@@ -13,6 +13,7 @@ class ConverterStatusBar: UIView {
     var currencyPill: ConverterStatusPill?
     var datePill: ConverterStatusPill?
     var ratePill: ConverterStatusPill?
+    var conversionRate: String?
     
     let stack: UIStackView = {
         let stack = UIStackView()
@@ -80,7 +81,7 @@ extension ConverterStatusBar {
         let labelText = NSMutableAttributedString(attachment: textAttachment)
        
         textAttachment.image = textImage
-        labelText.append(NSAttributedString(string: " 65.5623"))
+        labelText.append(NSAttributedString(string: conversionRate ?? "70.265"))
         
         ratePill = ConverterStatusPill(labelText: nil, labelTextColor: K.colors.white, bgColor: K.colors.green, attributedLabelText: labelText)
         ratePill?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
