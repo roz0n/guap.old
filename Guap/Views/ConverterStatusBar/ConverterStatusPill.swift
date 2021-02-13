@@ -42,6 +42,7 @@ class ConverterStatusPill: UILabel {
         
         configureLabel()
         configureLayout()
+//        animate()
     }
     
     required init?(coder: NSCoder) {
@@ -94,5 +95,17 @@ extension ConverterStatusPill {
             textContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
         ])
     }
+    
+}
+
+// MARK: Animations
+
+extension ConverterStatusPill {
+    
+//    func animate() {
+//        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [.repeat, .allowAnimatedContent]) {
+//            self.textLabel?.transform = CGAffineTransform(translationX: 0, y: 100)
+//        }
+//    }
     
 }

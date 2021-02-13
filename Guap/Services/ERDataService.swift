@@ -1,5 +1,5 @@
 //
-//  ERDataManager.swift
+//  ERDataService.swift
 //  Guap
 //
 //  Created by Arnaldo Rozon on 2/2/21.
@@ -7,9 +7,10 @@
 
 import UIKit
 
-class ERDataManager {
+class ERDataService {
     
-    static let shared = ERDataManager()
+    static let shared = ERDataService()
+    static let currencyList = ["1","2","3"]
     
     private func getEndpoint() -> String {
         let baseEndpoint = "https://v6.exchangerate-api.com/v6/"

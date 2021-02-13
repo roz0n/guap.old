@@ -42,7 +42,7 @@ extension K {
         static let black = UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 1)
         
         static let red = UIColor(red: 1, green: 0.129, blue: 0.129, alpha: 1)
-        static let blue = UIColor(red: 0.054, green: 0.432, blue: 1, alpha: 1)
+        static let blue = UIColor(red: 0, green: 0.64, blue: 1, alpha: 1)
         static let green = UIColor(red: 0, green: 0.854, blue: 0.361, alpha: 1)
         static let yellow = UIColor(red: 1, green: 0.898, blue: 0, alpha: 1)
         

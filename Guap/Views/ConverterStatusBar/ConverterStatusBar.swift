@@ -43,7 +43,7 @@ class ConverterStatusBar: UIView {
     
 }
 
-// MARK: - Pill creation
+// MARK: - Pills
 
 extension ConverterStatusBar {
     
@@ -81,10 +81,17 @@ extension ConverterStatusBar {
         let labelText = NSMutableAttributedString(attachment: textAttachment)
        
         textAttachment.image = textImage
-        labelText.append(NSAttributedString(string: conversionRate ?? "70.265"))
+        labelText.append(NSAttributedString(string: conversionRate ?? "  70.265"))
         
         ratePill = ConverterStatusPill(labelText: nil, labelTextColor: K.colors.white, bgColor: K.colors.green, attributedLabelText: labelText)
         ratePill?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
+    // TODO: Make this work
+    func updateConversionRateLabel(to value: Double) {
+        if let pill = ratePill {
+            pill.labelText = String(value)
+        }
     }
     
 }

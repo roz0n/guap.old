@@ -59,6 +59,7 @@ extension HomeViewController {
                 // It seems like ConverterVC doesn't even need a delegate...
                 self?.converter.targetValue = result
                 self?.converter.targetField.amountLabel.text = self?.converter.formatCurrency(result)
+                self?.converter.statusBar.updateConversionRateLabel(to: result)
             }
         }
     }

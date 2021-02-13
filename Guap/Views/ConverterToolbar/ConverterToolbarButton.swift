@@ -33,12 +33,7 @@ class ConverterToolbarButton: UIButton {
     func configureIcons() {
         let formattedIcon = self.icon?.withTintColor(K.colors.white)
         setImage(formattedIcon, for: .normal)
-        
-        if self.bgColor == K.colors.yellow {
-            tintColor = K.colors.black
-        } else {
-            tintColor = K.colors.white
-        }
+        tintColor = K.colors.black
     }
     
 }

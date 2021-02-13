@@ -127,7 +127,7 @@ extension ConverterViewController {
         guard let base = baseValue else { return }
         
         DispatchQueue.global().async {
-            ERDataManager.shared.getPairConversion(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency) { [weak self] (response, error) in
+            ERDataService.shared.getPairConversion(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency) { [weak self] (response, error) in
                 if error != nil {
                     print("Error: \(String(describing: error))")
                     return
@@ -188,8 +188,11 @@ extension ConverterViewController {
         
         if let type = type {
             let vc = UINavigationController(rootViewController: CurrencySelectorViewController(type: type))
+            let backButtonIcon = UIImage(systemName: "xmark")
             
+            vc.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backButtonIcon, style: .plain, target: nil, action: nil)
             vc.modalPresentationStyle = .pageSheet
+            
             present(vc, animated: true, completion: nil)
         }
     }
