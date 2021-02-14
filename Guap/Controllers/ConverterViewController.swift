@@ -92,27 +92,13 @@ class ConverterViewController: UIViewController {
             if let rawValue = Double(stringValue) {
                 baseValue = rawValue
                 
-                if let currencyFormattedValue = formatCurrency(rawValue) {
+                if let currencyFormattedValue = CurrencyService.shared.formatCurrency(rawValue) {
                     baseField.amountLabel.text! = currencyFormattedValue
                 } else {
                     baseField.amountLabel.text! = String(rawValue)
                 }
             }
         }
-    }
-    
-    func formatCurrency(_ value: Double) -> String? {
-        let formatter = NumberFormatter()
-        // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
-        // https://stackoverflow.com/questions/41558832/how-to-format-a-double-into-currency-swift-3
-        // formatter.locale = Locale.current
-        formatter.numberStyle = .decimal
-        
-        return formatter.string(from: value as NSNumber)
-    }
-    
-    func calculatePair(base: Double, rate: Double) -> Double {
-        return (base * rate).rounded()
     }
     
 }
@@ -137,7 +123,7 @@ extension ConverterViewController {
                     // TODO: Should we be setting all the internal properties here?
                     self?.conversionRate = response.conversionRate
                     
-                    let conversionResult = self?.calculatePair(base: Double(base), rate: response.conversionRate)
+                    let conversionResult = CurrencyService.shared.calculatePair(base: Double(base), rate: response.conversionRate)
                     self?.delegate?.didGetPairConversion(self, responseData: response, result: conversionResult)
                 }
             }
@@ -188,12 +174,11 @@ extension ConverterViewController {
         
         if let type = type {
             let vc = UINavigationController(rootViewController: CurrencySelectorViewController(type: type))
-            let backButtonIcon = UIImage(systemName: "xmark")
+            vc.modalPresentationStyle = .overFullScreen
             
-            vc.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backButtonIcon, style: .plain, target: nil, action: nil)
-            vc.modalPresentationStyle = .pageSheet
-            
-            present(vc, animated: true, completion: nil)
+            if let root = getRootViewController(of: self) {
+                root.present(vc, animated: true, completion: nil)
+            }
         }
     }
     

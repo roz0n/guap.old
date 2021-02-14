@@ -23,14 +23,37 @@ class CurrencySelectorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
-        navigationItem.title = "Select \(type.rawValue.capitalized) Currency"
         
+        configureNavigationButtons()
         configureLayout()
     }
     
+    private func configureNavigationButtons() {
+        let closeButtonIcon = UIImage(systemName: "xmark")
+        let doneButtonIcon = UIImage(systemName: "checkmark")
+        
+        navigationItem.title = "Select \(type.rawValue.capitalized) Currency"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: closeButtonIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: doneButtonIcon, style: .plain, target: self, action: #selector(doneButtonTapped))
+    }
+    
 }
+
+// MARK: - Gestures
+
+private extension CurrencySelectorViewController {
+    
+    @objc func closeButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func doneButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
+
 
 // MARK: - Layout
 
