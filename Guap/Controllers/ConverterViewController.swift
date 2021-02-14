@@ -13,7 +13,7 @@ enum CurrencyInputType: String {
 }
 
 protocol ConverterControllerDelegate {
-    func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?)
+    func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Float?)
 }
 
 class ConverterViewController: UIViewController {
@@ -37,7 +37,7 @@ class ConverterViewController: UIViewController {
     
     let toolbar = ConverterToolbar()
     
-    var conversionRate: Double? {
+    var conversionRate: Float? {
         didSet {
             statusBar.conversionRate = String(conversionRate!)
         }
@@ -78,6 +78,18 @@ class ConverterViewController: UIViewController {
         configureGestures()
     }
     
+    func formatFieldText(of field: ConverterPanelField) {
+        guard let text = field.amountLabel.text else { return }
+        
+        if let doubleValue = Float(text) {
+            if let currencyValue = ConverterHelperService.shared.formatFloatAsCurrency(doubleValue, to: nil) {
+                field.amountLabel.text! = currencyValue
+            } else {
+                field.amountLabel.text! = String(doubleValue)
+            }
+        }
+    }
+    
 }
 
 // MARK: - Data
@@ -85,14 +97,14 @@ class ConverterViewController: UIViewController {
 extension ConverterViewController {
     
     func getPairedConversionData() {
-        guard let baseValue = Double(baseField.amountLabel.text!) else { return }
+        guard let baseValue = Float(baseField.amountLabel.text!) else { return }
         
         DispatchQueue.global().async {
             ERDataService.shared.getPairConversion(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency) { [weak self] (response, error) in
                 if error != nil { print("Error: \(String(describing: error))"); return }
                 
                 if let response = response {
-                    let conversionResult = CurrencyValueService.shared.calculatePair(base: Double(baseValue), rate: response.conversionRate)
+                    let conversionResult = ConverterHelperService.shared.convertPair(base: baseValue, rate: response.conversionRate)
                     self?.conversionRate = response.conversionRate
                     self?.delegate?.didGetPairConversion(self, responseData: response, result: conversionResult)
                 }
@@ -155,7 +167,7 @@ extension ConverterViewController {
     @objc func convertButtonTapped(_ sender: UITapGestureRecognizer) {
         if #available(iOS 10.0, *) { UIImpactFeedbackGenerator(style: .heavy).impactOccurred() }
         
-        CurrencyValueService.shared.formatFieldValue(of: baseField)
+        formatFieldText(of: baseField)
         getPairedConversionData()
     }
     

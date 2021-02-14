@@ -17,5 +17,5 @@ struct ERPairConversionModel: Codable {
     var timeNextUpdateUtc: String
     var baseCode: String
     var targetCode: String
-    var conversionRate: Double
+    var conversionRate: Float
 }

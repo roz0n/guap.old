@@ -1,5 +1,5 @@
 //
-//  CurrencyValueService.swift
+//  ConverterHelperService.swift
 //  Guap
 //
 //  Created by Arnaldo Rozon on 2/13/21.
@@ -7,10 +7,14 @@
 
 import Foundation
 
-class CurrencyValueService {
+class ConverterHelperService {
     
-    static let shared = CurrencyValueService()
+    static let shared = ConverterHelperService()
     private var localeCache = [String: Locale]()
+    
+    func convertPair(base: Float, rate: Float) -> Float {
+        return (base * rate)
+    }
     
     func getLocaleFromCurrencyCode(_ currencyCode: String) -> Locale? {
         if let isCached = localeCache[currencyCode] {
@@ -39,30 +43,14 @@ class CurrencyValueService {
         return matchedLocale
     }
     
-    func formatFieldValue(of field: ConverterPanelField) {
-        guard let text = field.amountLabel.text else { return }
-        
-        if let doubleValue = Double(text) {
-            if let currencyValue = CurrencyValueService.shared.formatCurrency(doubleValue) {
-                field.amountLabel.text! = currencyValue
-            } else {
-                field.amountLabel.text! = String(doubleValue)
-            }
-        }
-    }
-    
-    func formatCurrency(_ value: Double) -> String? {
+    func formatFloatAsCurrency(_ value: Float, to locale: Locale?) -> String? {
         let formatter = NumberFormatter()
         
         formatter.usesGroupingSeparator = true
         formatter.numberStyle = .decimal
-        formatter.locale = Locale.current
+        formatter.locale = locale ?? Locale.current
         
         return formatter.string(from: NSNumber(value: value))
-    }
-    
-    func calculatePair(base: Double, rate: Double) -> Double {
-        return (base * rate).rounded()
     }
     
 }

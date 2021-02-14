@@ -52,10 +52,10 @@ class HomeViewController: UIViewController, ConverterControllerDelegate, CustomK
 
 extension HomeViewController {
     
-    func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?) {
+    func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Float?) {
         DispatchQueue.main.async { [weak self] in
             if let result = result {
-                self?.converter.targetField.amountLabel.text = CurrencyValueService.shared.formatCurrency(result)
+                self?.converter.targetField.amountLabel.text = ConverterHelperService.shared.formatFloatAsCurrency(result, to: nil)
                 self?.converter.statusBar.updateConversionRateLabel(to: result)
             }
         }

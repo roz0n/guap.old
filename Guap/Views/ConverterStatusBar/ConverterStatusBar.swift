@@ -88,7 +88,7 @@ extension ConverterStatusBar {
     }
     
     // TODO: Make this work
-    func updateConversionRateLabel(to value: Double) {
+    func updateConversionRateLabel(to value: Float) {
         if let pill = ratePill {
             pill.labelText = String(value)
         }
