@@ -26,8 +26,8 @@ struct K {
     struct icons {
         static let HomeSettings = "gearshape.2.fill"
         static let HomeHistory = "clock.fill"
-        static let SwapCurrency = "arrow.left.arrow.right"
-        static let ShareCurrency = "square.and.arrow.up"
+        static let ClearCurrency = "xmark"
+        static let ShareCurrency = "arrow.triangle.swap"
         static let ConvertCurrency = "arrow.triangle.2.circlepath"
     }
     

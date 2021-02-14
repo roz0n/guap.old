@@ -15,7 +15,7 @@ class ConverterPanelSymbolIcon: UIView {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
+        label.textAlignment = .right
         
         return label
     }()
@@ -46,16 +46,16 @@ extension ConverterPanelSymbolIcon {
     
     private func configureLayout() {
         addSubview(symbolLabel)
+
         symbolLabel.fillOther(view: self)
-        
-        // TODO: This is temporary
-        symbolLabel.text = "€"
         symbolLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        symbolLabel.adjustsFontSizeToFitWidth = true
         symbolLabel.textColor = K.colors.textGray
         
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: K.widths.panel.symbol),
             self.heightAnchor.constraint(equalToConstant: K.heights.converter.panel),
+            
             symbolLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             symbolLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])

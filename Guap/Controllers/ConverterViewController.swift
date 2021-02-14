@@ -69,22 +69,59 @@ class ConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updatePanelCurrencyLabels()
         configureLayout()
         configureGestures()
     }
     
+    func resetPanelFieldLabels() {
+        baseField.amountLabel.text = ""
+        targetField.amountLabel.text = ""
+    }
     
     func updatePanelFieldLabels(with response: ERPairConversionModel) {
+        // TODO: Loop over all panels to reduce repetition
         DispatchQueue.main.async { [weak self] in
-            guard let baseValue = Float((self?.baseField.amountLabel.text!)!) else { return }
+            let baseFieldText = self?.baseField.amountLabel.text!
+            guard let baseValue = Float(baseFieldText!) else { return }
             
             let conversionResult = ConverterHelperService.shared.convertPair(base: baseValue, rate: response.conversionRate)
             let formattedBaseValue = ConverterHelperService.shared.formatFloatAsCurrency(baseValue, to: ConverterHelperService.shared.getLocaleFromCurrencyCode(K.defaults.BaseCurrency))
-            let formattedConversionResult = ConverterHelperService.shared.formatFloatAsCurrency(conversionResult, to: ConverterHelperService.shared.getLocaleFromCurrencyCode(K.defaults.TargetCurrency))
+            let formattedTargetValue = ConverterHelperService.shared.formatFloatAsCurrency(conversionResult, to: ConverterHelperService.shared.getLocaleFromCurrencyCode(K.defaults.TargetCurrency))
             
-            self?.targetField.amountLabel.text = formattedConversionResult
-            self?.baseField.amountLabel.text = formattedBaseValue
+            self?.baseField.amountLabel.text = formattedBaseValue?.replacingOccurrences(of: ConverterHelperService.currencyStringToNumsPattern, with: "", options: .regularExpression)
+            self?.targetField.amountLabel.text = formattedTargetValue?.replacingOccurrences(of: ConverterHelperService.currencyStringToNumsPattern, with: "", options: .regularExpression)
             self?.conversionRate = response.conversionRate
+        }
+    }
+    
+    func updatePanelCurrencyLabels() {
+        // TODO: Loop over all panels to reduce repetition
+        DispatchQueue.main.async { [weak self] in
+            let baseSymbolValue = ConverterHelperService.shared.getLocaleFromCurrencyCode(K.defaults.BaseCurrency)
+            let targetSymbolValue = ConverterHelperService.shared.getLocaleFromCurrencyCode(K.defaults.TargetCurrency)
+            
+            if let newBaseSymbol = baseSymbolValue?.currencySymbol {
+                self?.baseSymbol.symbolLabel.text = newBaseSymbol
+                
+                if (newBaseSymbol.count > 1) {
+                    self?.baseSymbol.symbolLabel.textAlignment = .right
+                    self?.baseSymbol.symbolLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+                } else {
+                    self?.baseSymbol.symbolLabel.textAlignment = .center
+                }
+            }
+            
+            if let newTargetSymbol = targetSymbolValue?.currencySymbol {
+                self?.targetSymbol.symbolLabel.text = newTargetSymbol
+                
+                if (newTargetSymbol.count > 1) {
+                    self?.targetSymbol.symbolLabel.textAlignment = .right
+                    self?.targetSymbol.symbolLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+                } else {
+                    self?.targetSymbol.symbolLabel.textAlignment = .center
+                }
+            }
         }
     }
     
@@ -98,9 +135,10 @@ extension ConverterViewController {
         DispatchQueue.global().async {
             ERDataService.shared.getPairConversion(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency) { [weak self] (response, error) in
                 if error != nil { print("Error: \(String(describing: error))"); return }
-
+                
                 if let response = response {
                     self?.updatePanelFieldLabels(with: response)
+                    self?.updatePanelCurrencyLabels()
                 }
             }
         }
@@ -115,8 +153,8 @@ extension ConverterViewController {
     func configureGestures() {
         configureCurrencySelectionGesture()
         configureConvertGesture()
+        configureClearGesture()
         configureSwapGesture()
-        configureShareGesture()
     }
     
     func configureCurrencySelectionGesture() {
@@ -134,14 +172,14 @@ extension ConverterViewController {
         toolbar.convertButton.addGestureRecognizer(convertTap)
     }
     
-    func configureSwapGesture() {
-        let swapTap = UITapGestureRecognizer(target: self, action: #selector(swapButtonTapped))
-        toolbar.swapButton.addGestureRecognizer(swapTap)
+    func configureClearGesture() {
+        let clearTap = UITapGestureRecognizer(target: self, action: #selector(clearButtonTapped))
+        toolbar.clearButton.addGestureRecognizer(clearTap)
     }
     
-    func configureShareGesture() {
-        let shareTap = UITapGestureRecognizer(target: self, action: #selector(shareButtonTapped))
-        toolbar.shareButton.addGestureRecognizer(shareTap)
+    func configureSwapGesture() {
+        let shareTap = UITapGestureRecognizer(target: self, action: #selector(swapButtonTapped))
+        toolbar.swapButton.addGestureRecognizer(shareTap)
     }
     
     @objc func openCurrencySelectionScreen(_ sender: UITapGestureRecognizer) {
@@ -163,12 +201,13 @@ extension ConverterViewController {
         getPairedConversionData()
     }
     
-    @objc func swapButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("Tapped swap")
+    @objc func clearButtonTapped(_ sender: UITapGestureRecognizer) {
+        if #available(iOS 10.0, *) { UIImpactFeedbackGenerator(style: .rigid).impactOccurred() }
+        resetPanelFieldLabels()
     }
     
-    @objc func shareButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("Tapped share")
+    @objc func swapButtonTapped(_ sender: UITapGestureRecognizer) {
+        print("Tapped swap")
     }
     
 }

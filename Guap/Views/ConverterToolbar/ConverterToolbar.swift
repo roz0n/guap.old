@@ -23,8 +23,8 @@ class ConverterToolbar: UIView {
     }()
     
     let convertButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: K.icons.ConvertCurrency, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.yellow)
-    let swapButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: K.icons.SwapCurrency, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.red)
-    let shareButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: K.icons.ShareCurrency, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.blue)
+    let clearButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: K.icons.ClearCurrency, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.red)
+    let swapButton: UIButton = ConverterToolbarButton(icon: UIImage(systemName: K.icons.ShareCurrency, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .heavy)), iconColor: K.colors.white, bgColor: K.colors.blue)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,15 +46,15 @@ extension ConverterToolbar {
     
     func configureButtons() {
         convertButton.layer.cornerRadius = K.styles.cornerRadius
+        clearButton.layer.cornerRadius = K.styles.cornerRadius
         swapButton.layer.cornerRadius = K.styles.cornerRadius
-        shareButton.layer.cornerRadius = K.styles.cornerRadius
     }
     
     func configureLayout() {
         addSubview(buttonStack)
-        buttonStack.addArrangedSubview(swapButton)
+        buttonStack.addArrangedSubview(clearButton)
         buttonStack.addArrangedSubview(convertButton)
-        buttonStack.addArrangedSubview(shareButton)
+        buttonStack.addArrangedSubview(swapButton)
         buttonStack.fillOther(view: self)
     }
     

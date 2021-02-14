@@ -11,6 +11,7 @@ class ConverterHelperService {
     
     static let shared = ConverterHelperService()
     private var localeCache = [String: Locale]()
+    static var currencyStringToNumsPattern = "([^0-9.,]+)"
     
     func convertPair(base: Float, rate: Float) -> Float {
         return (base * rate)
@@ -47,7 +48,7 @@ class ConverterHelperService {
         let formatter = NumberFormatter()
         
         formatter.usesGroupingSeparator = true
-        formatter.numberStyle = .currency
+        formatter.numberStyle = .currencyAccounting
         formatter.locale = locale ?? Locale.current
         
         return formatter.string(from: NSNumber(value: value))
