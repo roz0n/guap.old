@@ -12,14 +12,10 @@ enum CurrencyInputType: String {
     case Target = "target"
 }
 
-protocol ConverterControllerDelegate {
-    func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Float?)
-}
-
 class ConverterViewController: UIViewController {
     
-    var delegate: ConverterControllerDelegate? 
     let statusBar = ConverterStatusBar()
+    let toolbar = ConverterToolbar()
     
     var allPanels = [ConverterPanelUIModel]()
     var converterBase: ConverterPanelUIModel?
@@ -35,11 +31,10 @@ class ConverterViewController: UIViewController {
     let targetButton = ConverterPanelButton()
     let targetField = ConverterPanelField()
     
-    let toolbar = ConverterToolbar()
-    
     var conversionRate: Float? {
         didSet {
-            statusBar.conversionRate = String(conversionRate!)
+            //            statusBar.conversionRate = String(conversionRate!)
+            print("Set conversion rate!", conversionRate)
         }
     }
     
@@ -78,15 +73,18 @@ class ConverterViewController: UIViewController {
         configureGestures()
     }
     
-    func formatFieldText(of field: ConverterPanelField) {
-        guard let text = field.amountLabel.text else { return }
-        
-        if let doubleValue = Float(text) {
-            if let currencyValue = ConverterHelperService.shared.formatFloatAsCurrency(doubleValue, to: nil) {
-                field.amountLabel.text! = currencyValue
-            } else {
-                field.amountLabel.text! = String(doubleValue)
-            }
+    
+    func updatePanelFieldLabels(with response: ERPairConversionModel) {
+        DispatchQueue.main.async { [weak self] in
+            guard let baseValue = Float((self?.baseField.amountLabel.text!)!) else { return }
+            
+            let conversionResult = ConverterHelperService.shared.convertPair(base: baseValue, rate: response.conversionRate)
+            let formattedBaseValue = ConverterHelperService.shared.formatFloatAsCurrency(baseValue, to: ConverterHelperService.shared.getLocaleFromCurrencyCode(K.defaults.BaseCurrency))
+            let formattedConversionResult = ConverterHelperService.shared.formatFloatAsCurrency(conversionResult, to: ConverterHelperService.shared.getLocaleFromCurrencyCode(K.defaults.TargetCurrency))
+            
+            self?.targetField.amountLabel.text = formattedConversionResult
+            self?.baseField.amountLabel.text = formattedBaseValue
+            self?.conversionRate = response.conversionRate
         }
     }
     
@@ -97,16 +95,12 @@ class ConverterViewController: UIViewController {
 extension ConverterViewController {
     
     func getPairedConversionData() {
-        guard let baseValue = Float(baseField.amountLabel.text!) else { return }
-        
         DispatchQueue.global().async {
             ERDataService.shared.getPairConversion(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency) { [weak self] (response, error) in
                 if error != nil { print("Error: \(String(describing: error))"); return }
-                
+
                 if let response = response {
-                    let conversionResult = ConverterHelperService.shared.convertPair(base: baseValue, rate: response.conversionRate)
-                    self?.conversionRate = response.conversionRate
-                    self?.delegate?.didGetPairConversion(self, responseData: response, result: conversionResult)
+                    self?.updatePanelFieldLabels(with: response)
                 }
             }
         }
@@ -166,8 +160,6 @@ extension ConverterViewController {
     
     @objc func convertButtonTapped(_ sender: UITapGestureRecognizer) {
         if #available(iOS 10.0, *) { UIImpactFeedbackGenerator(style: .heavy).impactOccurred() }
-        
-        formatFieldText(of: baseField)
         getPairedConversionData()
     }
     

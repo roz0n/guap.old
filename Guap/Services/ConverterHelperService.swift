@@ -47,7 +47,7 @@ class ConverterHelperService {
         let formatter = NumberFormatter()
         
         formatter.usesGroupingSeparator = true
-        formatter.numberStyle = .decimal
+        formatter.numberStyle = .currency
         formatter.locale = locale ?? Locale.current
         
         return formatter.string(from: NSNumber(value: value))

@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class HomeViewController: UIViewController, ConverterControllerDelegate, CustomKeyboardDelegate {
+class HomeViewController: UIViewController, CustomKeyboardDelegate {
     
     let converter = ConverterViewController(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency)
     let keyboard = CustomKeyboardViewController()
@@ -17,9 +17,7 @@ class HomeViewController: UIViewController, ConverterControllerDelegate, CustomK
         super.viewDidLoad()
         view.backgroundColor = K.colors.white
         
-        converter.delegate = self
         keyboard.delegate = self
-        
         configureLogo()
         configureBarButtons()
         configureLayout()
@@ -35,30 +33,13 @@ class HomeViewController: UIViewController, ConverterControllerDelegate, CustomK
     func configureBarButtons() {
         let settingsIcon = UIImage(systemName: K.icons.HomeSettings)
         let historyIcon = UIImage(systemName: K.icons.HomeHistory)
-        
         let settingsButton = UIBarButtonItem(image: settingsIcon, style: .plain, target: self, action: #selector(settingsButtonTapped))
         let historyButton = UIBarButtonItem(image: historyIcon, style: .plain, target: self, action: #selector(historyButtonTapped))
         
         navigationItem.rightBarButtonItem = settingsButton
         navigationItem.rightBarButtonItem?.tintColor = K.colors.black
-        
         navigationItem.leftBarButtonItem = historyButton
         navigationItem.leftBarButtonItem?.tintColor = K.colors.black
-    }
-    
-}
-
-// MARK: - ConverterControllerDelegate
-
-extension HomeViewController {
-    
-    func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Float?) {
-        DispatchQueue.main.async { [weak self] in
-            if let result = result {
-                self?.converter.targetField.amountLabel.text = ConverterHelperService.shared.formatFloatAsCurrency(result, to: nil)
-                self?.converter.statusBar.updateConversionRateLabel(to: result)
-            }
-        }
     }
     
 }
@@ -76,16 +57,10 @@ extension HomeViewController {
             case "de":
                 converter.baseField.amountLabel.text! += "."
             case "dl":
-                if converter.targetField.amountLabel.text != nil {
-                    converter.targetField.amountLabel.text! =  ""
-                }
-                
+                if converter.targetField.amountLabel.text != nil { converter.targetField.amountLabel.text! =  "" }
                 converter.baseField.amountLabel.text! = String(converter.baseField.amountLabel.text!.dropLast())
             default:
-                if #available(iOS 10.0, *) {
-                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                }
-                
+                if #available(iOS 10.0, *) { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
                 converter.baseField.amountLabel.text! += String(value)
         }
     }
