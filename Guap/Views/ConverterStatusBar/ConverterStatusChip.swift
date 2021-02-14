@@ -1,5 +1,5 @@
 //
-//  ConverterStatusPill.swift
+//  ConverterStatusChip.swift
 //  Guap
 //
 //  Created by Arnaldo Rozon on 2/6/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConverterStatusPill: UILabel {
+class ConverterStatusChip: UILabel {
     
     var labelText: String?
     var labelTextColor: UIColor
@@ -53,7 +53,7 @@ class ConverterStatusPill: UILabel {
 
 // MARK: - Layout and configurations
 
-extension ConverterStatusPill {
+extension ConverterStatusChip {
     
     func configureLabel() {
         textLabel = UILabel()
@@ -100,7 +100,7 @@ extension ConverterStatusPill {
 
 // MARK: Animations
 
-extension ConverterStatusPill {
+extension ConverterStatusChip {
     
 //    func animate() {
 //        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [.repeat, .allowAnimatedContent]) {

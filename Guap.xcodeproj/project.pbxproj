@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		230A7CFD25CFC5C700509A0D /* ConverterToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A7CFC25CFC5C700509A0D /* ConverterToolbarButton.swift */; };
 		233BDF2125CF88E40061E140 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */; };
-		233BDF2425CF99C30061E140 /* ConverterStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */; };
+		233BDF2425CF99C30061E140 /* ConverterStatusChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233BDF2325CF99C30061E140 /* ConverterStatusChip.swift */; };
 		234454F525D21473004A77B9 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234454F425D21473004A77B9 /* UIDevice+Ext.swift */; };
 		2347525F25D7892300A937EA /* CurrencySelectorCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347525E25D7892300A937EA /* CurrencySelectorCollectionView.swift */; };
 		2347526225D7897700A937EA /* CurrencySelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347526125D7897700A937EA /* CurrencySelectorCell.swift */; };
@@ -45,7 +45,7 @@
 /* Begin PBXFileReference section */
 		230A7CFC25CFC5C700509A0D /* ConverterToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToolbarButton.swift; sourceTree = "<group>"; };
 		233BDF2025CF88E40061E140 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
-		233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterStatusPill.swift; sourceTree = "<group>"; };
+		233BDF2325CF99C30061E140 /* ConverterStatusChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterStatusChip.swift; sourceTree = "<group>"; };
 		234454F425D21473004A77B9 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		2347525E25D7892300A937EA /* CurrencySelectorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorCollectionView.swift; sourceTree = "<group>"; };
 		2347526125D7897700A937EA /* CurrencySelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorCell.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				238627BB25CCFE9D009CD6B5 /* ConverterStatusBar.swift */,
-				233BDF2325CF99C30061E140 /* ConverterStatusPill.swift */,
+				233BDF2325CF99C30061E140 /* ConverterStatusChip.swift */,
 			);
 			path = ConverterStatusBar;
 			sourceTree = "<group>";
@@ -339,7 +339,7 @@
 				2386278225CCEFCC009CD6B5 /* CustomKeyboardViewController.swift in Sources */,
 				23F223A225C77BA700880258 /* ConverterPanelUIModel.swift in Sources */,
 				2384326525C6AD1D0042B640 /* SceneDelegate.swift in Sources */,
-				233BDF2425CF99C30061E140 /* ConverterStatusPill.swift in Sources */,
+				233BDF2425CF99C30061E140 /* ConverterStatusChip.swift in Sources */,
 				23F2239D25C7647B00880258 /* ConverterViewController.swift in Sources */,
 				2347526225D7897700A937EA /* CurrencySelectorCell.swift in Sources */,
 				23C7A7A925D0F6E4000569B1 /* SettingsViewController.swift in Sources */,

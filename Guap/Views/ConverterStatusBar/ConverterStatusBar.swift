@@ -10,9 +10,9 @@ import UIKit
 // TODO: Constants
 class ConverterStatusBar: UIView {
     
-    var currencyPill: ConverterStatusPill?
-    var datePill: ConverterStatusPill?
-    var ratePill: ConverterStatusPill?
+    var currencyChip: ConverterStatusChip?
+    var dateChip: ConverterStatusChip?
+    var rateChip: ConverterStatusChip?
     var conversionRate: String?
     
     let stack: UIStackView = {
@@ -33,7 +33,7 @@ class ConverterStatusBar: UIView {
         backgroundColor = K.colors.white
         
         addBorder(borders: [.Bottom], color: K.colors.borderGray, width: 0.5)
-        createPills()
+        createChips()
         configureLayout()
     }
     
@@ -43,21 +43,21 @@ class ConverterStatusBar: UIView {
     
 }
 
-// MARK: - Pills
+// MARK: - Chips
 
 extension ConverterStatusBar {
     
     // TODO: Constants
     
-    private func createPills() {
+    private func createChips() {
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 13, weight: .bold)
         
-        createCurrencyPill(with: symbolConfiguration)
-        createDatePill()
-        createRatePill(with: symbolConfiguration)
+        createCurrencyChip(with: symbolConfiguration)
+        createDateChip()
+        createRateChip(with: symbolConfiguration)
     }
     
-    private func createCurrencyPill(with configuration: UIImage.SymbolConfiguration?) {
+    private func createCurrencyChip(with configuration: UIImage.SymbolConfiguration?) {
         let textAttachment = NSTextAttachment()
         let textImage = UIImage(systemName: "arrow.forward", withConfiguration: configuration)?.withTintColor(K.colors.white, renderingMode: .alwaysTemplate)
         let labelText = NSMutableAttributedString(string: "EUR ")
@@ -66,16 +66,16 @@ extension ConverterStatusBar {
         labelText.append(NSAttributedString(attachment: textAttachment))
         labelText.append(NSAttributedString(string: " DOP"))
         
-        currencyPill = ConverterStatusPill(labelText: nil, labelTextColor: K.colors.white, bgColor: K.colors.black, attributedLabelText: labelText)
-        currencyPill?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        currencyChip = ConverterStatusChip(labelText: nil, labelTextColor: K.colors.white, bgColor: K.colors.black, attributedLabelText: labelText)
+        currencyChip?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
-    private func createDatePill() {
-        datePill = ConverterStatusPill(labelText: "Thu. 2 Feb 2021", labelTextColor: K.colors.white, bgColor: K.colors.white, attributedLabelText: nil)
-        datePill?.setContentHuggingPriority(.defaultLow, for: .horizontal)
+    private func createDateChip() {
+        dateChip = ConverterStatusChip(labelText: "Thu. 2 Feb 2021", labelTextColor: K.colors.white, bgColor: K.colors.white, attributedLabelText: nil)
+        dateChip?.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
-    private func createRatePill(with configuration: UIImage.SymbolConfiguration?) {
+    private func createRateChip(with configuration: UIImage.SymbolConfiguration?) {
         let textAttachment = NSTextAttachment()
         let textImage = UIImage(systemName: "arrow.up.right", withConfiguration: configuration)?.withTintColor(K.colors.black, renderingMode: .alwaysTemplate)
         let labelText = NSMutableAttributedString(attachment: textAttachment)
@@ -83,14 +83,14 @@ extension ConverterStatusBar {
         textAttachment.image = textImage
         labelText.append(NSAttributedString(string: conversionRate ?? "  70.265"))
         
-        ratePill = ConverterStatusPill(labelText: nil, labelTextColor: K.colors.white, bgColor: K.colors.green, attributedLabelText: labelText)
-        ratePill?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        rateChip = ConverterStatusChip(labelText: nil, labelTextColor: K.colors.white, bgColor: K.colors.green, attributedLabelText: labelText)
+        rateChip?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     // TODO: Make this work
     func updateConversionRateLabel(to value: Float) {
-        if let pill = ratePill {
-            pill.labelText = String(value)
+        if let chip = rateChip {
+            chip.labelText = String(value)
         }
     }
     
@@ -103,7 +103,7 @@ extension ConverterStatusBar {
     private func configureLayout() {
         addSubview(stack)
         
-        if let cp = currencyPill, let dp = datePill, let rp = ratePill {
+        if let cp = currencyChip, let dp = dateChip, let rp = rateChip {
             stack.addArrangedSubview(cp)
             stack.addArrangedSubview(dp)
             stack.addArrangedSubview(rp)

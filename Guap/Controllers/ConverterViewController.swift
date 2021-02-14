@@ -33,7 +33,7 @@ class ConverterViewController: UIViewController {
     
     var conversionRate: Float? {
         didSet {
-            //            statusBar.conversionRate = String(conversionRate!)
+            // statusBar.conversionRate = String(conversionRate!)
             print("Set conversion rate!", conversionRate)
         }
     }
