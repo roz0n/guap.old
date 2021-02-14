@@ -10,6 +10,34 @@ import Foundation
 class CurrencyValueService {
     
     static let shared = CurrencyValueService()
+    private var localeCache = [String: Locale]()
+    
+    func getLocaleFromCurrencyCode(_ currencyCode: String) -> Locale? {
+        if let isCached = localeCache[currencyCode] {
+            return isCached
+        }
+        
+        let ids = Locale.availableIdentifiers
+        var matches = [Locale]()
+        
+        // Obtain matches
+        for id in ids {
+            let tempLocale = Locale.init(identifier: id)
+            let tempCode = tempLocale.currencyCode
+            
+            if (tempCode == currencyCode) {
+                matches.append(tempLocale)
+            }
+        }
+        
+        guard matches.count > 0 else { return nil }
+        
+        // Sort matches and return first the first match
+        let matchedLocale = matches.sorted { return $0.identifier < $1.identifier }.first
+        localeCache[currencyCode] = matchedLocale
+        
+        return matchedLocale
+    }
     
     func formatFieldValue(of field: ConverterPanelField) {
         guard let text = field.amountLabel.text else { return }
@@ -25,12 +53,12 @@ class CurrencyValueService {
     
     func formatCurrency(_ value: Double) -> String? {
         let formatter = NumberFormatter()
-        // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
-        // https://stackoverflow.com/questions/41558832/how-to-format-a-double-into-currency-swift-3
-        // formatter.locale = Locale.current
-        formatter.numberStyle = .decimal
         
-        return formatter.string(from: value as NSNumber)
+        formatter.usesGroupingSeparator = true
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale.current
+        
+        return formatter.string(from: NSNumber(value: value))
     }
     
     func calculatePair(base: Double, rate: Double) -> Double {
