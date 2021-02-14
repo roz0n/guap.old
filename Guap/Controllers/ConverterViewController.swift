@@ -7,8 +7,7 @@
 
 import UIKit
 
-// TODO: This could be named better
-enum CurrencyType: String {
+enum CurrencyInputType: String {
     case Base = "base"
     case Target = "target"
 }
@@ -38,8 +37,6 @@ class ConverterViewController: UIViewController {
     
     let toolbar = ConverterToolbar()
     
-    var baseValue: Double?
-    var targetValue: Double?
     var conversionRate: Double? {
         didSet {
             statusBar.conversionRate = String(conversionRate!)
@@ -81,26 +78,6 @@ class ConverterViewController: UIViewController {
         configureGestures()
     }
     
-    func formatBaseValue() {
-        // Obtain the base field's text
-        // Convert it to a Double
-        // Set the result of that conversion to the baseValue variable
-        // Set the fieldValue label to the value of double in case it's not already (this might be removed once we format currency correctly
-        let baseFieldText = baseField.amountLabel.text
-        
-        if let stringValue = baseFieldText {
-            if let rawValue = Double(stringValue) {
-                baseValue = rawValue
-                
-                if let currencyFormattedValue = CurrencyService.shared.formatCurrency(rawValue) {
-                    baseField.amountLabel.text! = currencyFormattedValue
-                } else {
-                    baseField.amountLabel.text! = String(rawValue)
-                }
-            }
-        }
-    }
-    
 }
 
 // MARK: - Data
@@ -108,22 +85,15 @@ class ConverterViewController: UIViewController {
 extension ConverterViewController {
     
     func getPairedConversionData() {
-        formatBaseValue()
-        
-        guard let base = baseValue else { return }
+        guard let baseValue = Double(baseField.amountLabel.text!) else { return }
         
         DispatchQueue.global().async {
             ERDataService.shared.getPairConversion(base: K.defaults.BaseCurrency, target: K.defaults.TargetCurrency) { [weak self] (response, error) in
-                if error != nil {
-                    print("Error: \(String(describing: error))")
-                    return
-                }
+                if error != nil { print("Error: \(String(describing: error))"); return }
                 
                 if let response = response {
-                    // TODO: Should we be setting all the internal properties here?
+                    let conversionResult = CurrencyValueService.shared.calculatePair(base: Double(baseValue), rate: response.conversionRate)
                     self?.conversionRate = response.conversionRate
-                    
-                    let conversionResult = CurrencyService.shared.calculatePair(base: Double(base), rate: response.conversionRate)
                     self?.delegate?.didGetPairConversion(self, responseData: response, result: conversionResult)
                 }
             }
@@ -183,10 +153,9 @@ extension ConverterViewController {
     }
     
     @objc func convertButtonTapped(_ sender: UITapGestureRecognizer) {
-        if #available(iOS 10.0, *) {
-            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-        }
+        if #available(iOS 10.0, *) { UIImpactFeedbackGenerator(style: .heavy).impactOccurred() }
         
+        CurrencyValueService.shared.formatFieldValue(of: baseField)
         getPairedConversionData()
     }
     

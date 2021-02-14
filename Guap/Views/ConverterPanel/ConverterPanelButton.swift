@@ -10,7 +10,7 @@ import UIKit
 // TODO: This will need a refactor
 class ConverterPanelButton: UIView {
     
-    var type: CurrencyType?
+    var type: CurrencyInputType?
     var currencyCode: String?
     var countryCode: String? {
         didSet {
@@ -43,7 +43,7 @@ class ConverterPanelButton: UIView {
         self.init(for: nil, of: nil, role: nil)
     }
     
-    init(for currency: String?, of country: String?, role: CurrencyType?) {
+    init(for currency: String?, of country: String?, role: CurrencyInputType?) {
         type = role
         currencyCode = currency
         countryCode = country

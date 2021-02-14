@@ -9,10 +9,10 @@ import UIKit
 
 class CurrencySelectorViewController: UIViewController {
     
-    var type: CurrencyType
+    var type: CurrencyInputType
     let currencySelector = CurrencySelectorCollectionView()
     
-    init(type: CurrencyType) {
+    init(type: CurrencyInputType) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
     }

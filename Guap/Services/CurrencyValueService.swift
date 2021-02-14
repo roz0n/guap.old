@@ -1,5 +1,5 @@
 //
-//  CurrencyService.swift
+//  CurrencyValueService.swift
 //  Guap
 //
 //  Created by Arnaldo Rozon on 2/13/21.
@@ -7,9 +7,21 @@
 
 import Foundation
 
-class CurrencyService {
+class CurrencyValueService {
     
-    static let shared = CurrencyService()
+    static let shared = CurrencyValueService()
+    
+    func formatFieldValue(of field: ConverterPanelField) {
+        guard let text = field.amountLabel.text else { return }
+        
+        if let doubleValue = Double(text) {
+            if let currencyValue = CurrencyValueService.shared.formatCurrency(doubleValue) {
+                field.amountLabel.text! = currencyValue
+            } else {
+                field.amountLabel.text! = String(doubleValue)
+            }
+        }
+    }
     
     func formatCurrency(_ value: Double) -> String? {
         let formatter = NumberFormatter()

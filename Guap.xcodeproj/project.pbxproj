@@ -13,7 +13,7 @@
 		234454F525D21473004A77B9 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234454F425D21473004A77B9 /* UIDevice+Ext.swift */; };
 		2347525F25D7892300A937EA /* CurrencySelectorCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347525E25D7892300A937EA /* CurrencySelectorCollectionView.swift */; };
 		2347526225D7897700A937EA /* CurrencySelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347526125D7897700A937EA /* CurrencySelectorCell.swift */; };
-		2347526725D8D27400A937EA /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347526625D8D27400A937EA /* CurrencyService.swift */; };
+		2347526725D8D27400A937EA /* CurrencyValueService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347526625D8D27400A937EA /* CurrencyValueService.swift */; };
 		2347526C25D8DE0400A937EA /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347526B25D8DE0400A937EA /* UIViewController+Ext.swift */; };
 		2353C31725CD288A00906C79 /* CustomKeyboardButtonValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */; };
 		237E6FB625CA8CD700988FA1 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FB525CA8CD700988FA1 /* K.swift */; };
@@ -49,7 +49,7 @@
 		234454F425D21473004A77B9 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		2347525E25D7892300A937EA /* CurrencySelectorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorCollectionView.swift; sourceTree = "<group>"; };
 		2347526125D7897700A937EA /* CurrencySelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorCell.swift; sourceTree = "<group>"; };
-		2347526625D8D27400A937EA /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		2347526625D8D27400A937EA /* CurrencyValueService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyValueService.swift; sourceTree = "<group>"; };
 		2347526B25D8DE0400A937EA /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		2353C31625CD288A00906C79 /* CustomKeyboardButtonValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButtonValues.swift; sourceTree = "<group>"; };
 		237E6FB525CA8CD700988FA1 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				23B084C925CA2A3500CD0BCC /* ERDataService.swift */,
-				2347526625D8D27400A937EA /* CurrencyService.swift */,
+				2347526625D8D27400A937EA /* CurrencyValueService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				238627BD25CCFE9D009CD6B5 /* ConverterToolbar.swift in Sources */,
 				238627BE25CCFE9D009CD6B5 /* ConverterPanelButton.swift in Sources */,
 				238627C125CCFE9D009CD6B5 /* ConverterStatusBar.swift in Sources */,
-				2347526725D8D27400A937EA /* CurrencyService.swift in Sources */,
+				2347526725D8D27400A937EA /* CurrencyValueService.swift in Sources */,
 				238627C025CCFE9D009CD6B5 /* ConverterPanelField.swift in Sources */,
 				2347525F25D7892300A937EA /* CurrencySelectorCollectionView.swift in Sources */,
 				2386278525CCF450009CD6B5 /* CGFloat+Ext.swift in Sources */,

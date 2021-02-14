@@ -55,10 +55,7 @@ extension HomeViewController {
     func didGetPairConversion(_ sender: ConverterViewController?, responseData: ERPairConversionModel, result: Double?) {
         DispatchQueue.main.async { [weak self] in
             if let result = result {
-                // TODO: Don't update UI here, move this to ConverterVC
-                // It seems like ConverterVC doesn't even need a delegate...
-                self?.converter.targetValue = result
-                self?.converter.targetField.amountLabel.text = CurrencyService.shared.formatCurrency(result)
+                self?.converter.targetField.amountLabel.text = CurrencyValueService.shared.formatCurrency(result)
                 self?.converter.statusBar.updateConversionRateLabel(to: result)
             }
         }
