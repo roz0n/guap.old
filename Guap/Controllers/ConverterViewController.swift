@@ -106,7 +106,7 @@ class ConverterViewController: UIViewController {
                 
                 if (newBaseSymbol.count > 1) {
                     self?.baseSymbol.symbolLabel.textAlignment = .right
-                    self?.baseSymbol.symbolLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+                    self?.baseSymbol.symbolLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
                 } else {
                     self?.baseSymbol.symbolLabel.textAlignment = .center
                 }
@@ -117,7 +117,7 @@ class ConverterViewController: UIViewController {
                 
                 if (newTargetSymbol.count > 1) {
                     self?.targetSymbol.symbolLabel.textAlignment = .right
-                    self?.targetSymbol.symbolLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+                    self?.targetSymbol.symbolLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
                 } else {
                     self?.targetSymbol.symbolLabel.textAlignment = .center
                 }

@@ -49,7 +49,7 @@ class ConverterHelperService {
         
         formatter.usesGroupingSeparator = true
         formatter.numberStyle = .currencyAccounting
-        formatter.locale = locale ?? Locale.current
+        formatter.locale = Locale.current
         
         return formatter.string(from: NSNumber(value: value))
     }
