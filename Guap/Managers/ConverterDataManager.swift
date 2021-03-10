@@ -1,5 +1,5 @@
 //
-//  ConverterHelperService.swift
+//  ConverterDataManager.swift
 //  Guap
 //
 //  Created by Arnaldo Rozon on 2/13/21.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class ConverterHelperService {
+class ConverterDataManager {
     
-    static let shared = ConverterHelperService()
+    static let shared = ConverterDataManager()
     private var localeCache = [String: Locale]()
     static var currencyStringToNumsPattern = "([^0-9.,]+)"
     
