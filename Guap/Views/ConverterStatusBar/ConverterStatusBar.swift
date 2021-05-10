@@ -70,8 +70,24 @@ extension ConverterStatusBar {
         currencyPill?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
+    private func convertDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E. d MMM yyyy"
+        
+        let convertedDate = dateFormatter.string(from: date)
+        return convertedDate.description
+        
+    }
+    
+    private func getFormattedDate() -> String {
+        let now = Date()
+        let convertedDate = convertDate(date: now)
+        return convertedDate
+    }
+    
     private func createDatePill() {
-        datePill = ConverterStatusPill(labelText: "Thu. 2 Feb 2021", labelTextColor: K.colors.white, bgColor: K.colors.white, attributedLabelText: nil)
+        let today = getFormattedDate()
+        datePill = ConverterStatusPill(labelText: today, labelTextColor: K.colors.white, bgColor: K.colors.white, attributedLabelText: nil)
         datePill?.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
